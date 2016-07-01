@@ -1,0 +1,1 @@
+dists/quicklisp/software/trivial-channels-20160421-git/trivial-channels.asd

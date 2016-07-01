@@ -1,0 +1,24 @@
+;;; -*- lisp -*-
+
+(defpackage #:lispbuilder-operm-cffi-system
+  (:use #:cl #:asdf))
+(in-package #:lispbuilder-operm-cffi-system)
+
+(defsystem lispbuilder-openrm-cffi
+    :description "lispbuilder-openrm-cffi: OpenRM library wrapper and tools"
+    :version "0.1"
+    :author "Lispbuilder Mailing List <lispbuilder@googlegroups.com>"
+    :maintainer "Lispbuilder Mailing List <lispbuilder@googlegroups.com>"
+    :licence "BSD"
+    :depends-on (cffi lispbuilder-openrm-binaries)
+    :components
+    ((:module "cffi"
+	      :components
+	      ((:file "package")
+	       (:file "library" :depends-on ("package"))
+               (:file "openrm" :depends-on ("package" "library"))
+               (:file "gl" :depends-on ("package" "library"))
+ 	       (:file "translate" :depends-on ("openrm"))))
+     (:module "build"
+	      :components
+	      ((:static-file "openrmswig.i")))))

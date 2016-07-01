@@ -1,0 +1,78 @@
+{include resources/header.md}
+{set-property title "trivial-timeout | metabang.com"}
+
+<div class="contents">
+<div class="system-links">
+
+  * [Mailing Lists][]
+  * [Getting it][]
+  * [News][]
+  * [Test results][]
+  * [Changelog][]
+
+</div>
+<div class="system-description">
+
+### What it is
+
+Sometimes you don't have the time to wait. 
+
+Although most Lisps have a mechanism to write code that says
+"do _this_ for 5 seconds and give up if you're not done",
+they didn't agree on exactly what that mechanism should look
+like. Trivial-timeout steps into the gap with a platform
+independent syntax for timeouts. You use it like this:
+
+    (with-timeout (duration)
+      (run-some-long-running-code))
+
+If `duration` (a time in seconds) is exceeded, then a
+`timeout-error` will be signaled. A more idiomatic example 
+would probably be:
+
+    (handler-case
+      (with-timeout (60)
+        (make-microwave-popcorn))
+      (timeout-error (c)
+        (declare (ignore c))
+        (print "I wanted to make popcorn, but who has the time these days")))
+
+Here's the full skinny:
+
+{docs with-timeout}
+{docs timeout-error}
+ 
+{anchor mailing-lists}
+
+### Mailing Lists
+
+  * [trivial-timeout-devel][devel-list]: A list for questions, patches,
+    bug reports, and so on; You name it, it's for it.
+
+{anchor downloads}
+
+### Where is it
+
+A [darcs][] repository is available. The darcs command is:
+    
+    darcs get {{property darcs-link}}
+
+trivial-timeout is also [ASDF installable][asdf-install]. Its
+CLiki home is right [where][cliki-home] you'd
+expect.
+
+There's also a handy [gzipped tar file][tarball].
+
+
+{anchor news}
+
+### What is happening
+
+10 Sept 2008 - Separated trivial-timeout from [lift][] and
+[trivial-shell][]. There was much rejoicing.
+
+</div>
+</div>
+
+{include resources/footer.md}
+
