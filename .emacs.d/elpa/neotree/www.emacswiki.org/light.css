@@ -1,0 +1,743 @@
+
+/*
+----------------------------------------------------------------------------
+EmacsWiki light theme
+----------------------------------------------------------------------------
+A combination of some of the existing themes on the EmacsWiki at
+http://emacswiki.org, with various other additions.
+The base theme was the cali2.css theme - question marks indicate things left
+over which might be removable.
+A dark subtheme is implemented by an additional 'dark' class on the main
+<body> element.
+Released under the MIT License.
+----------------------------------------------------------------------------
+*/
+
+
+/* ---------------------------------------------------------------------- */
+/* Base */
+/* ---------------------------------------------------------------------- */
+
+body {
+    margin: 0 0 1.5em 0;
+    padding: 1em 1em;
+    color: #111;
+    background-color: #fffefe;
+    font-size: 100%;
+}
+body.dark {
+    color: #ccc;
+    background-color: #181818;
+}
+
+
+/* Code - used for keysequences, function references (anything in `...') */
+/* Pre - used for blocks of code */
+code, pre {
+    color: #444;
+    background-color: #f9f8f8;
+    border: 1px solid #ddd;
+
+    font-family: monospace;
+
+    /* For some reason, using a different font than the default monospace */
+    /* increases the size of the text, so need to counteract that here */
+    /* font-size: 0.8em; */
+}
+body.dark code, body.dark pre {
+    color: #ccc;
+    background-color: #222;
+    border: 1px solid #333;
+}
+code {
+    padding: 1px;
+}
+pre {
+    margin: 1em 0;
+    padding: 1em 2em;
+    overflow: auto; /* add horizontal scrollbar if necessary */
+}
+
+
+
+
+/* Links */
+a {
+    color: #06b;
+    background-color: inherit;
+
+    /* This works on firefox, but just shows as a plain underline in chrome, which looks terrible */
+    /* text-decoration: underline dotted #09c; */
+
+    /* Faking a dotted underline, works on all browsers but can't adjust position */
+    text-decoration: none;
+    /* border-bottom: 1px dotted #09c; */
+}
+a:link, a:visited {
+    background-color: inherit;
+}
+a:active, a:hover {
+    color: #09d;
+}
+
+body.dark a {
+    color: #9c5;
+}
+body.dark a:active, body.dark a:hover {
+    color: #ae6;
+}
+/* external links */
+/* a.url:before { content: "\2197"; } */
+/* .safari a.url:before { content: url(http://www.emacswiki.org/alex/pics/arrow.png); } */
+/* image links */
+a.image img {
+    border: none;
+}
+a.left {
+    float: left;
+    margin: 20px;
+}
+a.right {
+    float: right;
+    margin: 20px;
+}
+
+
+/* Images */
+/* dim images for dark theme */
+body.dark img {filter: brightness(70%);}
+body.dark img:hover {filter: brightness(100%);}
+
+
+/* Headers */
+h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    clear: both;
+}
+@media (max-width: 580px) {
+    h2 {font-size: 1.5em;}
+    h3 {font-size: 1.2em;}
+    h4 {font-size: 1.7em;}
+}
+@media (min-width: 580px) {
+    h2 {font-size: 1.7em;}
+    h3 {font-size: 1.3em;}
+    h4 {font-size: 1em;}
+}
+
+
+/* h1 */
+/* defined further below */
+
+/* h2 */
+h2 {
+    /* line under header */
+    margin-top: 1.2em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #aaa;
+
+    /* divider between sections */
+    /* margin-top: 1em; */
+    /* padding-top: 1em; */
+    /* border-top: 1px solid #bbb; */
+    /* margin-bottom: 1em; */
+}
+
+/* h3 */
+h3 {
+    font-style: italic;
+    margin-top: 0.1em;
+    padding-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* h4 */
+h4 {
+    font-style: italic;
+    margin-top: 0.1em;
+    padding-top: 0.5em;
+}
+
+
+/* hr */
+hr {
+    border: 0;
+    height: 0;
+    border-bottom: 1px solid #ccc;
+    padding-top: 1em;
+    margin-bottom: 2em;
+    width: 100%;
+    clear: both;
+}
+
+
+/* Tables */
+table {
+    /* border-collapse: collapse; /\* otherwise leaves gaps in between cell outlines *\/ */
+}
+table tr.first td {
+    border-bottom: 1px solid #bbb;
+}
+table td,th {
+    padding: 0 1ex;
+    text-align: left;
+}
+/* odd/even rows */
+/* table tr.odd { */
+/*     background-color: #fcfbfb; */
+/* } */
+
+
+/* Table on the new page */
+/* ? */
+p.table a { float: left; width: 20ex; }
+p.table + p { clear: both; padding-top: 10px; }
+
+
+/* Definition lists */
+dt {
+    font-weight: bold;
+}
+
+
+
+/* ---------------------------------------------------------------------- */
+/* Layout */
+/* ---------------------------------------------------------------------- */
+
+
+/* Header - includes logo, search bar, goto bar, and article title */
+div.header {
+}
+div.header .specialdays {
+    display: block;
+    position: absolute;
+    top: 10px;
+}
+
+
+/* Logo */
+/* hide the existing logo and override it with a different image */
+img.logo {
+    display: none;
+}
+a.logo {
+    display: block;
+    /* just a placeholder for the moment */
+    background: url(./images/logo218x38.png);
+    width: 218px;
+    height: 38px;
+    top: 22px;
+    left: 22px;
+    border-bottom: none;
+    text-decoration: none;
+    float: left;
+}
+body.dark a.logo {
+    filter: invert(90%) hue-rotate(150deg) saturate(0.9);
+}
+
+/* Search bar */
+/* don't let search bar overwrite logo */
+@media (max-width: 580px) {
+    form.search {
+        margin-top: 0.5em;
+    }
+}
+.header .menu {
+    float: right;
+    height: 2.5em;
+}
+form.search {
+    float: right;
+    clear: both;
+}
+.menu p {
+    margin: 0;
+    margin-top: 0.1em;
+    padding: 0;
+}
+label[for="searchlang"], input#searchlang {
+    display: none;
+}
+
+
+/* Bars (Goto bar, Translation bar, Edit bar) */
+span.bar a {
+    font-size: 1em;
+    color: #444;
+}
+body.dark span.bar a {
+    color: #888;
+}
+
+/* Goto bar (SiteMap, HowTo, etc) */
+@media (max-width: 580px) { /* show along top */
+    span.gotobar {
+        float: left;
+        margin-top: 0.5em;
+    }
+    span.gotobar a + a:before {
+        content: "|";
+        color: #ccc;
+    }
+}
+@media (min-width: 580px) { /* show on left side */
+    span.gotobar {
+        position: absolute;
+        top: 3.5em;
+        left: 20px;
+        width: 140px; /* left+width=160px */
+        padding-right: 1em;
+        padding-top: 30px;
+        border-top: 1px solid #aaa;
+    }
+    body.dark span.gotobar {
+        border-top: 1px solid #444;
+    }
+    span.gotobar a {
+        display: block;
+        margin-top: 0.5em;
+    }
+}
+span.gotobar {
+    line-height: 1em;
+}
+span.gotobar a {
+    border-bottom: none;
+    text-decoration: none;
+}
+span.gotobar a:hover {
+    color: #09d;
+}
+body.dark span.bar a:hover {
+    color: #ae6;
+}
+
+
+/* Messages */
+div.message {
+    position: absolute;
+    left: 300px;
+    top: 1em;
+    height: 1.4em;
+    margin: 0;
+    padding: 5px 2em 2px;
+    background-color: MediumTurquoise;
+    color: #000;
+    box-shadow: 2px 2px 2px 0 #888;
+}
+div.message p {
+    margin: 0;
+}
+body.dark div.message {
+    border: solid 1px #08f;
+    background-color: black;
+    color: #08f;
+    box-shadow: none;
+}
+
+
+
+/* h1 (title) */
+@media (max-width: 580px) {
+    div.header h1 {
+        margin-top: 1em;
+        float: left;
+        clear: both;
+        font-size: 2em;
+    }
+}
+@media (min-width: 580px) {
+    div.header h1 {
+        margin-left: 160px;
+        border-left: 1px solid #aaa;
+        border-top: 1px solid #aaa;
+        padding-left: 20px;
+        font-size: 2.5em;
+    }
+    body.dark div.header h1 {
+        border-left: 1px solid #444;
+        border-top: 1px solid #444;
+    }
+}
+div.header h1 {
+    padding-top: 30px;
+}
+div.header h1 a {
+    color: inherit;
+    background-color: inherit;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+
+/* Content */
+@media (max-width: 580px) {
+    div.content, div.rc, div.diff, div.comment {
+        clear: both;
+    }
+}
+@media (min-width: 580px) {
+    div.content, div.rc, div.diff, div.comment {
+        margin-left: 160px; /* see gotobar */
+        border-left: 1px solid #aaa;
+        padding: 1em;
+    }
+    body.dark div.content, body.dark div.rc, body.dark div.diff, body.dark div.comment {
+        border-left: 1px solid #444;
+    }
+}
+div.content, div.rc, div.diff, div.comment {
+    min-height: 14em; /* so gotobar won't overwrite footer on small pages */
+}
+div.content {
+    padding-top: 0.5em;
+}
+
+
+/* Table of contents */
+.toc {
+    width: 50%;
+    font-size: 90%;
+    padding: 0 1em;
+    margin: 2em 0;
+    line-height: 1.4em;
+    border: 1px solid #ccc;
+}
+body.dark .toc {
+    border: 1px solid #333;
+}
+.toc a {
+    color: #666;
+    /* color: #09d; */
+    /* border-bottom: 1px dotted #09c; */
+}
+.toc a:hover {
+    color: #09d;
+}
+body.dark .toc a {
+    color: #999;
+}
+body.dark .toc a:hover {
+    color: #ae6;
+}
+
+
+/* Portraits */
+/* see https://oddmuse.org/wiki/Portraits_Support_Extension */
+/* see also News page, below */
+div.portrait {
+    margin: 0;
+    float: left;
+    clear: left;
+    font-size: 0.75em;
+    text-align: center;
+}
+div.portrait p {
+    margin: 0;
+    padding-top: 1ex;
+}
+/* for the image inside a.newauthor */
+img.portrait {
+    margin: 0;
+    margin-right: 0.5em;
+    float: left;
+    clear: left;
+    /* picture frame */
+    padding: 6px;
+    background-color: white;
+    border: 1px solid #999;
+    /* scale the image */
+    width: 100%;
+    /* preferred image size is 48x48px */
+    max-width: 62px;
+}
+/* portrait caption */
+div.portrait a.local {
+    float: left;
+    display: block;
+    clear: both;
+    text-decoration: none;
+    border-bottom: none;
+    min-width: 74px; /* 62px from above + 2*6px padding */
+    margin-right: 1em;
+}
+div.comment {
+    clear: both;
+}
+
+
+/* IRC */
+.irc .time {
+    display: none;
+}
+dl.irc dt {
+    float: left;
+    text-align: right;
+    width: 20ex;
+}
+dl.irc dd {
+    display: block;
+    margin-left: 22ex;
+}
+
+
+
+/* Calendar */
+/* (pre gets different colors below) */
+div.month {
+    padding: 0;
+    margin: 0 2ex;
+}
+div.month a {
+    text-decoration: none;
+}
+div.month pre {
+    color: inherit;
+    background-color: inherit;
+}
+body div.month {
+    float: right;
+    padding: 0 1ex;
+}
+.year div.month {
+    float: left;
+    padding: 0;
+}
+div.month a.edit {
+    color: inherit;
+    background-color: inherit;
+    font-weight: inherit;
+}
+
+
+/* diff */
+div.diff { padding-left: 5%; padding-right: 5%; }
+div.old p, div.new p { margin: 0; } /* so padding below will work right */
+div.old, div.new { padding: 0.5em; }
+div.old { background-color: #f98; color: #000; }
+div.new { background-color: #aea; color: #000; }
+body.dark div.old { background-color: #911; color: #000; }
+body.dark div.new { background-color: #393; color: #000; }
+/* inner shadow */
+body.dark div.old, body.dark div.new {
+   -moz-box-shadow:    inset 0 0 5px #000;
+   -webkit-box-shadow: inset 0 0 5px #000;
+   box-shadow:         inset 0 0 5px #000;
+}
+
+
+/* Footer */
+div.footer {
+    clear: both;
+    font-size: 0.9em;
+}
+div.footer hr {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #aaa;
+}
+body.dark div.footer hr {
+    border-bottom: 1px solid #444;
+}
+
+/* Footer edit bar */
+div.footer span.edit {
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: 206px;
+    white-space: nowrap;
+}
+
+div.time a.author, div.time a.diff {
+    color: gray;
+    border-bottom: 1px dotted #09c;
+}
+body.dark div.time a.author, body.dark div.time a.diff {
+    border-bottom: none;
+}
+div.time a.author:hover, div.time a.diff:hover {
+    color: #09d;
+}
+body.dark div.time a.author, body.dark .footer div.time a.diff {
+    color: gray;
+    border-bottom: 1px dotted #cf8;
+}
+body.dark div.time a.author:hover, body.dark .footer div.time a.diff:hover {
+    color: #ae6;
+}
+
+
+/* Legal */
+@media (max-width: 580px) {
+    /* hide CC logo */
+    .footer .licence {
+        display: none;
+    }
+}
+p.legal {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    font-size: 1.1em;
+}
+p.legal a {
+    color: gray;
+    border-bottom: 1px dotted #09c;
+}
+p.legal a:hover {
+    color: #09d;
+}
+body.dark p.legal a {
+    color: gray;
+    border-bottom: 1px dotted #cfc;
+}
+body.dark p.legal a:hover {
+    color: #ae6;
+}
+/* also has <div style="float:right; margin-left:1ex;"> */
+a.license {
+    border-bottom: none;
+    text-decoration: none;
+}
+
+
+/* Center lower menu items and add border*/
+
+/* Translation bar */
+.footer span.translation.bar {
+    display: block;
+    text-align: center;
+    font-size: 0.9em;
+}
+/* hide the br element, which we don't need */
+.footer .translation br {
+    display: none;
+}
+/* add a little space between languages */
+.footer .translation a + a {
+    margin-left: 0.5ex;
+}
+.footer .translation a {
+    border-bottom: 1px dotted #09c;
+}
+.footer .translation a:hover {
+    color: #09d;
+}
+body.dark .footer .translation a {
+    border-bottom: inherit;
+}
+body.dark .footer .translation a:hover {
+    /* color: inherit; */
+    color: #ae6;
+}
+/* Edit bar (buttons) */
+.footer .edit.bar {
+    display: block;
+    text-align: center;
+    padding: 5px 0px 15px 0;
+}
+/* account for missing translation bar in testEdit.htm */
+.footer hr + .edit.bar {
+    padding-top: 2em;
+    padding-bottom: 1.5em;
+}
+/* Last edit */
+.footer div.time {
+    display: block;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+
+/* Display buttons */
+.edit.bar a {
+    display:inline-block;
+    zoom:1;
+    padding:4px 12px;
+    margin-bottom:0;
+    /* font-size:14px; */
+    line-height:20px;
+    text-align:center;
+    vertical-align:middle;
+    cursor:pointer;
+    color:#333333;
+    text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);
+    background-color:#f5f5f5;
+    background-image:-moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image:-webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image:-o-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image:linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-repeat:repeat-x;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+    border-color:#e6e6e6 #e6e6e6 #bfbfbf;
+    border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border:1px solid #cccccc;
+    border:0;
+    border-bottom-color:#b3b3b3;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    margin-left:.3em;
+    -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.edit.bar a:hover,.edit.bar a:focus,.edit.bar a:active, .edit.bar a.active,.edit.bar a.disabled,.edit.bar a[disabled] {
+    background-image: linear-gradient(to bottom, #f8f8f8, #f0f0f0);
+}
+.edit.bar a:active, .edit.bar a.active {
+    background-color:#cccccc;
+}
+body.dark .edit.bar a:hover {
+    color:#80f;
+}
+
+body.dark .edit.bar a {
+    filter: invert(90%);
+}
+
+
+
+
+
+/* Printing */
+@media print {
+    div.diff, div.diff+hr, div.refer, div.near, div.sister, div.cal, div.footer,
+    span.specialdays, span.gotobar, a.edit, a.number span,
+    div.rc form, div.definition { display: none; }
+    body { font: 12pt "Neep", "Arial", sans-serif; color: #000; }
+    a:link, a:visited { color: #000; text-decoration: none; font-style: oblique; }
+    a[class="url number"]:after, a[class="inter number"]:after { content: "[" attr(href) "]"; }
+    a[class="local number"]:after { content: "[" attr(title) "]"; }
+    a.near { font-weight: normal; text-decoration: none; font-style: oblique; }
+    a.near:link, a.near:visited, a.near:active, a.near:hover {
+        color: inherit; background-color: inherit;
+    }
+    a[class="near"]:after { content: " [" attr(title) "]"; }
+}
+
+
+/* Syntax highlighting */
+/* from emacs.css */
+span.builtin      { color: #483d8b; } /* DarkSlateBlue */
+span.comment      { color: #b22222; } /* Firebrick */
+span.constant     { color: #008b8b; } /* DarkCyan */
+span.function     { color: #0000ff; } /* Blue1 */
+span.keyword      { color: #7f007f; } /* Purple */
+span.string       { color: #8b475d; } /* VioletRed4 */
+span.type         { color: #228b22; } /* ForestGreen */
+span.warning      { color: #ff0000; font-weight: bold; } /* Red1 */
+span.comment span,
+span.string  span { color: inherit; }
+span.comment span.important.constant,
+span.string  span.important.constant { color: #008b8b; }
+
+/

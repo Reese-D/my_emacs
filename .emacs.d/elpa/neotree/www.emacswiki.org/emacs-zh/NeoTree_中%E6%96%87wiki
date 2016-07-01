@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: NeoTree 中文wiki</title><link rel="alternate" type="application/wiki" title="Edit this page" href="https://www.emacswiki.org/emacs?action=edit;id=NeoTree_%e4%b8%ad%e6%96%87wiki" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: NeoTree_中文wiki" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=NeoTree_%e4%b8%ad%e6%96%87wiki" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for NeoTree 中文wiki only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=NeoTree_%e4%b8%ad%e6%96%87wiki" /><meta content="width=device-width" name="viewport" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a class="logo" href="https://www.emacswiki.org/emacs/SiteMap"><img src="https://www.emacswiki.org/images/logo218x38.png" class="logo" alt="[Home]" /></a><div class="menu"><span class="gotobar bar"><a class="local" href="https://www.emacswiki.org/emacs/SiteMap">SiteMap</a> <a class="local" href="https://www.emacswiki.org/emacs/Search">Search</a> <a class="local" href="https://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a href="https://www.emacswiki.org/emacs/HowTo" class="local">HowTo</a> <a class="local" href="https://www.emacswiki.org/emacs/Glossary">Glossary</a> <a href="https://www.emacswiki.org/emacs/RecentChanges" class="local">RecentChanges</a> <a href="https://www.emacswiki.org/emacs/News" class="local">News</a> <a class="local" href="https://www.emacswiki.org/emacs/Problems">Problems</a> <a class="local" href="https://www.emacswiki.org/emacs/Suggestions">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" class="search" accept-charset="utf-8"><p><label for="search">Search:</label> <input type="text" name="search"  size="20" accesskey="f" id="search" /> <label for="searchlang">Language:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Go!" /></p></form></div><h1><a title="Click to search for references to this page" rel="nofollow" href="https://www.emacswiki.org/emacs?search=%22NeoTree+%e4%b8%ad%e6%96%87wiki%22">NeoTree 中文wiki</a></h1></div><div class="wrapper"><div class="content browse"><p>Emacs 的文件导航树，类似 Vim 中的 <a class="url http outside" href="http://www.vim.org/scripts/script.php?script_id=1658">NERDTree</a> 。</p><p><a class="url http" href="https://github.com/jaypei/emacs-neotree">https://github.com/jaypei/emacs-neotree</a></p><h2>关于</h2><p><img class="url http" src="https://raw.githubusercontent.com/wiki/jaypei/emacs-neotree/imgs/neotree-1.png" alt="https://raw.githubusercontent.com/wiki/jaypei/emacs-neotree/imgs/neotree-1.png" /></p><h2>安装</h2><p>Clone project:</p><pre>  $ cd /some/path
+  $ git clone https://github.com/jaypei/emacs-neotree.git neotree</pre><p>添加以下代码到 .emacs 中:</p><pre>  (add-to-list 'load-path <span class="string">"/some/path/neotree"</span>)
+  (<span class="keyword">require</span> '<span class="constant">neotree</span>)
+  (global-set-key [f8] 'neotree-toggle)</pre><p>打开（开关） <a class="local" href="https://www.emacswiki.org/emacs/NeoTree">NeoTree</a> ：</p><pre>  &lt;F8&gt;</pre><h2>使用方法</h2><h3>快捷键 （NeoTree 窗口有效）</h3><ul><li><code>n</code> 下一行 ， <code>p</code> 上一行。</li><li><code>SPC</code> or <code>RET</code> or <code>TAB</code> 若是文件，在其他buffer打开；若是目录，可切换折叠、收起。</li><li><code>g</code> 刷新树。</li><li><code>A</code> 最大/最小化 <a href="https://www.emacswiki.org/emacs/NeoTree" class="local">NeoTree</a> 窗口</li><li><code>H</code> 切换显示隐藏文件。</li><li><code>C-c C-n</code> 创建文件，若以 <code>/</code> 结尾则表示创建文件夹。</li><li><code>C-c C-d</code> 删除文件或目录。</li><li><code>C-c C-r</code> 重命名文件或目录。</li><li><code>C-c C-c</code> 改变根目录。</li></ul><h3>命令（全局有效）</h3><ul><li><code>neotree-dir</code> 显示 <a href="https://www.emacswiki.org/emacs/NeoTree" class="local">NeoTree</a> ，root 为 Minibuffer 中指定的一个目录。</li><li><code>neotree-show</code> or <code>neotree</code> 显示 <a class="local" href="https://www.emacswiki.org/emacs/NeoTree">NeoTree</a> ，root 默认为当前目录。</li><li><code>neotree-hide</code> 隐藏 <a href="https://www.emacswiki.org/emacs/NeoTree" class="local">NeoTree</a> 。</li><li><code>neotree-toggle</code> 显示/隐藏 <a href="https://www.emacswiki.org/emacs/NeoTree" class="local">NeoTree</a> 窗口。</li><li><code>neotree-find</code> 显示 <a class="local" href="https://www.emacswiki.org/emacs/NeoTree">NeoTree</a> ，并自动根据当前 Buffer 文件的路径定位到树中的节点。</li></ul><h3>命令（NeoTree Buffer 有效）</h3><ul><li><code>neotree-enter</code> 打开文件 / 折叠目录</li><li><code>neotree-refresh</code> 刷新</li><li><code>neotree-stretch-toggle</code> 最大/最小化</li><li><code>neotree-change-root</code> 切换根目录</li><li><code>neotree-hidden-file-toggle</code> 显示/隐藏 隐藏文件</li><li><code>neotree-rename-node</code> 文件/目录 改名</li><li><code>neotree-delete-node</code> 删除 文件/目录</li><li><code>neotree-create-node</code> 创建文件，当以 <code>/</code> 结尾时表示创建目录 </li></ul><h2>Useful tips</h2><h3>与 Projectile 联动</h3><p>当执行 <code>projectile-switch-project</code> (C-c p p) 时，NeoTree 会自动改变根目录。</p><pre>   (setq projectile-switch-project-action 'neotree-projectile-action)</pre><h3>find-file-in-project</h3><p>如果使用 <code>find-file-in-project</code> (ffip), 你可以添加下面代码到 <code>.emacs.d</code>， 就可以随时切换根到项目目录：</p><pre>  (<span class="keyword">defun</span> <span class="function">neotree-ffip-project-dir</span> ()
+    <span class="string">"Open NeoTree using the git root."</span>
+    (interactive)
+    (<span class="keyword elisp">let</span> ((project-dir (ffip-project-root))
+          (file-name (buffer-file-name)))
+      (<span class="keyword elisp">if</span> project-dir
+          (<span class="keyword elisp">progn</span>
+            (neotree-dir project-dir)
+            (neotree-find file-name))
+        (message <span class="string">"Could not find git project root."</span>))))
+  
+  (define-key map (kbd <span class="string">"C-c C-p"</span>) 'neotree-ffip-project-dir)</pre><h3>Use with evil mode</h3><p>如果你使用 <code>evil-mode</code>, 默认会有键冲突。如 你不能用 <code>q</code> 来关掉 <a href="https://www.emacswiki.org/emacs/NeoTree" class="local">NeoTree</a>.</p><pre>  (add-hook 'neotree-mode-hook
+            (<span class="keyword elisp">lambda</span> ()
+              (define-key evil-normal-state-local-map (kbd <span class="string">"TAB"</span>) 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd <span class="string">"SPC"</span>) 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd <span class="string">"q"</span>) 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd <span class="string">"RET"</span>) 'neotree-enter)))</pre><h3>popwin</h3><p>如果你使用 <code>popwin</code>, 当 <a href="https://www.emacswiki.org/emacs/NeoTree" class="local">NeoTree</a> 和 popwin 同时打开, 会在一旁出现另外一个新的 <a href="https://www.emacswiki.org/emacs/NeoTree" class="local">NeoTree</a> buffer (#50). 可以使用下面代码解决。</p><pre>  (<span class="keyword cl">when</span> neo-persist-show
+    (add-hook 'popwin<span class="builtin">:before-popup-hook</span>
+              (<span class="keyword elisp">lambda</span> () (setq neo-persist-show nil)))
+    (add-hook 'popwin<span class="builtin">:after-popup-hook</span>
+              (<span class="keyword elisp">lambda</span> () (setq neo-persist-show t))))</pre><h2>ChangeLog</h2><p>0.2 （2014-08-09） </p><ul><li>Feature: 支持 <code>neotree-find</code> 快速定位树</li><li>Feature: 支持文件/目录改名</li><li>Feature: 固定宽度，并支持用 <code>A</code> 最大/最小化</li><li>Feature: 头部支持按宽度剪裁</li><li>Fix: 解决文件定位不准确问题</li><li>Refactor: API 名称改为统一 <code>neotree-</code> 开头</li></ul><p>0.1.5 （2014-06-05） </p><ul><li>Fix: 让 <code>*NeoTree*</code> 不出现在 buffer 选择列表中</li><li>Fix: Directory changed to root after toggle</li><li>Refactor: 分离关于 window 和 buffer 的代码</li></ul><p>0.1.4 （2014-05-27） </p><ul><li>Fix: issue #1 #2</li><li>增加单元测试</li><li>删除 <code>neotree-util.el</code></li></ul><p>0.1.3 （2014-04-13） </p><ul><li>Feature: 支持改变树的根目录</li><li>Feature: 如果增加文件时以 <code>/</code> 结尾，行为是创建目录</li><li>Fix: 当删除空目录时不提示递归提醒</li></ul><p>0.1.2 （2014-04-08） </p><ul><li>Feature: 增加文件操作</li><li>Feature: 支持鼠标操作</li></ul><p>0.1.1 （2014-04-06） </p><ul><li>基础功能</li></ul><h2>THANKS</h2><p>因为贡献者的参与，让 <a class="local" href="https://www.emacswiki.org/emacs/NeoTree">NeoTree</a> 变得越来越好用。</p><ul><li><a class="url http outside" href="https://github.com/jianingy">Jianing Yang</a></li><li><a class="url http outside" href="https://github.com/ahmadseleem">ahmad seleem</a></li><li><a class="url http outside" href="https://github.com/aaronmueller">Aaron Mueller</a></li><li><a class="url http outside" href="https://github.com/rranelli">Renan Ranelli</a></li></ul><h2>Todo</h2><ul><li>可执行文件使用单独 face</li><li>GUI 图标支持</li><li>左侧 + - 符号默认提供图标</li><li>/ 符号高亮显示</li><li>提供 m 键出菜单</li><li>按 ? 时显示简要帮助</li><li>可配置的 hidden 正则列表</li></ul></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br /> <a class="translation zh" href="http://www.emacswiki.org/emacs-zh/NeoTree_中文wiki">中文</a> <a class="translation en" href="http://www.emacswiki.org/emacs-en/NeoTree">English</a> <a rel="nofollow" class="translation new" href="https://www.emacswiki.org/emacs?action=translate;id=NeoTree_中文wiki;missing=de_es_fr_it_ja_ko_pt_ru_se_uk">Add Translation</a></span><div class="edit bar"><a accesskey="c" class="comment local edit" href="https://www.emacswiki.org/emacs/Comments_on_NeoTree_%e4%b8%ad%e6%96%87wiki">Talk</a> <a href="https://www.emacswiki.org/emacs?action=edit;id=NeoTree_%e4%b8%ad%e6%96%87wiki" accesskey="e" class="edit" rel="nofollow" title="Click to edit this page">Edit this page</a> <a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=NeoTree_%e4%b8%ad%e6%96%87wiki">View other revisions</a> <a class="admin" href="https://www.emacswiki.org/emacs?action=admin;id=NeoTree_%e4%b8%ad%e6%96%87wiki" rel="nofollow">Administration</a></div><div class="time">Last edited 2014-11-19 13:13 UTC by <a href="https://www.emacswiki.org/emacs/jaypei" class="author" title="211.100.51.28">jaypei</a> <a href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=NeoTree_%e4%b8%ad%e6%96%87wiki" class="diff" rel="nofollow">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

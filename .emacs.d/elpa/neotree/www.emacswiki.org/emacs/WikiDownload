@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: Wiki Download</title><link rel="alternate" type="application/wiki" title="Modifica questa pagina" href="https://www.emacswiki.org/emacs?action=edit;id=WikiDownload" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: WikiDownload" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=WikiDownload" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for WikiDownload only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=WikiDownload" /><meta content="width=device-width" name="viewport" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a class="logo" href="https://www.emacswiki.org/emacs/Mappa_del_sito"><img src="https://www.emacswiki.org/images/logo218x38.png" class="logo" alt="[Home]" /></a><div class="menu"><span class="gotobar bar"><a href="https://www.emacswiki.org/emacs/SiteMap" class="local">SiteMap</a> <a class="local" href="https://www.emacswiki.org/emacs/Search">Search</a> <a href="https://www.emacswiki.org/emacs/ElispArea" class="local">ElispArea</a> <a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a> <a class="local" href="https://www.emacswiki.org/emacs/Glossary">Glossary</a> <a class="local" href="https://www.emacswiki.org/emacs/RecentChanges">RecentChanges</a> <a class="local" href="https://www.emacswiki.org/emacs/News">News</a> <a href="https://www.emacswiki.org/emacs/Problems" class="local">Problems</a> <a href="https://www.emacswiki.org/emacs/Suggestions" class="local">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" class="search" accept-charset="utf-8"><p><label for="search">Cerca:</label> <input type="text" name="search"  size="20" accesskey="f" id="search" /> <label for="searchlang">Lingua:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Vai!" /></p></form></div><h1><a title="Clicca per cercare riferimenti a questa pagina" rel="nofollow" href="https://www.emacswiki.org/emacs?search=%22WikiDownload%22"><span style="padding-right: 0.5ex;">Wiki</span><span style="padding-right: 0.5ex;">Download</span></a></h1></div><div class="wrapper"><div class="content browse"><p>Here is how to download the wiki:</p><ul><li><a class="local" href="https://www.emacswiki.org/emacs/Git_repository">Git repository</a> of the raw <a href="https://www.emacswiki.org/emacs/EmacsWiki" class="local">EmacsWiki</a> pages. Every change on the Emacswiki is checked in individually. Also contains branches for individual packages with intact history. Great in every regard ;-)</li><li><a href="https://www.emacswiki.org/emacs/Rsync_repository" class="local">Rsync repository</a> &#x2013; help making decentralized backups of the entire setup. Great for mirrors, forks, and the like.</li><li><a class="local" href="https://www.emacswiki.org/emacs/DownloadPartOfWiki">DownloadPartOfWiki</a> &#x2013; download a small part of Emacs Wiki, using <code>&#x2018;wget&#x2019;</code>. Tricky.</li></ul><p>All repositories are read-only.</p></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br /> <a href="http://www.emacswiki.org/emacs-de/维基下载" class="translation de">de</a> <a href="https://www.emacswiki.org/emacs?action=translate;id=WikiDownload;missing=es_fr_it_ja_ko_pt_ru_se_uk_zh" rel="nofollow" class="translation new">Add Translation</a></span><div class="edit bar"><a href="https://www.emacswiki.org/emacs/Comments_on_WikiDownload" class="comment local edit" accesskey="c">Discussione</a> <a rel="nofollow" title="Cliccare per modificare questa pagina" class="edit" accesskey="e" href="https://www.emacswiki.org/emacs?action=edit;id=WikiDownload">Modifica questa pagina</a> <a class="history" rel="nofollow" href="https://www.emacswiki.org/emacs?action=history;id=WikiDownload">Guarda altre revisioni</a> <a href="https://www.emacswiki.org/emacs?action=admin;id=WikiDownload" rel="nofollow" class="admin">Amministrazione</a></div><div class="time">Modificata l'ultima volta 2014-10-24 14:31 UTC da <a class="author" title="77.57.43.153" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a> <a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=WikiDownload">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

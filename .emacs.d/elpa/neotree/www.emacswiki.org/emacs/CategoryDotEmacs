@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: Category Dot Emacs</title><link rel="alternate" type="application/wiki" title="Modifica questa pagina" href="https://www.emacswiki.org/emacs?action=edit;id=CategoryDotEmacs" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: CategoryDotEmacs" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=CategoryDotEmacs" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for CategoryDotEmacs only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=CategoryDotEmacs" /><meta content="width=device-width" name="viewport" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a class="logo" href="https://www.emacswiki.org/emacs/Mappa_del_sito"><img src="https://www.emacswiki.org/images/logo218x38.png" class="logo" alt="[Home]" /></a><div class="menu"><span class="gotobar bar"><a class="local" href="https://www.emacswiki.org/emacs/SiteMap">SiteMap</a> <a href="https://www.emacswiki.org/emacs/Search" class="local">Search</a> <a class="local" href="https://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a> <a class="local" href="https://www.emacswiki.org/emacs/Glossary">Glossary</a> <a class="local" href="https://www.emacswiki.org/emacs/RecentChanges">RecentChanges</a> <a class="local" href="https://www.emacswiki.org/emacs/News">News</a> <a class="local" href="https://www.emacswiki.org/emacs/Problems">Problems</a> <a href="https://www.emacswiki.org/emacs/Suggestions" class="local">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" accept-charset="utf-8" class="search"><p><label for="search">Cerca:</label> <input type="text" name="search"  size="20" accesskey="f" id="search" /> <label for="searchlang">Lingua:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Vai!" /></p></form></div><h1><a title="Clicca per cercare riferimenti a questa pagina" href="https://www.emacswiki.org/emacs?search=%22CategoryDotEmacs%22" rel="nofollow"><span style="padding-right: 0.5ex;">Category</span><span style="padding-right: 0.5ex;">Dot</span><span style="padding-right: 0.5ex;">Emacs</span></a></h1></div><div class="wrapper"><div class="content browse"><p>If you&#x2019;re not quite keen on getting into <a href="https://www.emacswiki.org/emacs/EmacsLisp" class="local">EmacsLisp</a> yet, check out <a class="local" href="https://www.emacswiki.org/emacs/CategoryCustomize">CategoryCustomize</a> for ways you can configure Emacs without writing Lisp code. In fact, do that even if you <em>are</em> keen on using <a class="local" href="https://www.emacswiki.org/emacs/EmacsLisp">EmacsLisp</a>. ;-)</p><p>If you&#x2019;re open to <a class="local" href="https://www.emacswiki.org/emacs/LearnEmacsLisp">learning a little Emacs Lisp</a>, there&#x2019;s a lot you can do! Click on the page title above to list all pages related to writing your own <a href="https://www.emacswiki.org/emacs/InitFile" class="local">InitFile</a>. Here is a categorized list of selected resources.</p><h2>Some popular options</h2><ul><li><a href="https://www.emacswiki.org/emacs/AutoModeAlist" class="local">AutoModeAlist</a> &#x2013; Set the <a href="https://www.emacswiki.org/emacs/MajorMode" class="local">MajorMode</a> based on the filename</li><li><a class="local" href="https://www.emacswiki.org/emacs/CustomizingBoth">CustomizingBoth</a> &#x2013; Use the same <a class="local" href="https://www.emacswiki.org/emacs/InitFile">InitFile</a> for multiple operating systems or features</li><li><a href="https://www.emacswiki.org/emacs/LoadingLispFiles" class="local">LoadingLispFiles</a> &#x2013; How to load Emacs Lisp in separate files</li><li><a class="local" href="https://www.emacswiki.org/emacs/ModeHooks">ModeHooks</a> &#x2013; Add code that will run after a function executes or a mode is initialized</li><li><a href="https://www.emacswiki.org/emacs/EmacsCrashCode" class="local">EmacsCrashCode</a> and <a class="local" href="https://www.emacswiki.org/emacs/DotEmacsChallenge">DotEmacsChallenge</a> &#x2013; miscellaneous tips</li></ul><h2>Other options and tips</h2><ul><li><a href="https://www.emacswiki.org/emacs/AlarmBell" class="local">AlarmBell</a> &#x2013; Turn off the beeping or change it to a visual thing</li><li><a class="local" href="https://www.emacswiki.org/emacs/AutoCodingAlist">AutoCodingAlist</a> &#x2013; Determine encoding by file name; use this if the encoding (ex: utf-8) is not correctly detected</li><li><a class="local" href="https://www.emacswiki.org/emacs/AutoCompileInit">AutoCompileInit</a> &#x2013; Automatically compile your <a class="local" href="https://www.emacswiki.org/emacs/InitFile">InitFile</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/AutoSave">AutoSave</a> &#x2013; Organize the autosave files or change the autosave interval</li><li><a class="local" href="https://www.emacswiki.org/emacs/BackupDirectory">BackupDirectory</a> &#x2013; Organize the automatic backup files named <code>filename~</code></li><li><a class="local" href="https://www.emacswiki.org/emacs/DotEmacsDistributions">DotEmacsDistributions</a> &#x2013; Running multiple independent configurations (or &#x201c;distributions&#x201d;) of Emacs.</li><li><a href="https://www.emacswiki.org/emacs/DotEmacsBankruptcy" class="local">DotEmacsBankruptcy</a> &#x2013; Declare bankruptcy when things get so bad you have to start over.</li><li><a class="local" href="https://www.emacswiki.org/emacs/DotEmacsStructuring">DotEmacsStructuring</a> &#x2013; Organize your Emacs config</li><li><a class="local" href="https://www.emacswiki.org/emacs/InterpreterModeAlist">InterpreterModeAlist</a> &#x2013; Set the <a class="local" href="https://www.emacswiki.org/emacs/MajorMode">MajorMode</a> based on a shell script&#x2019;s first line</li><li><a class="local" href="https://www.emacswiki.org/emacs/MenuBar">MenuBar</a> &#x2013; Hide the menu bar or customize it</li><li><a class="local" href="https://www.emacswiki.org/emacs/ModeLineConfiguration">ModeLineConfiguration</a> &#x2013; Customize the status information displayed at the bottom of the buffer</li><li><a class="local" href="https://www.emacswiki.org/emacs/ProfileDotEmacs">ProfileDotEmacs</a> &#x2013; Profile the <a href="https://www.emacswiki.org/emacs/InitFile" class="local">InitFile</a> to see which commands take the most time</li><li><a href="https://www.emacswiki.org/emacs/ProjectSettings" class="local">ProjectSettings</a> &#x2013; making customizations local to a project</li><li><a class="local" href="https://www.emacswiki.org/emacs/RemoteDotEmacs">RemoteDotEmacs</a> &#x2013; eval the <a href="https://www.emacswiki.org/emacs/InitFile" class="local">InitFile</a> you have on a web server</li><li><a href="https://www.emacswiki.org/emacs/ToolBar" class="local">ToolBar</a> &#x2013; Hide the tool bar or customize it</li></ul><h2>Init-related packages and starter kits</h2><ul><li><a href="https://github.com/technomancy/better-defaults" class="url http outside">PhilHagelberg's defaults</a></li><li><a href="https://www.emacswiki.org/emacs/Prelude" class="local">Prelude</a> &#x2013; aims to enhance the default Emacs experience</li><li><a href="https://www.emacswiki.org/emacs/Spacemacs" class="local">Spacemacs</a> &#x2013; particularly for Vim converts</li><li><a href="https://www.emacswiki.org/emacs/EmacsMacro" class="local">EmacsMacro</a> &#x2013; A &#x201c;portable configuration file that configures itself.&#x201d;</li><li><a class="local" href="https://www.emacswiki.org/emacs/TinyTools">TinyTools</a> &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/JariAalto">JariAalto</a>&#x2019;s add-on utilities</li><li><a href="https://www.emacswiki.org/emacs/Grail" class="local">Grail</a> &#x2013; Grand unified .emacs loader - robust and flexible load-path hack.</li><li><a class="url http outside" href="http://user42.tuxfamily.org/startup-file-name-history/index.html">startup-file-name-history.el</a> &#x2013; put command line files into the <code>find-file</code> history</li></ul><h2>Example configurations</h2><ul><li><a class="local" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a> has posted sample <a class="local" href="https://www.emacswiki.org/emacs/InitFile">InitFile</a> <tt><a href="https://www.emacswiki.org/emacs/emacs-init.el" class="local">emacs-init.el</a></tt>, which includes some introductory Emacs info as comments. <a class="local" href="https://www.emacswiki.org/emacs/DrewsElispLibraries">DrewsElispLibraries</a> describes the libraries mentioned in the file.</li><li><a class="local" href="https://www.emacswiki.org/emacs/EnterpriseEmacs">EnterpriseEmacs</a> &#x2013; a page about <i>minimal</i> amount of settings for a behavior more common to the bulk of most other editors and IDEs.</li><li><a href="http://www.mygooglest.com/fni/dot-emacs.html" class="url http outside">FabriceNiessen's .emacs</a> is huge, well-commented and excellent. You can find something interesting there.</li><li><a class="local" href="https://www.emacswiki.org/emacs/JoelHolveck">JoelHolveck</a> has posted his 90k <code>.emacs.el</code> on the Wiki. It&#x2019;s pretty hairy (a decade of degeneration), but has some neat stuff buried in there.</li><li><a href="http://www.hollenback.net/index.php?OneTrueEditor" class="url http outside">Phil Hollenback's .emacs</a> is well-commented and supports both XEmacs and emacs.</li><li><a class="url http outside" href="http://www.xsteve.at/prg/emacs/">StefanReichoer's .emacs</a> is HUGE and runs on Windows and Unix platforms.</li><li><a href="http://edward.oconnor.cx/config/.emacs" class="url http outside">EdwardOConnor's .emacs</a> works in various versions of both Emacsen on several different platforms.</li><li><a class="local" href="https://www.emacswiki.org/emacs/JesseWeinsteinDotEmacs">JesseWeinsteinDotEmacs</a> has some Mac OS X initialization that might be interesting.</li><li><a href="https://www.emacswiki.org/emacs/AlexSchroederConfigMac" class="local">AlexSchroederConfigMac</a> at home, <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroederConfigWindows">AlexSchroederConfigWindows</a> at work, <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroederConfigInit">AlexSchroederConfigInit</a> also at home, but less used.</li><li><a href="https://mtpforge.melting-pot.org/projects/dotemacs" class="url http outside">Yann Hodique's config</a> is huge, and split into many files. Tested (and used) only with GNU Emacs (CVS version) under GNU/Linux</li><li><a href="http://ourcomments.org/Emacs/DL/elisp/dot-emacs/" class="url http outside">Here</a> is a .emacs structure that helps you catch errors during startup of Emacs.</li><li><a href="http://github.com/mina86/dot-files/tree/master/dot-emacs" class="url http outside">mina86's .emacs</a> with almost 2k lines of elisp code. Tested mostly with GNU Emacs from CVS but should work with other versions.</li><li><a href="https://github.com/dertuxmalwieder/My-Emacs-config/" class="url http outside">dertuxmalwieder's config</a> is targeted at Gnus users and web developers (work in progress).</li><li><a class="local" href="https://www.emacswiki.org/emacs/ChrisForno">ChrisForno</a>&#x2019;s <a class="url http outside" href="http://jekor.com/emacs/dot-emacs.pdf">.emacs</a> is a literate program written in Noweb.</li><li><a class="url http outside" href="http://code.google.com/p/dea/">DEA</a> DEA stands for &#x201c;Dot emacs of ahei&#x201d;, its target is provide powerful emacs profile for emacser.</li><li><a class="local" href="https://www.emacswiki.org/emacs/DirkJanBinnema">DirkJanBinnema</a>&#x2019;s <a href="http://www.djcbsoftware.nl/dot-emacs.html" class="url http outside">init file</a>.</li><li><a class="local" href="https://www.emacswiki.org/emacs/SachaChua">SachaChua</a>&#x2019;s <a class="url http outside" href="http://sachachua.com/dotemacs">OrgMode-based .emacs</a></li></ul><p>.emacs on Windows: <a class="local" href="https://www.emacswiki.org/emacs/MsWindowsDotEmacs">MsWindowsDotEmacs</a></p><p>There&#x2019;s lots more at:</p><ul><li><a href="http://www.dotemacs.de/" class="url http">http://www.dotemacs.de/</a></li><li><a href="http://dotfiles.org/.emacs" class="url http">http://dotfiles.org/.emacs</a></li><li><a href="https://github.com/search?type=Repositories&amp;q=Emacs" class="url http outside">GitHub Search: Emacs</a></li></ul><h2>See also</h2><ul><li><a href="https://www.emacswiki.org/emacs/DotEmacsDotD" class="local">DotEmacsDotD</a></li><li><a href="https://www.emacswiki.org/emacs/LearnEmacsLisp" class="local">LearnEmacsLisp</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/SessionManagement">SessionManagement</a></li><li><a href="https://www.emacswiki.org/emacs/CategoryPersistence" class="local">CategoryPersistence</a></li><li><a href="https://www.emacswiki.org/emacs/EmacsNiftyTricks" class="local">EmacsNiftyTricks</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/DumpingEmacs">DumpingEmacs</a></li></ul></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br /> <a class="translation fr" href="http://www.emacswiki.org/emacs-fr/CatégoriePointEmacs">fr</a> <a href="http://www.emacswiki.org/emacs-ja/カテゴリ・設定ファイル" class="translation ja">ja</a> <a href="https://www.emacswiki.org/emacs?action=translate;id=CategoryDotEmacs;missing=de_es_it_ko_pt_ru_se_uk_zh" class="translation new" rel="nofollow">Add Translation</a></span><div class="edit bar"><a class="comment local edit" href="https://www.emacswiki.org/emacs/Comments_on_CategoryDotEmacs" accesskey="c">Discussione</a> <a rel="nofollow" class="edit" href="https://www.emacswiki.org/emacs?action=edit;id=CategoryDotEmacs" accesskey="e" title="Cliccare per modificare questa pagina">Modifica questa pagina</a> <a href="https://www.emacswiki.org/emacs?action=history;id=CategoryDotEmacs" class="history" rel="nofollow">Guarda altre revisioni</a> <a href="https://www.emacswiki.org/emacs?action=admin;id=CategoryDotEmacs" rel="nofollow" class="admin">Amministrazione</a></div><div class="time">Modificata l'ultima volta 2015-11-20 05:46 UTC da <a title="148.87.19.218" href="https://www.emacswiki.org/emacs/DrewAdams" class="author">DrewAdams</a> <a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=CategoryDotEmacs">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

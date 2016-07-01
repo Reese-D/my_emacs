@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: Recent Changes</title><link rel="alternate" type="application/wiki" title="Edit this page" href="https://www.emacswiki.org/emacs?action=edit;id=RecentChanges" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: RecentChanges" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=RecentChanges" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for RecentChanges only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=RecentChanges" /><meta name="viewport" content="width=device-width" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a class="logo" href="https://www.emacswiki.org/emacs/SiteMap"><img class="logo" src="https://www.emacswiki.org/images/logo218x38.png" alt="[Home]" /></a><div class="menu"><span class="gotobar bar"><a class="local" href="https://www.emacswiki.org/emacs/SiteMap">SiteMap</a> <a class="local" href="https://www.emacswiki.org/emacs/Search">Search</a> <a href="https://www.emacswiki.org/emacs/ElispArea" class="local">ElispArea</a> <a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a> <a class="local" href="https://www.emacswiki.org/emacs/Glossary">Glossary</a> <a href="https://www.emacswiki.org/emacs/RecentChanges" class="local">RecentChanges</a> <a class="local" href="https://www.emacswiki.org/emacs/News">News</a> <a class="local" href="https://www.emacswiki.org/emacs/Problems">Problems</a> <a class="local" href="https://www.emacswiki.org/emacs/Suggestions">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" accept-charset="utf-8" class="search"><p><label for="search">Search:</label> <input type="text" name="search"  size="20" id="search" accesskey="f" /> <label for="searchlang">Language:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Go!" /></p></form></div><h1><a href="https://www.emacswiki.org/emacs?search=%22RecentChanges%22" title="Click to search for references to this page" rel="nofollow"><span style="padding-right: 0.5ex;">Recent</span><span style="padding-right: 0.5ex;">Changes</span></a></h1></div><div class="wrapper"><div class="content browse"><p> Recent changes are added automatically below. By default, only the most recent change is listed for each page. Click <strong>List all changes</strong> to view all the recent changes to a page.</p><p>By following the <strong>(diff)</strong> link you can see a page where the difference (removals, additions, changes) between the previously edited revision and the current revision is displayed above the latest formatted version of the page.</p><p>By following the <strong>(history)</strong> link you can see a list of all the revisions for a page. Not all revisions are kept, see <a href="http://www.oddmuse.org/cgi-bin/oddmuse/Kept%20Pages" class="inter Oddmuse"><span class="site">Oddmuse</span><span class="separator">:</span><span class="interpage">Kept Pages</span></a>.</p><p>See <strong><a class="local" href="https://www.emacswiki.org/emacs/OtherRecentChanges">OtherRecentChanges</a></strong> for alternatives such as recent changes filtered by language, and recent visitors.</p><ul><li><a href="/emacs-en?action=rc&amp;rclang=en" class="inter English outside">Pages in English only</a></li><li><a class="inter EmacsWiki outside" href="/emacs?action=rss">RSS feed</a>, <a class="inter EmacsWiki outside" href="/emacs?action=rc;raw=1">TXT feed</a></li></ul><p>See <a href="https://www.emacswiki.org/emacs/UserName" class="local">UserName</a> for more information about the user names used in the list below.</p></div><div class="rc"><hr /><h2>Updates in the last 7 days</h2><p><a rel="nofollow" href="https://www.emacswiki.org/emacs?action=rc;days=1;all=0;showedit=0">1</a> | <a href="https://www.emacswiki.org/emacs?action=rc;days=3;all=0;showedit=0" rel="nofollow">3</a> | <a href="https://www.emacswiki.org/emacs?action=rc;days=7;all=0;showedit=0" rel="nofollow">7</a> | <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=rc;days=14;all=0;showedit=0">14</a> | <a href="https://www.emacswiki.org/emacs?action=rc;days=21;all=0;showedit=0" rel="nofollow">21</a> | <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=rc;days=28;all=0;showedit=0">28</a> days <br /> <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=rc;days=7;all=1;showedit=0">List all changes</a> <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=rc;days=7;all=0;rollback=1;showedit=0">Include rollbacks</a> <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=rc;days=7;all=0;showedit=1">Include minor changes</a> <br /> <a href="https://www.emacswiki.org/emacs?action=rc;from=1466124369;all=0;showedit=0" rel="nofollow">List later changes</a> <a href="https://www.emacswiki.org/emacs?action=rss;days=7;all=0;showedit=0" class="rss nopages nodiff" rel="nofollow">RSS</a> <a href="https://www.emacswiki.org/emacs?action=rss;days=7;all=0;showedit=0;full=1" class="rss pages nodiff" rel="nofollow">RSS with pages</a> <a href="https://www.emacswiki.org/emacs?action=rss;days=7;all=0;showedit=0;full=1;diff=1" class="rss pages diff" rel="nofollow">RSS with pages and diff</a></p><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" class="rc" accept-charset="utf-8"><p><strong>2016-06-17</strong></p><ul><li><span class="time">00:46 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=CompileCommand" rel="nofollow" class="diff">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=CompileCommand" class="history" rel="nofollow">history</a>)  <a href="https://www.emacswiki.org/emacs/CompileCommand" class="local">CompileCommand</a>  . . . . <a href="https://www.emacswiki.org/emacs/Wizmer" title="88.184.136.108" class="author">Wizmer</a> <span class="dash"> &#8211; </span><strong>In the section "Success or failure", moving the compilation-finish-functions trick to first place since it is the one most people don't know.</strong> <span class="lang">[en]</span> </li><li><span class="time">00:22 UTC</span> (<a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=ModeHooks">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=ModeHooks" class="history" rel="nofollow">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/ModeHooks">ModeHooks</a>  . . . . <a title="148.87.19.202" class="author" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a> <span class="dash"> &#8211; </span><strong>You can remove an anonymous function from a hook.  But you need to use the same lambda sexp that you added.</strong> <span class="lang">[en]</span> </li></ul><p><strong>2016-06-15</strong></p><ul><li><span class="time">22:49 UTC</span> (<a rel="nofollow" class="diff" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=DrewAdams">diff</a>) (<a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=DrewAdams">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a>  . . . . <a class="author" title="148.87.19.222" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a> <span class="dash"> &#8211; </span><strong>Thanks, Tim.</strong> <span class="lang">[en]</span> </li><li><span class="time">19:46 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=tbc" rel="nofollow" class="diff">diff</a>) (<a class="history" rel="nofollow" href="https://www.emacswiki.org/emacs?action=history;id=tbc">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/tbc">tbc</a>  . . . . <a href="https://www.emacswiki.org/emacs/tbc" title="165.225.34.74" class="author">tbc</a> <span class="dash"> &#8211; </span><strong>My first Emacs commit</strong> <span class="lang">[en]</span> </li></ul><p><strong>2016-06-14</strong></p><ul><li><span class="time">20:10 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=icicles-cmd2.el" rel="nofollow" class="diff">diff</a>) (<a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=icicles-cmd2.el">history</a>)  <a href="https://www.emacswiki.org/emacs/icicles-cmd2.el" class="local">icicles-cmd2.el</a>  . . . . <a class="author" title="148.87.19.202" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a>  <span class="lang">[en]</span> </li><li><span class="time">18:08 UTC</span> (<a rel="nofollow" class="diff" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=icicles-doc1.el">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=icicles-doc1.el" rel="nofollow" class="history">history</a>)  <a href="https://www.emacswiki.org/emacs/icicles-doc1.el" class="local">icicles-doc1.el</a>  . . . . <a class="author" title="148.87.19.198" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a>  <span class="lang">[en]</span> </li><li><span class="time">17:57 UTC</span> (<a rel="nofollow" class="diff" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=Icicles_-_Customization_and_General_Tips">diff</a>) (<a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=Icicles_-_Customization_and_General_Tips">history</a>)  <a href="https://www.emacswiki.org/emacs/Icicles_-_Customization_and_General_Tips" class="local">Icicles - Customization and General Tips</a>  . . . . <a class="author" title="148.87.19.198" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a> <span class="dash"> &#8211; </span><strong>Option icicle-auto-complete-key-delay.</strong> <span class="lang">[en]</span> </li><li><span class="time">17:47 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=Icicles_-_Key_Completion" rel="nofollow" class="diff">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=Icicles_-_Key_Completion" class="history" rel="nofollow">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/Icicles_-_Key_Completion">Icicles - Key Completion</a>  . . . . <a href="https://www.emacswiki.org/emacs/DrewAdams" title="148.87.19.198" class="author">DrewAdams</a> <span class="dash"> &#8211; </span><strong>automatic key completion</strong> <span class="lang">[en]</span> </li></ul><p><strong>2016-06-13</strong></p><ul><li><span class="time">13:11 UTC</span> (<a rel="nofollow" class="diff" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=Emacs_IRC_Kanal_(Deutsch)">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=Emacs_IRC_Kanal_(Deutsch)" rel="nofollow" class="history">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/Emacs_IRC_Kanal_(Deutsch)">Emacs IRC Kanal (Deutsch)</a>  . . . . <a title="62.12.137.228" class="author" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a> <span class="dash"> &#8211; </span><strong>Anleitung</strong> <span class="lang">[de]</span> </li><li><span class="time">12:35 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=EmacsChannel" rel="nofollow" class="diff">diff</a>) (<a class="history" rel="nofollow" href="https://www.emacswiki.org/emacs?action=history;id=EmacsChannel">history</a>)  <a href="https://www.emacswiki.org/emacs/EmacsChannel" class="local">EmacsChannel</a>  . . . . <a title="62.12.137.228" class="author" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a> <span class="dash"> &#8211; </span><strong>##emacs.de</strong> <span class="lang">[en]</span> </li><li><span class="time">01:03 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=icicles.el" class="diff" rel="nofollow">diff</a>) (<a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=icicles.el">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/icicles.el">icicles.el</a>  . . . . <a href="https://www.emacswiki.org/emacs/DrewAdams" class="author" title="148.87.19.210">DrewAdams</a>  <span class="lang">[en]</span> </li><li><span class="time">00:57 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=icicles-opt.el" class="diff" rel="nofollow">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=icicles-opt.el" class="history" rel="nofollow">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/icicles-opt.el">icicles-opt.el</a>  . . . . <a href="https://www.emacswiki.org/emacs/DrewAdams" class="author" title="148.87.19.210">DrewAdams</a>  <span class="lang">[en]</span> </li><li><span class="time">00:55 UTC</span> (<a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=icicles-var.el">diff</a>) (<a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=icicles-var.el">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/icicles-var.el">icicles-var.el</a>  . . . . <a class="author" title="148.87.19.210" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a>  <span class="lang">[en]</span> </li></ul><p><strong>2016-06-11</strong></p><ul><li><span class="time">14:52 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=bookmark%2b-bmu.el" rel="nofollow" class="diff">diff</a>) (<a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=bookmark%2b-bmu.el">history</a>)  <a href="https://www.emacswiki.org/emacs/bookmark%2b-bmu.el" class="local">bookmark+-bmu.el</a>  . . . . <a href="https://www.emacswiki.org/emacs/DrewAdams" class="author" title="148.87.19.194">DrewAdams</a>  <span class="lang">[en]</span> </li></ul><p><strong>2016-06-10</strong></p><ul><li><span class="time">21:46 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=icicles-mcmd.el" class="diff" rel="nofollow">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=icicles-mcmd.el" rel="nofollow" class="history">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/icicles-mcmd.el">icicles-mcmd.el</a>  . . . . <a title="148.87.19.218" class="author" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a>  <span class="lang">[en]</span> </li><li><span class="time">21:43 UTC</span> (<a rel="nofollow" class="diff" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=icicles-fn.el">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=icicles-fn.el" class="history" rel="nofollow">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/icicles-fn.el">icicles-fn.el</a>  . . . . <a class="author" title="148.87.19.218" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a>  <span class="lang">[en]</span> </li><li><span class="time">21:38 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=WindowResize" rel="nofollow" class="diff">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=WindowResize" rel="nofollow" class="history">history</a>)  <a href="https://www.emacswiki.org/emacs/WindowResize" class="local">WindowResize</a>  . . . . <a title="148.87.19.218" class="author" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a> <span class="dash"> &#8211; </span><strong>Corrected.</strong> <span class="lang">[en]</span> </li><li><span class="time">14:39 UTC</span> (<a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=command-remapping-settings.el">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=command-remapping-settings.el" rel="nofollow" class="history">history</a>)  <a href="https://www.emacswiki.org/emacs/command-remapping-settings.el" class="local">command-remapping-settings.el</a>  . . . . <a class="author" title="209.134.95.37" href="https://www.emacswiki.org/emacs/RyanThompson">RyanThompson</a> <span class="dash"> &#8211; </span><strong>Add GPL2+ license</strong> <span class="lang">[en]</span> </li><li><span class="time">14:38 UTC</span> (<a href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=elscreen-buffer-list.el" class="diff" rel="nofollow">diff</a>) (<a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=elscreen-buffer-list.el">history</a>)  <a class="local" href="https://www.emacswiki.org/emacs/elscreen-buffer-list.el">elscreen-buffer-list.el</a>  . . . . <a href="https://www.emacswiki.org/emacs/RyanThompson" title="209.134.95.37" class="author">RyanThompson</a> <span class="dash"> &#8211; </span><strong>Add GPL2+ license</strong> <span class="lang">[en]</span> </li><li><span class="time">13:56 UTC</span> (<a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=1;id=IncrementNumber">diff</a>) (<a href="https://www.emacswiki.org/emacs?action=history;id=IncrementNumber" rel="nofollow" class="history">history</a>)  <a href="https://www.emacswiki.org/emacs/IncrementNumber" class="local">IncrementNumber</a>  . . . . <a href="https://www.emacswiki.org/emacs/Alex_Schroeder" title="77.57.27.11" class="author">Alex Schroeder</a> <span class="dash"> &#8211; </span><strong>Changed (skip-chars-backward "[0-9]") to (skip-chars-backward "0-9"), see docstring. The argument is not a complete regular expression.</strong> <span class="lang">[en]</span> </li></ul><p class="more"><a rel="nofollow" class="more" href="https://www.emacswiki.org/emacs?action=rc;from=1464944981;upto=1465549781">More...</a></p></form><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" class="filter" accept-charset="utf-8"><p><strong>Filters</strong><input name="action" type="hidden" value="rc" /></p><table><tr><td><label for="match">Title:</label></td> <td><input type="text" name="match"  size="20" id="match" /></td></tr><tr><td><label for="rcfilteronly">Title and Body:</label></td> <td><input type="text" name="rcfilteronly"  size="20" id="rcfilteronly" /></td></tr><tr><td><label for="rcuseronly">Username:</label></td> <td><input type="text" name="rcuseronly"  size="20" id="rcuseronly" /></td></tr><tr><td><label for="rchostonly">Host:</label></td> <td><input type="text" name="rchostonly"  size="20" id="rchostonly" /></td></tr><tr><td><label for="followup">Follow up to:</label></td> <td><input type="text" name="followup"  size="20" id="followup" /></td></tr><tr><td><label for="rclang">Language:</label></td><td><input type="text" name="lang"  size="10" id="rclang" /></td></tr></table><p><input type="submit" name="dofilter" value="Go!" /></p></form></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br /> <a href="http://www.emacswiki.org/emacs-de/Letzte_Änderungen" class="translation de">Deutsch</a> <a href="https://www.emacswiki.org/emacs?action=translate;id=RecentChanges;missing=en_es_fr_it_ja_ko_pt_ru_se_uk_zh" class="translation new" rel="nofollow">Add Translation</a></span><div class="edit bar"><a href="https://www.emacswiki.org/emacs/Comments_on_RecentChanges" accesskey="c" class="comment local">Talk</a> <a accesskey="e" title="Click to edit this page" rel="nofollow" class="edit" href="https://www.emacswiki.org/emacs?action=edit;id=RecentChanges">Edit this page</a> <a class="history" rel="nofollow" href="https://www.emacswiki.org/emacs?action=history;id=RecentChanges">View other revisions</a> <a class="admin" rel="nofollow" href="https://www.emacswiki.org/emacs?action=admin;id=RecentChanges">Administration</a></div><div class="time">Last edited 2014-07-26 01:43 UTC by <a href="https://www.emacswiki.org/emacs/YannHodique" class="author" title="c-76-103-208-186.hsd1.ca.comcast.net">YannHodique</a> <a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=RecentChanges">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: News</title><link rel="alternate" type="application/wiki" title="Edit this page" href="https://www.emacswiki.org/emacs?action=edit;id=News" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: News" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=News" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for News only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=News" /><meta name="viewport" content="width=device-width" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a href="https://www.emacswiki.org/emacs/SiteMap" class="logo"><img class="logo" src="https://www.emacswiki.org/images/logo218x38.png" alt="[Home]" /></a><div class="menu"><span class="gotobar bar"><a href="https://www.emacswiki.org/emacs/SiteMap" class="local">SiteMap</a> <a class="local" href="https://www.emacswiki.org/emacs/Search">Search</a> <a class="local" href="https://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a> <a class="local" href="https://www.emacswiki.org/emacs/Glossary">Glossary</a> <a class="local" href="https://www.emacswiki.org/emacs/RecentChanges">RecentChanges</a> <a href="https://www.emacswiki.org/emacs/News" class="local">News</a> <a class="local" href="https://www.emacswiki.org/emacs/Problems">Problems</a> <a class="local" href="https://www.emacswiki.org/emacs/Suggestions">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" class="search" accept-charset="utf-8"><p><label for="search">Search:</label> <input type="text" name="search"  size="20" accesskey="f" id="search" /> <label for="searchlang">Language:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Go!" /></p></form></div><h1><a href="https://www.emacswiki.org/emacs?search=%22News%22" rel="nofollow" title="Click to search for references to this page">News</a></h1></div><div class="wrapper"><div class="content browse"><p>This page collects the last ten news items.</p><p>Newsworthy are interesting threads on the <a href="https://www.emacswiki.org/emacs/EmacsMailingLists" class="local">EmacsMailingLists</a> or <a href="https://www.emacswiki.org/emacs/EmacsNewsgroups" class="local">EmacsNewsgroups</a>, interesting quotes from the <a class="local" href="https://www.emacswiki.org/emacs/EmacsChannel">EmacsChannel</a>, and general chat between the members of this community. It is our <strong>community blog</strong>. (For an overview of our personal blogs, check  <a class="url http outside" href="http://planet.emacsen.org/">Planet Emacsen</a>.)</p><p>Subscribe to the <a class="inter EmacsWiki outside" href="/emacs?action=rss;match=%5E%5Cd%5Cd%5Cd%5Cd-%5Cd%5Cd-%5Cd%5Cd">RSS feed</a>.</p><p>Anybody can <a href="/emacs?action=new" class="inter EmacsWiki outside">add a new entry for today</a>. Older entries can be found in the <a class="inter EmacsWiki outside" href="/emacs?action=calendar">Archive</a>.</p><p>See also <a href="http://sachachua.com/blog/category/emacs-news/" class="url http outside">Emacs News Weekly</a> for more updates from the <a href="https://www.emacswiki.org/emacs/CategoryCommunity" class="local">Emacs Community</a>.</p><div class="journal"><div class="page"><h1><a href="https://www.emacswiki.org/emacs/2016-05-29" class="local">2016-05-29</a></h1><p>I&#x2019;ve started fiddling with the website setup again, now that it seems that we finally fixed those nginx caching issues messing with the multi-language settings.</p><p>In the background, I&#x2019;m trying to get rid of the CGI script that answers the requests that won&#x2019;t get answered by the cache. Currently, this is an Apache webserver running Oddmuse as a CGI script for every request. I have set up a <a class="url http outside" href="http://search.cpan.org/perldoc?Toadfarm">Toadfarm</a> running Oddmuse, no external web server required and it seems to work.</p><p>Currently, Apache still handles a few things for me, however, so I can&#x2019;t switch over just yet. Today, I&#x2019;ve migrated all the redirections to the nginx config file; the URL rewriting rules will be next. Once that is done, I&#x2019;ll be ready to switch the backend from Apache to Toadfarm.</p><p>Until then, keep your eyes peeled and let me know if old wiki links aren&#x2019;t being redirected correctly. I&#x2019;m a big fan of <a href="https://www.w3.org/Provider/Style/URI" class="url http outside">Cool URIs don't change</a> so I definitely want to keep that redirection chain up and running. &#x1F60A;</p><p>&#x2013; <a class="local" href="https://www.emacswiki.org/emacs/Alex_Schroeder">Alex Schroeder</a></p><p class="comment"><a class="local" href="https://www.emacswiki.org/emacs/Comments_on_2016-05-29">Comments on this page</a></p></div><div class="page"><h1><a class="local" href="https://www.emacswiki.org/emacs/2016-05-15">2016-05-15</a></h1><div class="color one level0"><p> Apparently the language setup has been broken for a while and nobody noticed. I guess that means most people use Emacs Wiki and aren&#x2019;t surprised to see the English <a href="https://www.emacswiki.org/emacs/SiteMap" class="local">SiteMap</a> instead of their preferred language site map. Well, I&#x2019;ve fixed the bug and so if you notice anything that&#x2019;s off, let me know and leave a comment.</p><p>This is how you reset your language preferences, ie. the wiki will then use the preferences your browser supplies.</p><ul><li><a href="https://www.emacswiki.org/emacs/2016-05-15?interface=" class="url http">https://www.emacswiki.org/emacs/2016-05-15?interface=</a></li></ul><p>Or you can set your preferences in a cookie:</p><div class="include WikiLanguageMenu"><p><a href="http://www.emacswiki.org/emacs?interface=de" class="url http outside">Deutsch</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=en">English</a> | <a href="http://www.emacswiki.org/emacs?interface=es" class="url http outside">Español</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=fr">Français</a> | <a href="http://www.emacswiki.org/emacs?interface=pt" class="url http outside">Português</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=ru">Русский</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=zh-cn">简体中文</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=zh-tw"> 繁體中文</a> | <a href="http://www.emacswiki.org/emacs?interface=se" class="url http outside">Svenska</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=ja">日本語</a> | <a href="http://www.emacswiki.org/emacs?interface=ko" class="url http outside">한국어</a> | <a href="http://www.emacswiki.org/emacs?interface=it" class="url http outside">Italiano</a> </p></div><p>&#x2013; <a href="https://www.emacswiki.org/emacs/Alex_Schroeder" class="local">Alex Schroeder</a></p><p class="comment"><a href="https://www.emacswiki.org/emacs/Comments_on_2016-05-15" class="local">Comments on this page</a></p></div><div class="page"><h1><a href="https://www.emacswiki.org/emacs/2016-02-08" class="local">2016-02-08</a></h1><div class="color one level0"><div class="portrait"><p><a href="https://www.emacswiki.org/emacs/AlexSchroeder" class="newauthor" title="2016-02-08 16:46 UTC"><img src="https://www.emacswiki.org/pics/static/AlexSchroederPortrait" alt="new: 2016-02-08 16:46 UTC" class="portrait" /></a> <br /> <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p></div><p> Moved to <b>HTTPS</b> and installed <b>new CSS</b> by <a href="https://www.emacswiki.org/emacs/BrianBurns" class="local">BrianBurns</a>, as indicated a while ago (<a class="local" href="https://www.emacswiki.org/emacs/2016-01-04">2016-01-04</a>). Let me know if anything breaks. You can also try out the <a class="inter EmacsWiki outside" href="/emacs?action=browse;id=CSS;css=/light.css;theme=dark">Dark</a> variant of the same theme.</p><p>You can report CSS issues <a href="https://github.com/bburns/emacswiki-light-theme/issues" class="url http outside">on GitHub</a>. There&#x2019;s some discussion <a class="url http outside" href="https://www.reddit.com/r/emacs/comments/42dqdg/emacswiki_theme_v2/">on reddit</a> and <a href="https://lists.gnu.org/archive/html/emacs-tangents/2016-01/msg00014.html" class="url http outside">emacs-tangents</a> (a mailing list).</p><p>Remember: if you don&#x2019;t like it, visit the <a href="https://www.emacswiki.org/emacs/CSS" class="local">CSS</a> page and pick a different theme. When I&#x2019;m feeling nostalgic, I go with the <a href="/emacs?action=browse;id=CSS;theme=;css=/css/emacs.css" class="inter Self outside">Classic Theme</a>, for example. I think it&#x2019;s also the one <a href="https://www.emacswiki.org/emacs/DrewAdams" class="local">DrewAdams</a> prefers.</p></div><p class="comment"><a href="https://www.emacswiki.org/emacs/Comments_on_2016-02-08" class="local">Comments on this page</a></p></div><div class="page"><h1><a href="https://www.emacswiki.org/emacs/2016-01-04" class="local">2016-01-04</a></h1><div class="color one level0"><p> Two things on my mind:</p><ol><li>HTTPS. <a href="https://www.eff.org/encrypt-the-web" class="url http outside">Encrypting the Web</a> is important. We can do it. <a href="https://www.emacswiki.org/" class="url http">https://www.emacswiki.org/</a> works thanks to <a href="https://letsencrypt.org/" class="url http outside">Let's Encrypt</a>.</li><li>A new CSS. <a class="local" href="https://www.emacswiki.org/emacs/BrianBurns">BrianBurns</a> has been working on a new theme. Learn more: <a class="url http outside" href="https://github.com/bburns/emacswiki-light-theme">on GitHub</a>, <a href="http://www.emacswiki.org/emacs?action=browse;bootstrap=0;id=CSSPreview;css=https://rawgit.com/bburns/emacswiki-light-theme/master/light.css" class="url http outside">try it</a>, <a href="http://www.emacswiki.org/emacs?action=browse;id=2016-01-04;bootstrap=1;css=;theme=" class="url http outside">reset</a>). Give it a try and report issues on <a class="url http outside" href="https://github.com/bburns/emacswiki-light-theme/issues">GitHub</a> or send pull requests. &#x1F60A;</li></ol><p>&#x2013; <a href="https://www.emacswiki.org/emacs/AlexSchroeder" class="local">AlexSchroeder</a></p></div><div class="color two level0"><p> Just wanted to add a note that the logo is just a placeholder at the moment - other designs or ideas are welcome! (the leaves are meant represent an E and W).</p><p>There are still bits that need tweaking here and there - at some point we could open this up on the Devlist and Reddit to get more suggestions.</p><p>&#x2013; <a class="local" href="https://www.emacswiki.org/emacs/BrianBurns">BrianBurns</a></p></div><div class="color one level0"><p> I think HTTPS support just got better. For the moment I want to keep both HTTP and HTTPS versions of the site up and running. Right now, nginx should set HTTP_X_FORWARDED_PROTO to &#x201c;http&#x201d; or &#x201c;https&#x201d; and the configuration of Emacs Wiki should now take this into account, generating links using &#x201c;http&#x201d; or &#x201c;https&#x201d; as appropriate. If a page&#x2019;s raw text contains the HTTP link &#x2013; like in the paragraphs above &#x2013; then those won&#x2019;t change, obviously. When I make the final switch over, those will all redirect to the HTTPS version of the site.</p><p>Anyway. I&#x2019;ve changed my bookmark to the following, using HTTPS: <a href="https://www.emacswiki.org/emacs/?action=rc;showedit=1;rollback=1" class="url http">https://www.emacswiki.org/emacs/?action=rc;showedit=1;rollback=1</a></p><p>&#x2013; <a href="https://www.emacswiki.org/emacs/AlexSchroeder" class="local">AlexSchroeder</a></p></div><div class="color two level0"><p> With the help of <code>forcer</code> and <code>kodein</code> on the <a class="local" href="https://www.emacswiki.org/emacs/EmacsChannel">EmacsChannel</a> I managed to improve the SSL Server Test score from a C to an A. Thanks! The only thing I haven&#x2019;t enabled is HSTS. I&#x2019;m still waiting to see people report problems.</p><p>&#x2013; Alex</p></div><div class="color one level0"><p> I&#x2019;m testing <i>both</i>, now: new CSS by <a href="https://www.emacswiki.org/emacs/BrianBurns" class="local">BrianBurns</a> <i>and</i> HTTPS. Learn more: <a class="url http outside" href="https://github.com/bburns/emacswiki-light-theme">on GitHub</a>, <a href="https://www.emacswiki.org/emacs?action=browse;bootstrap=0;id=CSSPreview;css=https://rawgit.com/bburns/emacswiki-light-theme/master/light.css" class="url http outside">try it</a>, <a class="url http outside" href="https://www.emacswiki.org/emacs?action=browse;id=2016-01-04;bootstrap=1;css=;theme=">reset</a>). Give it a try and report issues on <a href="https://github.com/bburns/emacswiki-light-theme/issues" class="url http outside">GitHub</a> or send pull requests. &#x1F60A;</p></div><p class="comment"><a class="local" href="https://www.emacswiki.org/emacs/Comments_on_2016-01-04">Comments on this page</a></p></div><div class="page"><h1><a class="local" href="https://www.emacswiki.org/emacs/2015-12-16">2015-12-16</a></h1><p>I upgraded the wiki software today. Let me know if you see anything fishy going on. &#x2013; <a href="https://www.emacswiki.org/emacs/Alex_Schroeder" class="local">Alex Schroeder</a></p><p class="comment"><a class="local" href="https://www.emacswiki.org/emacs/Comments_on_2015-12-16">Comments on this page</a></p></div><div class="page"><h1><a class="local" href="https://www.emacswiki.org/emacs/2015-11-03">2015-11-03</a></h1><p><a class="local" href="https://www.emacswiki.org/emacs/JohnWiegley">JohnWiegley</a> is the <a href="https://lists.gnu.org/archive/html/emacs-devel/2015-11/msg00120.html" class="url http outside">new Emacs maintainer</a>!</p><p>For those of you interested in catching up:</p><ul><li><a class="url http outside" href="https://lists.gnu.org/archive/html/emacs-devel/2015-09/msg01108.html">Stefan Monnier stepping down</a></li><li><a href="https://lists.gnu.org/archive/html/emacs-devel/2015-10/threads.html#00007" class="url http outside">the rest of that thread</a> (long)</li></ul><p class="comment"><a class="local" href="https://www.emacswiki.org/emacs/Comments_on_2015-11-03">Comments on this page</a></p></div><div class="page"><h1><a href="https://www.emacswiki.org/emacs/2015-01-03" class="local">2015-01-03</a></h1><div class="color one level0"><p> Wohoo, we&#x2019;re in 2015! Happy New Year!</p><p><a href="https://www.emacswiki.org/emacs/NicFerrier" class="local">NicFerrier</a> and I have been busy setting up a new site. It is paid for and maintained by Nic. It uses nginx as a caching proxy with some pretty aggressive caching rules. If you&#x2019;re editing a page, however, and once you have edited a page, you should be bypassing the cache and everything should work as it used to do.</p><p>I&#x2019;m still looking at <a href="https://alexschroeder.ch/wiki/Emacs_Wiki_Migration" class="url http outside">my backlog</a> of things to do. All I have to do is test this git backend. If it works, we&#x2019;re ready to make the wiki editable again.</p><p><i>Time passes...</i></p><p>Done! The site is editable again.</p><p>Things to watch out for: </p><ol><li>Caching issues. The new setup involves a lot of caching.</li><li>Lost edits. I don&#x2019;t think we lost any edits in our move, but one never knows.</li></ol></div><p class="comment"><a href="https://www.emacswiki.org/emacs/Comments_on_2015-01-03" class="local">Comments on this page</a></p></div><div class="page"><h1><a href="https://www.emacswiki.org/emacs/2014-12-19" class="local">2014-12-19</a></h1><div class="color one level0"><p> As you must have noticed, system recovery has been taken quite some time. Currently the wiki runs under <a href="http://oddmuse.org/wiki/Using_mod_perl" class="url http outside">mod_perl and ModPerl::Registry</a>. My notes are <a class="url http outside" href="https://alexschroeder.ch/wiki/2014-12-19_Emacs_Wiki_Migration">on my blog</a>.</p><p>There are many things that still don&#x2019;t work:</p><ol><li>git integration (some issues regarding a cleanup that was planned)</li><li>backup (due to permission issues which I haven&#x2019;t been able to look into)</li><li>frequent outages (the page comes up empty) &#x2013; I&#x2019;m not sure what is happening, here: processes crashing? taking too long?</li><li>broken reloads after editing a page (but trying again solves the problem)</li><li>we lost foreign language support (at the top it will always say <a class="local" href="https://www.emacswiki.org/emacs/SiteMap">SiteMap</a> even if your browser preferences are for a different language)</li></ol><p>And there are probably many more. I haven&#x2019;t looked at the <a href="https://www.emacswiki.org/emacs/ElispArea" class="local">ElispArea</a>, RSS feeds, all the cron jobs, etc. Yikes!</p><p><a class="image outside" href="https://flic.kr/p/qbGBSD"><img title="memory today" class="upload" src="https://farm8.staticflickr.com/7469/15873652549_d2249bf0b2_o.png" alt="memory today" /></a> <a class="image outside" href="https://flic.kr/p/qt5FkJ"><img title="CPU today" src="https://farm8.staticflickr.com/7512/16059020612_59fc211a67_o.png" class="upload" alt="CPU today" /></a></p></div><p class="comment"><a href="https://www.emacswiki.org/emacs/Comments_on_2014-12-19" class="local">Comments on this page</a></p></div><div class="page"><h1><a href="https://www.emacswiki.org/emacs/2014-12-18" class="local">2014-12-18</a></h1><div class="color one level0"><p> We&#x2019;re moving to a new server. I&#x2019;ve disabled editing for the moment. Administrators can still edit pages but their changes will be lost. Once we&#x2019;re done, there is an additional delay as you will need to wait for the DNS changes to propagate. Sometime withing the next 24h you should be redirected to the new server and editing will be enabled again.</p></div><div class="color two level0"><p> Success! You are on the new server. Please let me know if you find anything not working as it should. Send <a href="mailto:kensanata@gmail.com" class="url mailto outside">mail</a> or contact me <a class="local" href="https://www.emacswiki.org/emacs/EmacsChannel">on IRC</a>.</p><p>I&#x2019;m currently going through things like the <a href="https://www.emacswiki.org/emacs/ElispArea" class="local">ElispArea</a>, cron jobs, and all that.</p><p>Happy editing. &#x1F60A;</p></div><div class="color one level0"><p> The extraordinary load the new server had to take (the wiki being a simple CGI script) was a load to bear… It took my a bit but I think the basics are up again, this time using FastCGI (<a href="http://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html" class="url http outside">mod_fcgid</a>). We&#x2019;ll see how far this goes.</p><p>This is now <a class="url http outside" href="http://www.edis.at/de/server/linux-vps-solusvm-openvz/schweiz/ovz-advanced/">an openvz solution with two cores and 2G RAM</a>.</p><p>This entire FastCGI thing is very new to me. I&#x2019;ve looked at it a few years ago, but never used it for one of my sites. Well, load around 198 does this to you. ;)</p><p>I&#x2019;ve configured Apache using the following parameters:</p><pre>FcgidMaxProcesses 20
+FcgidProcessLifeTime 300
+FcgidMaxRequestsPerProcess 100
+</pre><p>For the curious, the setup is <a href="http://oddmuse.org/wiki/Using_mod_fastcgi#h5o-5" class="url http outside">documented on the Oddmuse wiki</a>.</p><p>Currently, language-specific invocations (emacs-de, emacs-zh and the like still use the CGI interface. People don&#x2019;t seem to be using these so much, so that&#x2019;s good. I might end up getting rid of those, eventually. &#x1F60A;</p></div><p class="comment"><a href="https://www.emacswiki.org/emacs/Comments_on_2014-12-18" class="local">Comments on this page</a></p></div><div class="page"><h1><a class="local" href="https://www.emacswiki.org/emacs/2014-12-09">2014-12-09</a></h1><div class="color one level0"><div class="portrait"><p><a class="newauthor" title="2014-12-09 08:13 UTC" href="http://www.emacswiki.org/emacs/AlexSchroeder"><img class="portrait" src="https://alexschroeder.ch/pics/alex-drinking-coffee-48-bw.jpg" alt="new: 2014-12-09 08:13 UTC" /></a> <br /> <a class="local" href="http://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p></div><p> I&#x2019;m probably going to move the site to a different server before the end of the year. This means that there will be a day on an upcoming weekend where the wiki will switch to read-only mode. I&#x2019;ll change the DNS entry and a copy of the site will be waiting for your at the new host. As soon as your local DNS updates, you will be sent to the new site and everything will be editable again.</p></div><p class="comment"><a class="local" href="https://www.emacswiki.org/emacs/Comments_on_2014-12-09">Comments on this page</a></p></div></div><p class="more"><a href="https://www.emacswiki.org/emacs?action=more;num=10;regexp=%5e%5cd%5cd%5cd%5cd-%5cd%5cd-%5cd%5cd;search=;mode=;offset=10;variation=journal" class="more" rel="nofollow">More...</a></p><hr /><p><a class="local" href="https://www.emacswiki.org/emacs/CategoryEmacsWikiSite">CategoryEmacsWikiSite</a></p></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br />  <a rel="nofollow" class="translation new" href="https://www.emacswiki.org/emacs?action=translate;id=News;missing=de_es_fr_it_ja_ko_pt_ru_se_uk_zh">Add Translation</a></span><div class="edit bar"><a class="comment local edit" href="https://www.emacswiki.org/emacs/Comments_on_News" accesskey="c">Talk</a> <a title="Click to edit this page" class="edit" rel="nofollow" accesskey="e" href="https://www.emacswiki.org/emacs?action=edit;id=News">Edit this page</a> <a rel="nofollow" class="history" href="https://www.emacswiki.org/emacs?action=history;id=News">View other revisions</a> <a class="admin" rel="nofollow" href="https://www.emacswiki.org/emacs?action=admin;id=News">Administration</a></div><div class="time">Last edited 2015-11-17 18:33 UTC by <a href="https://www.emacswiki.org/emacs/SachaChua" class="author" title="75.119.230.47">SachaChua</a> <a class="diff" rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=News">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

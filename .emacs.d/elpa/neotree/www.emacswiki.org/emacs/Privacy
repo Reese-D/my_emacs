@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: Privacy</title><link rel="alternate" type="application/wiki" title="Edit this page" href="https://www.emacswiki.org/emacs?action=edit;id=Privacy" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: Privacy" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=Privacy" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for Privacy only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=Privacy" /><meta name="viewport" content="width=device-width" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a href="https://www.emacswiki.org/emacs/SiteMap" class="logo"><img src="https://www.emacswiki.org/images/logo218x38.png" alt="[Home]" class="logo" /></a><div class="menu"><span class="gotobar bar"><a class="local" href="https://www.emacswiki.org/emacs/SiteMap">SiteMap</a> <a href="https://www.emacswiki.org/emacs/Search" class="local">Search</a> <a class="local" href="https://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a> <a href="https://www.emacswiki.org/emacs/Glossary" class="local">Glossary</a> <a href="https://www.emacswiki.org/emacs/RecentChanges" class="local">RecentChanges</a> <a class="local" href="https://www.emacswiki.org/emacs/News">News</a> <a href="https://www.emacswiki.org/emacs/Problems" class="local">Problems</a> <a class="local" href="https://www.emacswiki.org/emacs/Suggestions">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" class="search" accept-charset="utf-8"><p><label for="search">Search:</label> <input type="text" name="search"  size="20" id="search" accesskey="f" /> <label for="searchlang">Language:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Go!" /></p></form></div><h1><a href="https://www.emacswiki.org/emacs?search=%22Privacy%22" rel="nofollow" title="Click to search for references to this page">Privacy</a></h1></div><div class="wrapper"><div class="content browse"><p>This page lists privacy issues concerning <a href="https://www.emacswiki.org/emacs/EmacsWiki" class="local">EmacsWiki</a>.</p><h2>Cookies</h2><p>The wiki uses a cookie that doesn&#x2019;t identify individual users. The cookie is used to remember your preferences from one visit to the next. If you examine the cookie, you need to split it along the URL-encoded 0x1e byte (%251e). A typical user&#x2019;s cookie might look like this: <code>euihnscuskc 1</code> (which indicates that you have answered the <a href="http://en.wikipedia.org/wiki/CAPTCHA" class="inter WikiPedia"><span class="site">WikiPedia</span><span class="separator">:</span><span class="interpage">CAPTCHA</span></a> at least once) and <code>username AlexSchroeder</code> (which says which username you&#x2019;d like to use when editing a page). Nothing requires usernames to be unique.</p><h2>Tracking of IP numbers of readers by the wiki</h2><p>In order to prevent leeching (downloading a lot of pages using a bot instead of using one of the methods listed on <a href="https://www.emacswiki.org/emacs/WikiDownload" class="local">WikiDownload</a>), the wiki also keeps track of the IP numbers that have visited the site in the last 20 seconds. The <code>visitors.log</code> file lists IP numbers and timestamps as follows:</p><pre>127.0.0.1 1390729057 1390728798 1390728798 1390728798 1390728797 1390670644 1390670381 1390670381 1390670380 1390670380
+</pre><p>This is updated whenever somebody visits the site. This information is not public.</p><h2>Tracking of IP numbers of authors by the wiki</h2><p>The wiki also tracks IP numbers whenever a page is edited. The idea is that we want to ban certain people from editing the site via <a class="local" href="https://www.emacswiki.org/emacs/BannedHosts">BannedHosts</a>. This information is available in multiple places.</p><p><b>Recent changes</b> records IP number of authors. If you check <a href="https://www.emacswiki.org/emacs/RecentChanges" class="local">RecentChanges</a>, you&#x2019;ll note that if you hover the mouse pointer over the author&#x2019;s name, you&#x2019;ll see the IP number they used. The IP numbers are removed from older log entry by the <a class="url http outside" href="http://www.emacswiki.org/maintenance/">maintenance job</a>. If you check the <a class="inter Self outside" href="/emacs?action=rc;days=30">recent changes for the last 30 days</a>, you should see that changes at the very bottom of the list&#x2014;the changes older than 28 days&#x2014;no longer have an IP number.</p><p><b>Every page</b> stores the IP number that did the last edit. At the bottom of the page, you&#x2019;ll see a line saying &#x201c;Last edited 2014-02-05 06:54 UTC by <em style="text-decoration: underline; font-style: normal;">AlexSchroeder</em> (<em style="text-decoration: underline; font-style: normal;">diff</em>)&#x201d;. If you hover the mouse pointer over the last author&#x2019;s name, you&#x2019;ll see the IP number they used. The IP number stays until somebody else edits the page. Thus, as long as you&#x2019;re the last author to edit a page, your IP number will be available to others.</p><p><b>Every “kept” page</b> stores the IP number that did the last edit. <i>Kept Pages</i> are the old revisions that are still available via a history page. If you check the <a href="/emacs?action=history;id=SiteMap" class="inter Self outside">SiteMap history</a>, for example, you&#x2019;ll see that only a small number of pages are actually kept. Again, if you hover the mouse pointer over the author&#x2019;s name, you&#x2019;ll see the IP number they used. Currently, kept pages older than a year are deleted. Thus, as long as you edited a page within the last year, your IP number will be available to others, even if you&#x2019;re not the last author to edit that page.</p><p><b>What are Kept Pages?</b></p><p>The details are on <a href="http://www.oddmuse.org/cgi-bin/oddmuse/Kept%20Pages" class="inter Oddmuse"><span class="site">Oddmuse</span><span class="separator">:</span><span class="interpage">Kept Pages</span></a>. But basically, when a page is saved…</p><ol><li>all revisions older than a year are deleted (the last <i>major</i> revision is always kept)</li><li>the current revision gets a new timestamp (so it will not be deleted for another year!) and is saved as an old revision (a &#x201c;kept page&#x201d;)</li><li>the new page is saved</li></ol><p>Thus, you can always go back at least a year. In the past, this time window was much smaller. It used to be two weeks instead of a year.</p><h2>Spammers</h2><p>As you can see on <a class="local" href="https://www.emacswiki.org/emacs/WikiSpam">WikiSpam</a>, we log all the blocked edits that ran afoul of our banning rules. These log files contain IP numbers and there is currently no deleting of these logs.</p><h2>Web Server Logs</h2><p>The web server itself also keeps access log and error logs. These go back 52 weeks. They contain IP numbers and the URLs they requested. These log files are not public.</p><hr /><p><a href="https://www.emacswiki.org/emacs/EmacsWiki" class="local">EmacsWiki</a></p></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br />  <a class="translation new" href="https://www.emacswiki.org/emacs?action=translate;id=Privacy;missing=de_es_fr_it_ja_ko_pt_ru_se_uk_zh" rel="nofollow">Add Translation</a></span><div class="edit bar"><a accesskey="c" class="comment local edit" href="https://www.emacswiki.org/emacs/Comments_on_Privacy">Talk</a> <a title="Click to edit this page" rel="nofollow" href="https://www.emacswiki.org/emacs?action=edit;id=Privacy" class="edit" accesskey="e">Edit this page</a> <a class="history" href="https://www.emacswiki.org/emacs?action=history;id=Privacy" rel="nofollow">View other revisions</a> <a rel="nofollow" class="admin" href="https://www.emacswiki.org/emacs?action=admin;id=Privacy">Administration</a></div><div class="time">Last edited 2016-02-12 11:07 UTC by <a title="77.57.27.11" href="https://www.emacswiki.org/emacs/AlexSchroeder" class="author">AlexSchroeder</a> <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=Privacy" class="diff">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

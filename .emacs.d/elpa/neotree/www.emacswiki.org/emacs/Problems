@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: Emacs Wiki Problems</title><link rel="alternate" type="application/wiki" title="Edit this page" href="https://www.emacswiki.org/emacs?action=edit;id=EmacsWikiProblems" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: EmacsWikiProblems" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=EmacsWikiProblems" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for EmacsWikiProblems only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=EmacsWikiProblems" /><meta name="viewport" content="width=device-width" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a href="https://www.emacswiki.org/emacs/SiteMap" class="logo"><img src="https://www.emacswiki.org/images/logo218x38.png" alt="[Home]" class="logo" /></a><div class="menu"><span class="gotobar bar"><a href="https://www.emacswiki.org/emacs/SiteMap" class="local">SiteMap</a> <a href="https://www.emacswiki.org/emacs/Search" class="local">Search</a> <a href="https://www.emacswiki.org/emacs/ElispArea" class="local">ElispArea</a> <a href="https://www.emacswiki.org/emacs/HowTo" class="local">HowTo</a> <a class="local" href="https://www.emacswiki.org/emacs/Glossary">Glossary</a> <a class="local" href="https://www.emacswiki.org/emacs/RecentChanges">RecentChanges</a> <a class="local" href="https://www.emacswiki.org/emacs/News">News</a> <a href="https://www.emacswiki.org/emacs/Problems" class="local">Problems</a> <a href="https://www.emacswiki.org/emacs/Suggestions" class="local">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" accept-charset="utf-8" class="search"><p><label for="search">Search:</label> <input type="text" name="search"  size="20" id="search" accesskey="f" /> <label for="searchlang">Language:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Go!" /></p></form></div><div class="message"><p>This page needs attention!</p></div><h1><a rel="nofollow" href="https://www.emacswiki.org/emacs?search=%22EmacsWikiProblems%22" title="Click to search for references to this page"><span style="padding-right: 0.5ex;">Emacs</span><span style="padding-right: 0.5ex;">Wiki</span><span style="padding-right: 0.5ex;">Problems</span></a></h1></div><div class="wrapper"><div class="content browse"><p>This page is for recording (or discussion) of current apparent <strong><a title="Click to search for references to this permanent anchor" rel="nofollow" href="https://www.emacswiki.org/emacs?search=%22Problems%22" class="definition" name="Problems">Problems</a></strong> with the <a class="local" href="https://www.emacswiki.org/emacs/EmacsWiki">EmacsWiki</a> <em>Web site</em>. The purpose is to point out problems to the site maintainers.</p><p>This page is <em>not</em> for questions or problems about Emacs &#x2013; see <a class="local" href="https://www.emacswiki.org/emacs/OpenQuestions">OpenQuestions</a> for that.</p><p><strong>Suggestions:</strong> If you have <em>suggestions</em> (not problems) for the Emacs Wiki (not Emacs), please contribute them at <strong><a href="https://www.emacswiki.org/emacs/EmacsWikiSuggestions" class="local">EmacsWikiSuggestions</a></strong>.</p><p>Note that this page is not about <a href="https://www.emacswiki.org/emacs/EmacsWikiMode" class="local">EmacsWikiMode</a>.</p><p><strong>Add your problem descriptions below this line</strong> (ie, newest on top, oldest on bottom)</p><h2>Cannot find where file lives for change submission</h2><p>I would like to submit a change to the file found at <a href="https://www.emacswiki.org/emacs/perltidy.el" class="url http">https://www.emacswiki.org/emacs/perltidy.el</a>, but I can&#x2019;t seem to figure out which repo to clone. Do I clone the emacs wiki repo or is there some other upstream repo to which I should submit my proposed changes?</p><p>&#x2013; <a href="https://www.emacswiki.org/emacs/MatthewPersico" class="local">MatthewPersico</a> 2016-02-22</p><p>Sadly, the wiki is not git and so you only have two options:</p><ol><li>contact the maintainer via email (the elisp file names Kirill Babikhin and provides an email address)</li><li>or, edit the page and change it (replacing the maintainer with your own name)</li></ol><p>&#x2013; <a href="https://www.emacswiki.org/emacs/AlexSchroeder" class="local">AlexSchroeder</a></p><h2>Problem editing pages on Firefox with KeeFox (solved)</h2><p>When I tried to edit a page in Firefox, it would show the correct page&#x2019;s text briefly, then refresh immediately to show the text for <a class="local" href="https://www.emacswiki.org/emacs/DocString">DocString</a>.</p><p>It turned out to be due to <a class="local" href="https://www.emacswiki.org/emacs/KeeFox">KeeFox</a> interacting oddly with the form - I had an entry for emacswiki.org with just my username, but when I removed the entry I could edit the page okay. No more switching to Chrome&#x2026;</p><p>&#x2013; <a href="https://www.emacswiki.org/emacs/BrianBurns" class="local">BrianBurns</a> 2015-12-07</p><h2>Default Language</h2><p>If I clear all emacswiki.org cookies from my browser and visit www.emacswiki.org, the language defaults to Chinese. I checked with nc, and my browser sends:</p><p><code>Accept-Language: en-US,en;q=0.5</code></p><p>which ideally should get me the page in English if available. Manually selecting the language by clicking English works, but it seems like it could be more automatic.</p><div class="color one level0"><div class="portrait"><p><a class="newauthor" href="https://www.emacswiki.org/emacs/AlexSchroeder" title="2015-11-14 16:29 UTC"><img src="https://www.emacswiki.org/pics/static/AlexSchroederPortrait" class="portrait" alt="new: 2015-11-14 16:29 UTC" /></a> <br /> <a href="https://www.emacswiki.org/emacs/AlexSchroeder" class="local">AlexSchroeder</a></p></div><p> This is definitely a problem and it has been annoying me for a year, now. If you know anything about using nginx as a caching proxy, perhaps you can help me figure out what&#x2019;s wrong in our setup? There&#x2019;s more information at the end of this page: <a href="https://www.emacswiki.org/emacs/Comments_on_2015-01-03" class="local">Comments on 2015-01-03</a>.</p></div><h2>RandomPage</h2><p>This is not working.</p><p>The <a href="http://www.emacswiki.org/emacs?action=random" class="url http">http://www.emacswiki.org/emacs?action=random</a> link always takes me to <a class="local" href="https://www.emacswiki.org/emacs/PaulKinnucan">PaulKinnucan</a></p><div class="color one level0"><p> I guess that&#x2019;s because you&#x2019;re getting the cached random page. &#x1F60A;</p><p>Perhaps it&#x2019;s time to retire the Random Page. Do you regularly click the Random Page link?</p><p>&#x2013; Alex Schroeder</p></div><div class="color two level0"><p> It is not a cached page, as I get the same thing from different computers on different networks.</p><p>I do use the random page from time to time to help me discover things I didn&#x2019;t know about emacs. It has come in use quite a few times. I really like having it.</p><p>BTW: I had a hard time adding this comments because a few times the edit showed the previous version of the page, and I had to go into a Linux VM and for some reason that worked.</p><p>&#x2013; John Quillan</p></div><div class="color one level0"><p> Weird. I tried clicking that <a href="https://www.emacswiki.org/emacs/RandomPage" class="local">RandomPage</a> link a few times and got a different page every time. Then I figured, perhaps that&#x2019;s because of my cookie or something and I ran <code>http://www.emacswiki.org/emacs?action=random</code> a few times. Same thing, however. I&#x2019;m getting different pages every time. Is the issue fixed? &#x2013; Alex Schroeder</p></div><h2>Revisioning Problems</h2><p><a class="anchor" name="EditingGetsOldPageText"></a> </p><h3>editing does not get most recent version</h3><p>I tried yet again to get emacs-w3m to work as described above. I edited. It didn&#x2019;t work. I edited the page with Safari. It worked. Then I followed the instructions again in emacs-w3m. The Safari edit did not show up in the compose edit box, even though the page did show it. Therefore, the text that the user edits is not the same as the text that is shown. Is this a cache issue? Thanks.</p><div class="color one level0"><p> I don&#x2019;t think I&#x2019;ve ever run into this. Anybody else? &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p></div><h3>RecentChanges doesn't reflect recent changes</h3><p>I just edited and saved a reply someone posted at <a class="local" href="https://www.emacswiki.org/emacs/DrewsElispLibraries">DrewsElispLibraries</a>. I refrefreshed <a class="local" href="https://www.emacswiki.org/emacs/RecentChanges">RecentChanges</a> (with rollbacks and minor changes included), but my edit does not appear. That wiki page is listed, but still at the time and user of the previous edit. However, after clicking List only major changes it was listed. I had previously cleared my cache, so I don&#x2019;t think that was the problem. I&#x2019;m guessing it was a cache problem nevertheless, but thought I&#x2019;d mention it, in case it&#x2019;s not. &#x2013; <a href="https://www.emacswiki.org/emacs/DrewAdams" class="local">DrewAdams</a></p><h2>Markup/Generation Issues</h2><h3>Colon line prefix does not indent correctly</h3><p>See <a class="local anchor" href="https://www.emacswiki.org/emacs/UnicodeEncoding#ucs-cmds.el">UnicodeEncoding#ucs-cmds.el</a>. No matter how many colons are used for the last paragraph, it does not indent more. We should be able to have <code>::</code> align more or less with <code>**</code> etc. This is a regression. &#x2013; <a href="https://www.emacswiki.org/emacs/DrewAdams" class="local">DrewAdams</a></p><div class="color one level0"><p> I think the problem is that the HTML being generated right now is invalid: <code>&lt;dl class="quote"&gt;&lt;dl class="quote"&gt;&lt;dt /&gt;&lt;dd&gt;indent 2&lt;/dd&gt;&lt;/dl&gt;&lt;/dl&gt;</code> &#x2013; I don&#x2019;t think this ever worked as you intended it to. Right now you need to use <code>:</code> before you can use <code>::</code>. &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p></div><div class="color two level0"><p> I&#x2019;m pretty sure it used to work. I guess you&#x2019;re saying that a workaround is to do this?</p><pre>* A bullet entry
+
+:  
+
+:: Some text indented to be under the bullet.
+</pre><p>That does seem to work. (You need to put some spaces after the `:&#x2019;.)</p><ul><li>A bullet entry</li></ul><dl class="quote"><dt /><dd><dl class="quote"><dt /><dd>Some text indented to be under the bullet.</dd></dl></dd></dl><p>I guess I&#x2019;m OK with the workaround, though it indents too far and adds too much vertical whitespace. You can remove this problem unless you want to keep it as a reminder to look for a better solution.</p></div><div class="color one level0"><p> I guess if the following two don&#x2019;t line up exactly, we can use some CSS fix it:</p><ul><li>bullet </li></ul><dl class="quote"><dt /><dd>indent</dd></dl><p>I&#x2019;m assuming that the exact indentation is determined by the browser defaults. On my iPad it looks as follows:</p><pre>normal text
+
+   • bullet
+   indent
+</pre><p>The variant you prefer would be this, correct?</p><pre>normal text
+
+ • bullet
+   indent
+</pre><p>&#x2013; Alex </p></div><h3>Can markup be used in headers? &lt;code&gt;I have failed to do so.&lt;/code&gt;</h3><p>Is this documented somewhere?</p><p>Use-case: putting a category-tag like <code>CategoryNeedsAttention</code> into a header, without actually invoking it.</p><p>Interestingly, the markup in this particular header renders properly in the TOC</p><div class="color one level0"><p> Markup cannot be nested by default. Very few markup elements can in fact be nested. This is not document anywhere, I think. Common sense stuff like list items and inline markup can be nested (bold list items, for example). Emphasis markup using apostrophes is the online inline markup that can be nested: <code>''italic '''bold''' and italic''</code> &#x2192;&#x00a0;<em>italic <strong>bold</strong> and italic</em>. &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p></div><div class="color two level0"><p> The irony being that markup in headers <b>is</b> rendered in the (javascript-built) TOC &#x2013; <a href="https://www.emacswiki.org/emacs/MichaelPaulukonis" class="local">MichaelPaulukonis</a></p></div><h3>Apostrophes etc. not prettified in links</h3><ul><li><code>ain't -- it -- "nice"</code> &#x21D2; ain&#x2019;t &#x2013; it &#x2013; &#x201c;nice&#x201d;</li><li><code>[EmacsWikiProblems ain't -- it -- "nice"]</code> &#x21D2; <a class="local" href="https://www.emacswiki.org/emacs/EmacsWikiProblems">ain't -- it -- "nice"</a></li></ul><p>The link text retains its crude ASCII formatting. &#x2013; <a href="https://www.emacswiki.org/emacs/VegardOye" class="local">VegardOye</a></p><h3>Braces not allowed in links</h3><p>I tried to put braces in a url (because the stupid url required them), eg:</p><pre>https://www.heathrowconnect.com/index.asp?SID={65C76CDC-2EFD-4589-A223-809157EAA164}
+</pre><p>I tried a few different things, eg:</p><pre>[[https://www.heathrowconnect.com/index.asp?SID={65C76CDC-2EFD-4589-A223-809157EAA164}|Blah]]
+</pre><p>none of them worked. I think this <b>should</b> be ok.</p><p>Again though, I&#x2019;m happy with it not being fixed because we&#x2019;ll fix it with Elwiki.</p><div class="color one level0"><p> If you read <a href="http://tools.ietf.org/html/rfc2396">RFC 2396</a> you&#x2019;ll note that curly braces are deemed &#x201c;unwise&#x201d; in section 2.4.3. Excluded US-ASCII Characters.</p></div><h2>Server Issues</h2><h3>CGI Internal error: 400 Bad request (malformed multipart POST)</h3><p>I just got this error when trying to save a page after some simple (trivial) editing. No idea what caused it or what the problem is. I then clicked the browser <code>&#x2018;Back&#x2019;</code> button and tried, successfully, to save again. &#x2013; <a href="https://www.emacswiki.org/emacs/DrewAdams" class="local">DrewAdams</a></p><div class="color one level0"><p> Anybody else? I&#x2019;ve never seen this before. &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p></div><div class="color two level0"><p> Just an FYI that this problem has not disappeared, even if it is less frequent. &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a></p></div><h2>Client Issues</h2><p>In some cases the server might actually be at fault - still makes sense to group them like this.</p><p><a name="StalePagesServed" class="anchor"></a> </p><h3>Browser Cache Not Refreshed - Stale Pages Served</h3><p>This might be the same problem as <a class="local anchor" href="#EditingGetsOldPageText">EditingGetsOldPageText</a>, below, but since that speaks specifically about emacs-w3m, I&#x2019;m not sure.</p><p>This problem started several months ago. The browser cache does not get refreshed when pages are edited and saved. This happens for different browsers.</p><p>This problem has bitten several people, and the only workaround seems to be to remember to manually force a cache refresh when, say, you are looking at the editable page. And even that doesn&#x2019;t work if you use the Download link.</p><p>This causes people to download the wrong version of a page (e.g. an Emacs Lisp library, using the Download link). And it causes people to accidentally overwrite a previous edit by someone else (since it doesn&#x2019;t appear in the editable text unless they refresh that text).</p><p>I know that some people have thought that the problem was that pages were not being locked properly for edits, so that two people editing at the same time could accidentally overwrite each other&#x2019;s edits. I don&#x2019;t know if that problem also exists, but I do know that this cache problem has caused people to think there is a locking problem for edits. The cache problem occurs however, even for an edit that is long after (days after) the last edit has been saved, so it is not a lock problem.</p><p>Thanks for looking into this. &#x2013; <a href="https://www.emacswiki.org/emacs/DrewAdams" class="local">DrewAdams</a></p><div class="color one level0"><p> This is still happening, but I still cannot give a recipe for why or when it happens &#x2013; it happens sometimes. It just happened now. In the same browser session, I updated page <a href="https://www.emacswiki.org/emacs/DoReMi" class="local">DoReMi</a> and saved. Then opened that page again from the link at <a href="https://www.emacswiki.org/emacs/RecentChanges" class="local">RecentChanges</a>, using browser&#x2019;s Open Link in New Window. Then clicked Edit the page and got the old page source, before my edit and save. HTH &#x2013; <a href="https://www.emacswiki.org/emacs/DrewAdams" class="local">DrewAdams</a></p></div><div class="color two level0"><p> Some more info on this, in case it helps. I was just bitten by this again &#x2013; I had to redo a bunch of edits as a result.</p><p>If you look at the revisions of <a href="https://www.emacswiki.org/emacs/BookmarkPlus" class="local">BookmarkPlus</a> between Revision 53 and Revision 58, you&#x2019;ll see that Revision 54 was a major edit, then 55 was a minor edit. Well, 55 did not use 54 as its starting point &#x2013; it used 53 instead. So I ended up doing 55, 56, 57, and 58, before I realized that the major edit for 54 had been undone (i.e. lost).</p><p>I used to think this problem had something to do with the browser cache, but now I&#x2019;m thinking it has something to do with major and minor edits. HTH. &#x2013; <a href="https://www.emacswiki.org/emacs/DrewAdams" class="local">DrewAdams</a></p></div><div class="color one level0"><p> Dunno if this is strictly related to the browser cache problem that I&#x2019;ve been assuming exists, but there is a fine example of losing page updates that just occurred. See the revisions of this very page, <a class="local" href="https://www.emacswiki.org/emacs/EmacsWikiProblems">EmacsWikiProblems</a>, today.</p><p>You&#x2019;ll see that this sequence of events took place:</p><ol><li>I updated the page to reply to <a class="local" href="https://www.emacswiki.org/emacs/SteveTaylor">SteveTaylor</a> about the mistaken rollback: revision 608.</li><li><a class="local" href="https://www.emacswiki.org/emacs/VegardOye">VegardOye</a> updated the page to add a new item: revision 609.</li></ol><p>Vegard&#x2019;s update wiped out my previous update. &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a></p></div><div class="color two level0"><p> Hm, maybe this is unrelated. Possibly it just took him more than nine minutes to edit the page before he saved it? Perhaps diff3 will sometimes merge things and drop changes without marking them as a conflict? Or he used a raw client that interacts with the wiki text directly, didn&#x2019;t post back the last modification date, thus diff3 was unable to determine the ancestor for conflict resolution, and he ended up overwriting what you had done. I think the caching problem you reported earlier is something else (and much trickier, apparently). &#x2013; <a href="https://www.emacswiki.org/emacs/AlexSchroeder" class="local">AlexSchroeder</a></p></div><h2>Missing table of contents</h2><p>The table of contents is generated by Javascript. On some pages that haven&#x2019;t been edited in years, you can still find a table of contents that doesn&#x2019;t use Javascript, but as soon as such a page is edited, the table of contents will require Javascript. The old code worked most of the time, but at the same time it was very <i>brittle</i> and required constant attention and compatibility cross-checking. I feel it&#x2019;s just not worth the effort. The <a href="https://www.emacswiki.org/emacs/DuckDuckGo" class="local">DuckDuckGo</a> search also uses <a class="local" href="https://www.emacswiki.org/emacs/JavaScript">JavaScript</a> to quietly add <i>site:www.emacswiki.org</i> to the search terms. Without <a href="https://www.emacswiki.org/emacs/JavaScript" class="local">JavaScript</a>, this will also look weird. &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p><h2>Wiki hacked ("Victory of the Islamic Revolution in Iran")</h2><p>Once a year, every page comes with the following line before the title: &#x201c;Iran, Victory of the Islamic Revolution in Iran&#x201d;. The wiki has not been hacked. The header of this wiki usually shows national days. This includes messages such as “Iran, Victory of the Islamic Revolution in Iran.” This is not a statement on current events. It just reminds us of the vast diversity of culture on this planet. It&#x2019;s also a great opportunity to learn about other countries and the events that shaped them. Check out the <a class="url http outside" href="http://en.wikipedia.org/wiki/Iranian_Revolution">Iranian Revolution</a> on Wikipedia, for example. &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a></p><h2>Captcha problems</h2><p>If javascript is disabled, the captcha used on <a href="https://www.emacswiki.org/emacs/EmacsWiki" class="local">EmacsWiki</a>, is virtually impossible for normal humans to solve on the first, second, or tenth attempt. reCaptcha might pretend to work without js, but it&#x2019;s too frustrating to bother. You may as well just disable anonymous edits for non-js users (like those using Emacs, say).</p><div class="color one level0"><div class="portrait"><p><a class="newauthor" href="https://www.emacswiki.org/emacs/AlexSchroeder" title="2014-07-15 21:20 UTC"><img src="https://www.emacswiki.org/pics/static/AlexSchroederPortrait" class="portrait" alt="new: 2015-11-14 16:29 UTC" /></a> <br /> <a href="https://www.emacswiki.org/emacs/AlexSchroeder" class="local">AlexSchroeder</a></p></div><p> I can offer two solutions: 1. if you are using a browser that stores cookies, you can provide a &#x201c;secret&#x201d; URL parameter that tells Emacs Wiki that you have already answered the CAPTCHA: <code>uihnscuskc=1</code>. 2. Switch to one of the Oddmuse modes listed on <a class="local" href="https://www.emacswiki.org/emacs/CategoryOddmuse">CategoryOddmuse</a>. I recommend <a class="local" href="https://www.emacswiki.org/emacs/OddmuseCurl">OddmuseCurl</a> because that&#x2019;s what I use. It also serves as an example of how to use the wiki using <code>curl</code>.</p></div><hr /><p><a href="https://www.emacswiki.org/emacs/CategoryEmacsWikiSite" class="local">CategoryEmacsWikiSite</a></p></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br />  <a class="translation new" href="https://www.emacswiki.org/emacs?action=translate;id=EmacsWikiProblems;missing=de_es_fr_it_ja_ko_pt_ru_se_uk_zh" rel="nofollow">Add Translation</a></span><div class="edit bar"><a href="https://www.emacswiki.org/emacs/Comments_on_EmacsWikiProblems" class="comment local" accesskey="c">Talk</a> <a accesskey="e" rel="nofollow" href="https://www.emacswiki.org/emacs?action=edit;id=EmacsWikiProblems" class="edit" title="Click to edit this page">Edit this page</a> <a class="history" href="https://www.emacswiki.org/emacs?action=history;id=EmacsWikiProblems" rel="nofollow">View other revisions</a> <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=admin;id=EmacsWikiProblems" class="admin">Administration</a></div><div class="time">Last edited 2016-02-23 14:24 UTC by <a title="62.12.165.34" class="author" href="https://www.emacswiki.org/emacs/AlexSchroeder">AlexSchroeder</a> <a rel="nofollow" href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=EmacsWikiProblems" class="diff">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

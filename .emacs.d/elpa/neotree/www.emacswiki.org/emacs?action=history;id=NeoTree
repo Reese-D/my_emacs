@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: History of NeoTree</title><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="NOINDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: NeoTree" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=NeoTree" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for NeoTree only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=NeoTree" /><meta content="width=device-width" name="viewport" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a class="logo" href="https://www.emacswiki.org/emacs/SiteMap"><img src="https://www.emacswiki.org/images/logo218x38.png" class="logo" alt="[Home]" /></a><div class="menu"><span class="gotobar bar"><a href="https://www.emacswiki.org/emacs/SiteMap" class="local">SiteMap</a> <a href="https://www.emacswiki.org/emacs/Search" class="local">Search</a> <a href="https://www.emacswiki.org/emacs/ElispArea" class="local">ElispArea</a> <a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a> <a class="local" href="https://www.emacswiki.org/emacs/Glossary">Glossary</a> <a href="https://www.emacswiki.org/emacs/RecentChanges" class="local">RecentChanges</a> <a class="local" href="https://www.emacswiki.org/emacs/News">News</a> <a class="local" href="https://www.emacswiki.org/emacs/Problems">Problems</a> <a href="https://www.emacswiki.org/emacs/Suggestions" class="local">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" accept-charset="utf-8" class="search"><p><label for="search">Search:</label> <input type="text" name="search"  size="20" id="search" accesskey="f" /> <label for="searchlang">Language:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Go!" /></p></form></div><h1>History of NeoTree</h1></div><div class="wrapper"><div class="content history"><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" accept-charset="utf-8" class="history"> <p><input type="submit" name="Compare" value="Compare" /> <input type="hidden" name="action" value="browse" /> <input value="1" name="diff" type="hidden" /> <input name="id" value="NeoTree" type="hidden" /></p> <table class="history"><tr><td colspan="3"><strong>2016-01-08</strong></td></tr><tr><td><input name="diffrevision" value="19" type="radio" /></td> <td><input type="radio" name="revision" checked="checked" value="" /></td> <td>08:57 UTC <a class="local" href="https://www.emacswiki.org/emacs/NeoTree">Revision 19</a> . . . . <a title="137.189.34.111" class="author" href="https://www.emacswiki.org/emacs/Shuai_Li">Shuai Li</a><span class="dash"> &#8211; </span><strong>Added one more tips</strong></td></tr> <tr><td colspan="3"><strong>2014-11-19</strong></td></tr><tr><td><input value="18" name="diffrevision" checked="checked" type="radio" /></td> <td><input name="revision" value="18" type="radio" /></td> <td>13:00 UTC <a rel="nofollow" class="revision" href="https://www.emacswiki.org/emacs?action=browse;id=NeoTree;revision=18">Revision 18</a> . . . . <a href="https://www.emacswiki.org/emacs/jaypei" class="author" title="203.175.172.75">jaypei</a></td></tr></table> <p><input type="submit" name="Compare" value="Compare" /></p> </form></div><div class="wrapper close"></div></div><div class="footer"><hr /><div class="edit bar"><a href="https://www.emacswiki.org/emacs/NeoTree" class="local">View current revision</a> <a class="rc" href="https://www.emacswiki.org/emacs?action=rc;all=1;from=1;showedit=1;rcidonly=NeoTree" rel="nofollow">View all changes</a> <a rel="nofollow" class="contrib" href="https://www.emacswiki.org/emacs?action=contrib;id=NeoTree">View contributors</a> <a href="https://www.emacswiki.org/emacs?action=admin;id=NeoTree" class="admin" rel="nofollow">Administration</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

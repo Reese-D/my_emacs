@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="https://www.emacswiki.org/light.css" ?>
+<rss version="2.0"
+    xmlns:wiki="http://purl.org/rss/1.0/modules/wiki/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<docs>http://blogs.law.harvard.edu/tech/rss</docs>
+<title>EmacsWiki: SiteMap</title>
+<link>https://www.emacswiki.org/emacs/SiteMap</link>
+<atom:link href="https://www.emacswiki.org/emacs?action=rss;rcidonly=NeoTree" rel="self" type="application/rss+xml" />
+<description>This is the Emacs and XEmacs know-how repository.</description>
+<pubDate>Fri, 17 Jun 2016 13:17:39 GMT</pubDate>
+<lastBuildDate>Fri, 17 Jun 2016 13:17:39 GMT</lastBuildDate>
+<generator>Oddmuse</generator>
+<copyright>This work is licensed to you under version 2 of the GNU General Public License. Alternatively, you may choose to receive this work under any other license that grants the right to use, copy, modify, and distribute the work, as long as that license imposes the restriction that derivative works have to grant the same rights and impose the same restriction. For example, you may choose to receive this work under the GNU Free Documentation License, the CreativeCommons ShareAlike License, the XEmacs manual license, or similar licenses.</copyright>
+<cc:license>https://creativecommons.org/licenses/sa/1.0/</cc:license>
+<cc:license>https://www.gnu.org/copyleft/fdl.html</cc:license>
+<cc:license>https://www.gnu.org/copyleft/gpl.html</cc:license>
+<cc:license>https://www.emacswiki.org/OLD</cc:license>
+<wiki:interwiki>EmacsWiki</wiki:interwiki>
+<image>
+<url>https://www.emacswiki.org/emacs_rss.png</url>
+<title>EmacsWiki: SiteMap</title>
+<link>https://www.emacswiki.org/emacs</link>
+</image>
+</channel>
+</rss>

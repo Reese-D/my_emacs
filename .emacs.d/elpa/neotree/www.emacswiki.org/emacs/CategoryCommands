@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: Category Commands</title><link rel="alternate" type="application/wiki" title="Modifica questa pagina" href="https://www.emacswiki.org/emacs?action=edit;id=CategoryCommands" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: CategoryCommands" href="https://www.emacswiki.org/emacs?action=rss;rcidonly=CategoryCommands" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Changes for CategoryCommands only"
+      href="https://www.emacswiki.org/emacs?action=rss;rcidonly=CategoryCommands" /><meta name="viewport" content="width=device-width" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a class="logo" href="https://www.emacswiki.org/emacs/Mappa_del_sito"><img src="https://www.emacswiki.org/images/logo218x38.png" class="logo" alt="[Home]" /></a><div class="menu"><span class="gotobar bar"><a href="https://www.emacswiki.org/emacs/SiteMap" class="local">SiteMap</a> <a href="https://www.emacswiki.org/emacs/Search" class="local">Search</a> <a class="local" href="https://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a href="https://www.emacswiki.org/emacs/HowTo" class="local">HowTo</a> <a href="https://www.emacswiki.org/emacs/Glossary" class="local">Glossary</a> <a href="https://www.emacswiki.org/emacs/RecentChanges" class="local">RecentChanges</a> <a class="local" href="https://www.emacswiki.org/emacs/News">News</a> <a class="local" href="https://www.emacswiki.org/emacs/Problems">Problems</a> <a href="https://www.emacswiki.org/emacs/Suggestions" class="local">Suggestions</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" accept-charset="utf-8" class="search"><p><label for="search">Cerca:</label> <input type="text" name="search"  size="20" accesskey="f" id="search" /> <label for="searchlang">Lingua:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Vai!" /></p></form></div><h1><a title="Clicca per cercare riferimenti a questa pagina" href="https://www.emacswiki.org/emacs?search=%22CategoryCommands%22" rel="nofollow"><span style="padding-right: 0.5ex;">Category</span><span style="padding-right: 0.5ex;">Commands</span></a></h1></div><div class="wrapper"><div class="content browse"><p> This page is about Emacs Commands.</p><p>Click the heading to search for all pages related to Emacs commands.</p><p>For text-editing commands, see <a class="local" href="https://www.emacswiki.org/emacs/CategoryEditing">CategoryEditing</a>. For commands related to windows and frames, see <a href="https://www.emacswiki.org/emacs/CategoryDisplay" class="local">CategoryDisplay</a>. For undoing editing changes caused by commands, see <a class="local" href="https://www.emacswiki.org/emacs/CategoryUndo">CategoryUndo</a>. See also <a class="local" href="https://www.emacswiki.org/emacs/CategoryCode">CategoryCode</a></p><h2>About Emacs commands</h2><ul><li><a href="https://www.emacswiki.org/emacs/Command" class="local">Command</a> &#x2013; What a command is. What turns an ordinary Emacs function into a command. <code>&#x2018;M-x&#x2019;</code> and `<code>M-:</code>&#x2019;.</li><li><a href="https://www.emacswiki.org/emacs/DisabledCommands" class="local">DisabledCommands</a> &#x2013; Hiding certain commands from the user.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CancelingInEmacs">CancelingInEmacs</a> &#x2013; Stopping something you started, not to be confused with undoing.</li><li><a href="https://www.emacswiki.org/emacs/InteractiveFunction" class="local">InteractiveFunction</a> - How to make a function an interactive command.</li><li><a class="local" href="https://www.emacswiki.org/emacs/MinibufferHistory">MinibufferHistory</a> &#x2013; Retrieve and re-execute previously executed commands.</li><li><a class="local" href="https://www.emacswiki.org/emacs/RepeatingCommands">RepeatingCommands</a> &#x2013; Repeating an individual command or a sequence of commands (e.g. keyboard macros).</li><li><a href="https://www.emacswiki.org/emacs/KeyboardMacros" class="local">KeyboardMacros</a> &#x2013; Record your commands then play them back.</li></ul><h2>Packages for command manipulation</h2><ul><li><a class="local" href="https://www.emacswiki.org/emacs/CommandLogMode">CommandLogMode</a> &#x2013; Demonstrate your Emacs editing skills to other people</li><li><a href="https://www.emacswiki.org/emacs/InteractionLogMode" class="local">InteractionLogMode</a> &#x2013; An exhaustive log of your interactions with Emacs</li><li><a href="https://www.emacswiki.org/emacs/DoReMi" class="local">DoReMi</a> &#x2013; Define commands that change things incrementally.</li><li><a class="local" href="https://www.emacswiki.org/emacs/ExecAbbrevCmd">ExecAbbrevCmd</a> &#x2013; Execute emacs commands by giving an abbreviation</li><li><a href="https://www.emacswiki.org/emacs/Icicles" class="local">Icicles</a> &#x2013; Define commands that read and match input (simple or <a href="https://www.emacswiki.org/emacs/regexp" class="local">regexp</a>), providing input-<a class="local" href="https://www.emacswiki.org/emacs/completion">completion</a> and <a class="local" href="https://www.emacswiki.org/emacs/Icicles_-_Cycling_Completions">cycling</a> of matching candidates. Define multiple-choice commands and menus easily.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CommandSubset">CommandSubset</a> &#x2013; Like <code>M-x</code> but with only a subset of the available commands.</li></ul><h2>Packages for command suggestion</h2><ul><li><a href="https://www.emacswiki.org/emacs/Recs" class="local">Recs</a> &#x2013; Suggests a more efficient command when a command sequence matches a pattern of commands defined as a regular expression.</li></ul></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br /> <a href="http://www.emacswiki.org/emacs-ja/カテゴリ・コマンド" class="translation ja">ja</a> <a class="translation new" rel="nofollow" href="https://www.emacswiki.org/emacs?action=translate;id=CategoryCommands;missing=de_es_fr_it_ko_pt_ru_se_uk_zh">Add Translation</a></span><div class="edit bar"><a href="https://www.emacswiki.org/emacs/Comments_on_CategoryCommands" accesskey="c" class="comment local edit">Discussione</a> <a class="edit" accesskey="e" title="Cliccare per modificare questa pagina" rel="nofollow" href="https://www.emacswiki.org/emacs?action=edit;id=CategoryCommands">Modifica questa pagina</a> <a class="history" href="https://www.emacswiki.org/emacs?action=history;id=CategoryCommands" rel="nofollow">Guarda altre revisioni</a> <a class="admin" rel="nofollow" href="https://www.emacswiki.org/emacs?action=admin;id=CategoryCommands">Amministrazione</a></div><div class="time">Modificata l'ultima volta 2013-08-24 11:59 UTC da <a href="https://www.emacswiki.org/emacs/AlexSchroeder" title="178-83-163-103.dynamic.hispeed.ch" class="author">AlexSchroeder</a> <a href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=CategoryCommands" rel="nofollow" class="diff">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>

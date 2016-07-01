@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: Mapa Do Site</title><link rel="alternate" type="application/wiki" title="Edite esta página" href="https://www.emacswiki.org/emacs?action=edit;id=MapaDoSite" /><link type="text/css" rel="stylesheet" href="https://www.emacswiki.org/light.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="https://www.emacswiki.org/emacs?action=rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content"
+      href="https://www.emacswiki.org/full.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki with page content and diff"
+      href="https://www.emacswiki.org/full-diff.rss" />
+<link rel="alternate" type="application/rss+xml"
+      title="Emacs Wiki including minor differences"
+      href="https://www.emacswiki.org/minor-edits.rss" /><meta name="viewport" content="width=device-width" />
+<script type="text/javascript" src="/outliner.0.5.0.62-toc.js"></script>
+<script type="text/javascript">
+
+  function addOnloadEvent(fnc) {
+    if ( typeof window.addEventListener != "undefined" )
+      window.addEventListener( "load", fnc, false );
+    else if ( typeof window.attachEvent != "undefined" ) {
+      window.attachEvent( "onload", fnc );
+    }
+    else {
+      if ( window.onload != null ) {
+	var oldOnload = window.onload;
+	window.onload = function ( e ) {
+	  oldOnload( e );
+	  window[fnc]();
+	};
+      }
+      else
+	window.onload = fnc;
+    }
+  }
+
+  // https://stackoverflow.com/questions/280634/endswith-in-javascript
+  if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+      return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
+  }
+
+  var initToc=function() {
+
+    var outline = HTML5Outline(document.body);
+    if (outline.sections.length == 1) {
+      outline.sections = outline.sections[0].sections;
+    }
+
+    if (outline.sections.length > 1
+	|| outline.sections.length == 1
+           && outline.sections[0].sections.length > 0) {
+
+      var toc = document.getElementById('toc');
+
+      if (!toc) {
+	var divs = document.getElementsByTagName('div');
+	for (var i = 0; i < divs.length; i++) {
+	  if (divs[i].getAttribute('class') == 'toc') {
+	    toc = divs[i];
+	    break;
+	  }
+	}
+      }
+
+      if (!toc) {
+	var h2 = document.getElementsByTagName('h2')[0];
+	if (h2) {
+	  toc = document.createElement('div');
+	  toc.setAttribute('class', 'toc');
+	  h2.parentNode.insertBefore(toc, h2);
+	}
+      }
+
+      if (toc) {
+        var html = outline.asHTML(true);
+        toc.innerHTML = html;
+
+	items = toc.getElementsByTagName('a');
+	for (var i = 0; i < items.length; i++) {
+	  while (items[i].textContent.endsWith('✎')) {
+            var text = items[i].childNodes[0].nodeValue;
+	    items[i].childNodes[0].nodeValue = text.substring(0, text.length - 1);
+	  }
+	}
+      }
+    }
+  }
+
+  addOnloadEvent(initToc);
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body class="default"><div class="header"><a class="logo" href="https://www.emacswiki.org/emacs/MapaDoSite"><img class="logo" src="https://www.emacswiki.org/images/logo218x38.png" alt="[Entrada]" /></a><div class="menu"><span class="gotobar bar"><a class="local" href="https://www.emacswiki.org/emacs/MapaDoSite">MapaDoSite</a> <a href="https://www.emacswiki.org/emacs/Modifica%c3%a7%c3%b5esRecentes" class="local">ModificaçõesRecentes</a> <a href="https://www.emacswiki.org/emacs/Not%c3%adcias" class="local">Notícias</a> <a href="https://www.emacswiki.org/emacs/Se%c3%a7%c3%a3oElisp" class="local">SeçãoElisp</a> <a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a> </span><form method="get" action="https://www.emacswiki.org/emacs" enctype="multipart/form-data" class="search" accept-charset="utf-8"><p><label for="search">Busca:</label> <input type="text" name="search"  size="20" id="search" accesskey="f" /> <label for="searchlang">Língua:</label> <input type="text" name="lang"  size="10" id="searchlang" /> <input type="submit" name="dosearch" value="Ir!" /></p></form></div><h1><a rel="nofollow" title="Clique para procurar referências a esta página" href="https://www.emacswiki.org/emacs?search=%22MapaDoSite%22"><span style="padding-right: 0.5ex;">Mapa</span><span style="padding-right: 0.5ex;">Do</span><span style="padding-right: 0.5ex;">Site</span></a></h1></div><div class="wrapper"><div class="content browse"><div class="include WikiLanguageMenu"><p><a class="url http outside" href="http://www.emacswiki.org/emacs?interface=de">Deutsch</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=en">English</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=es">Español</a> | <a href="http://www.emacswiki.org/emacs?interface=fr" class="url http outside">Français</a> | <a href="http://www.emacswiki.org/emacs?interface=pt" class="url http outside">Português</a> | <a href="http://www.emacswiki.org/emacs?interface=ru" class="url http outside">Русский</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=zh-cn">简体中文</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=zh-tw"> 繁體中文</a> | <a class="url http outside" href="http://www.emacswiki.org/emacs?interface=se">Svenska</a> | <a href="http://www.emacswiki.org/emacs?interface=ja" class="url http outside">日本語</a> | <a href="http://www.emacswiki.org/emacs?interface=ko" class="url http outside">한국어</a> | <a href="http://www.emacswiki.org/emacs?interface=it" class="url http outside">Italiano</a> </p></div><p>O <a href="https://www.emacswiki.org/emacs/EmacsWiki" class="local">EmacsWiki</a> é dedicado a documentação e discussão do <a href="https://www.emacswiki.org/emacs/EmacsEXEmacs" class="local">EmacsEXEmacs</a>. Leia a <a href="https://www.emacswiki.org/emacs/Declara%c3%a7%c3%a3oDeObjetivo" class="local">DeclaraçãoDeObjetivo</a> para maiores explicações.</p><p><strong><em>Qualquer pessoa pode contribuir!</em></strong></p><p>Esse sítio é produzido e mantido por pessoas interessadas no Emacs &#x2013; incluindo você! Existe uma ligação <strong>Edite esta página</strong> no rodapé desta e de outras páginas. Sinta-se livre para adicionar novos materiais e/ou retrabalhar os já existentes. Entretanto, por favor, verifique <a href="https://www.emacswiki.org/emacs/Discuss%c3%a3oMapaDoSite" class="local">DiscussãoMapaDoSite</a> antes de editar este <a class="local" href="https://www.emacswiki.org/emacs/MapaDoSite">MapaDoSite</a> e veja o <a class="local" href="https://www.emacswiki.org/emacs/ComoFazer">ComoFazer</a> (<a class="local" href="https://www.emacswiki.org/emacs/HowTo">HowTo</a>) para mais informações.</p><div class="toc"><h2>Contents</h2><ol><li><a href="#toc1">Aprendendo sobre Emacs</a></li><li><a href="#toc2">Edição básica de texto no Emacs</a></li><li><a href="#toc3">Modos: edição e manipulação de vários formatos e tipos de ficheiros</a></li><li><a href="#toc4">Interação com programas externos e serviços remotos</a></li><li><a href="#toc5">Adaptar o Emacs ao teu ambiente</a></li><li><a href="#toc6">Programar em Emacs Lisp</a></li><li><a href="#toc7">Utilizadores em Português</a></li></ol></div><h2 id="toc1">Aprendendo sobre Emacs</h2><ul><li><a class="local" href="https://www.emacswiki.org/emacs/NovatoNoEmacs">NovatoNoEmacs</a> &#x2013; se você é um novato no uso do Emacs.</li></ul><p><strong>Ajuda:</strong> </p><ul><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaAjuda">Ajuda</a> &#x2013; ajuda on-line do Emacs ou usuários de Emacs; glossário, perguntas.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaDocumenta%c3%a7%c3%a3o">Documentação</a> &#x2013; Emacs é auto-documentado e auxiliador.<ul><li><a href="https://www.emacswiki.org/emacs/ManualEmacs" class="local">ManualEmacs</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/Refer%c3%aanciaEmacsLisp">ReferênciaEmacsLisp</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/AutoDocumentado">AutoDocumentado</a></li></ul></li><li><a href="https://www.emacswiki.org/emacs/CategoriaHist%c3%b3ria" class="local">História</a> &#x2013; como o Emacs se desenvolveu.<ul><li><a href="https://www.emacswiki.org/emacs/Hist%c3%b3riaDoEmacs" class="local">HistóriaDoEmacs</a></li><li><a href="https://www.emacswiki.org/emacs/EmacsEXEmacs" class="local">EmacsEXEmacs</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/Implementa%c3%a7%c3%b5esEmacs">ImplementaçõesEmacs</a></li></ul></li><li><a href="https://www.emacswiki.org/emacs/CanaldoEmacs" class="local">CanaldoEmacs</a> (ver também <a class="local" href="https://www.emacswiki.org/emacs/InternetRelayChatBr">InternetRelayChatBr</a>)</li></ul><h2 id="toc2">Edição básica de texto no Emacs</h2><ul><li><a href="https://www.emacswiki.org/emacs/CategoriaEdi%c3%a7%c3%a3o" class="local">Edição</a> &#x2013; dicas para tornar a edição mais eficiente.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaEncher">Encher</a> &#x2013; corta as linhas.</li><li><a href="https://www.emacswiki.org/emacs/CategoriaIndenta%c3%a7%c3%a3o" class="local">Indentação</a> &#x2013; controla o modo como o texto ou o código é indentado.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaPar%c3%aanteses">Parênteses</a> &#x2013; destacá-los, alterá-los.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaRegexp">Regexp</a> &#x2013; trabalhando com expressoes regulares: procura e substituição, etc.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaRegi%c3%a3o">Região</a> &#x2013; operações sobre o texto seleccionado.</li><li><a href="https://www.emacswiki.org/emacs/CategoriaEsconderCoisas" class="local">EsconderCoisas</a> &#x2013; esconder partes arbitrárias de um buffer.</li><li><a href="https://www.emacswiki.org/emacs/CategoriaOutline" class="local">Outline</a> &#x2013; esconder partes de um buffer usando esboços ou zooming.</li><li><a href="https://www.emacswiki.org/emacs/CategoriaFicheiros" class="local">Ficheiros</a> &#x2013; ficheiros locais, ficheiros remotos, fazer salva-guardas.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaComandos">Comandos</a> &#x2013; comandos M-x, histórico de comandos, abrir ficheiros.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaMudarDeBuffer">MudarDeBuffer</a> &#x2013; como comutar entre buffers.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaModelos">Modelos</a> &#x2013; usar texto pré-definido, modelos, formulários, etc. para poupar o teclado.</li><li><a href="https://www.emacswiki.org/emacs/CategoriaDesfazer" class="local">Desfazer</a> &#x2013; desfazer alterações, encontrar as alterações para desfazer.</li></ul><h2 id="toc3">Modos: edição e manipulação de vários formatos e tipos de ficheiros</h2><ul><li><a href="https://www.emacswiki.org/emacs/CategoriaHipermedia" class="local">CategoriaHipermedia</a> &#x2013; HTML, Wikis, Info</li><li><a href="https://www.emacswiki.org/emacs/CategoriaXML" class="local">CategoriaXML</a> &#x2013; tecnologias relacionadas com XML</li><li><a href="https://www.emacswiki.org/emacs/CategoriaSql" class="local">CategoriaSql</a> &#x2013; SQL e bancos de dados</li><li><a href="https://www.emacswiki.org/emacs/CategoriaTex" class="local">CategoriaTex</a> &#x2013; <a class="local" href="https://www.emacswiki.org/emacs/TeX">TeX</a> e <a href="https://www.emacswiki.org/emacs/LaTeX" class="local">LaTeX</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaModos">CategoriaModos</a> &#x2013; ponteiros, documentação e extensões para todos os outros modos</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaPacotes">CategoriaPacotes</a> &#x2013; para código que não tem home</li><li><a href="https://www.emacswiki.org/emacs/CategoriaDiretorias" class="local">CategoriaDiretorias</a> &#x2013; o Emacs como gestor de ficheiros, também conhecido como dired</li></ul><h2 id="toc4">Interação com programas externos e serviços remotos</h2><ul><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaCalculadoras">CategoriaCalculadoras</a> &#x2013; matemática interativa.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaCalend%c3%a1rio">Calendário</a> &#x2013; calendário, diário, tarefas.<ul><li><a href="https://www.emacswiki.org/emacs/ModoPlanner" class="local">ModoPlanner</a></li><li><a href="https://www.emacswiki.org/emacs/CategoriaTodo" class="local">CategoriaTodo</a> &#x2013; manter listas de todo</li><li><a href="https://www.emacswiki.org/emacs/CategoriaGest%c3%a3oDeTempo" class="local">CategoriaGestãoDeTempo</a> &#x2013; gestão de tempo</li></ul></li><li><a href="https://www.emacswiki.org/emacs/CategoriaClientesDeChat" class="local">ClientesDeChat</a> &#x2013; socializar enquanto sentado em frente ao monitor.</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaEshell">CategoriaEshell</a> &#x2013; uma shell inteiramente implementada em <a href="https://www.emacswiki.org/emacs/EmacsLisp" class="local">EmacsLisp</a></li><li><a href="https://www.emacswiki.org/emacs/CategoriaJogos" class="local">CategoriaJogos</a> &#x2013; modos menos úteis de perderes o teu tempo com o Emacs</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaInterface">CategoriaInterface</a> &#x2013; interface do Emacs com utilitários online</li><li><a href="https://www.emacswiki.org/emacs/CategoriaUtilit%c3%a1riosProgramador" class="local">CategoriaUtilitáriosProgramador</a> &#x2013; ferramentas que ajudam programadores, e.g., de navegação de código</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaEmacsRemoto">CategoriaEmacsRemoto</a> &#x2013; executar o Emacs numa máquina muito, muito longe</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaUtilit%c3%a1riosExternos">CategoriaUtilitáriosExternos</a> &#x2013; chamar programas externos no Emacs</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaMail">CategoriaMail</a> &#x2013; coisas simples de gestão de mail, não relacionada com o Gnus</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaNavegador">CategoriaNavegador</a> &#x2013; Navegando em páginas da internet</li><li><a href="https://www.emacswiki.org/emacs/CategoriaGnus" class="local">Gnus</a> &#x2013; leitura de news e de mail.<ul><li><a href="https://www.emacswiki.org/emacs/ObterNewsComGnus" class="local">ObterNewsComGnus</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/PersonalizarThreading">PersonalizarThreading</a></li><li><a href="https://www.emacswiki.org/emacs/UsarProcmailComGnus" class="local">UsarProcmailComGnus</a></li></ul></li><li><a href="https://www.emacswiki.org/emacs/CategoriaBbdb" class="local">CategoriaBbdb</a> &#x2013; Base de dados Big Brother: manutenção de números de telefone, endereços de email, e muito mais</li><li><a href="https://www.emacswiki.org/emacs/CategoriaControloDeVers%c3%b5es" class="local">ControleDeVersões</a> &#x2013; interface com o CVS, RCS, etc.<ul><li><a class="local" href="https://www.emacswiki.org/emacs/DicasParaPclCvs">DicasParaPclCvs</a></li></ul></li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaVocab">CategoriaVocab</a> &#x2013; aprender novas palavras</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaJournaling">CategoriaJournaling</a> &#x2013; interface do Emacs com web logs</li><li><a href="https://www.emacswiki.org/emacs/CategoriaGest%c3%a3oDeInforma%c3%a7%c3%a3oPessoal" class="local">CategoriaGestãoDeInformaçãoPessoal</a> &#x2013; vários pacotes que cobrem aspectos particulares de um PIM</li></ul><h2 id="toc5">Adaptar o Emacs ao teu ambiente</h2><ul><li><a href="https://www.emacswiki.org/emacs/CategoriaTeclas" class="local">Teclas</a> &#x2013; personalizar as teclas; usabilidade.<ul><li><a class="local" href="https://www.emacswiki.org/emacs/TeclasB%c3%a1sico">TeclasBásico</a></li><li><a class="local" href="https://www.emacswiki.org/emacs/ModoCua">ModoCua</a></li></ul></li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaPontoEmacs">PontoEmacs</a> &#x2013; coisas para colocar no seu <a href="https://www.emacswiki.org/emacs/InitFile" class="local">InitFile</a>, para novatos em Elisp.<ul><li><a href="https://www.emacswiki.org/emacs/PontoEmacsB%c3%a1sico" class="local">PontoEmacsBásico</a></li><li><a href="https://www.emacswiki.org/emacs/MeuPrimeiroPontoEmacs" class="local">MeuPrimeiroPontoEmacs</a></li></ul></li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaPrograma%c3%a7%c3%a3o">CategoriaProgramação</a> &#x2013; personalizações que as pessoas usam para programação</li><li><a href="https://www.emacswiki.org/emacs/CategoriaFaces" class="local">CategoriaFaces</a> &#x2013; destaque de sintaxe, core, syntax highlighting, colors, font-lock</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaEcr%c3%a3">CategoriaEcrã</a> &#x2013; coisas relacionada com o ecrã (formatos dos ponteiros X-Window, <a class="local" href="https://www.emacswiki.org/emacs/Frame">Frame</a>s&#x2026;)</li><li><a href="https://www.emacswiki.org/emacs/CategoriaJanelas" class="local">CategoriaJanelas</a> &#x2013; gerir várias janelas dentro de um <a href="https://www.emacswiki.org/emacs/Frame" class="local">Frame</a></li><li><a href="https://www.emacswiki.org/emacs/CategoriaInternacionaliza%c3%a7%c3%a3o" class="local">CategoriaInternacionalização</a> &#x2013; o Emacs em vária línguas</li><li><a class="local" href="https://www.emacswiki.org/emacs/CategoriaCaminhos">CategoriaCaminhos</a> &#x2013; juntar os caminhos do SO e o do Emacs</li><li><a href="https://www.emacswiki.org/emacs/CategoriaConclus%c3%a3o" class="local">CategoriaConclusão</a> &#x2013; como é que a conclusão automática funciona, que bibliotecas usar e que modos peculiares são oferecidos pelo Emacs.</li></ul><h2 id="toc6">Programar em Emacs Lisp</h2><ul><li><a href="https://www.emacswiki.org/emacs/CategoriaC%c3%b3digo" class="local">Código</a> &#x2013; dicas para codificar em Elisp.<ul><li><a class="local" href="https://www.emacswiki.org/emacs/AvaliarExpress%c3%b5es">AvaliarExpressões</a></li><li><a href="https://www.emacswiki.org/emacs/Fun%c3%a7%c3%b5esInteractiva" class="local">FunçõesInteractiva</a></li><li><a href="https://www.emacswiki.org/emacs/ArgumentoUniversal" class="local">ArgumentoUniversal</a></li></ul></li></ul><h2 id="toc7">Utilizadores em Português</h2><p>Lista de utilizadores de <a href="https://www.emacswiki.org/emacs/EmacsWiki" class="local">EmacsWiki</a> que escrevem em Português</p><ul><li><a href="https://www.emacswiki.org/emacs/DeDaLu" class="local">DeDaLu</a> &#x2013; Hélio Nunes</li><li><a class="local" href="https://www.emacswiki.org/emacs/IeltonFerreira">IeltonFerreira</a> &#x2013; Ielton Ferreira Carneiro Pinto</li><li><a class="local" href="https://www.emacswiki.org/emacs/Miguel">Miguel</a> &#x2013; Luís Miguel</li><li><a class="local" href="https://www.emacswiki.org/emacs/MarceloToledo">MarceloToledo</a> &#x2013; Marcelo Toledo</li><li><a class="local" href="https://www.emacswiki.org/emacs/DanielMartins">DanielMartins</a> &#x2013; Daniel Martins</li><li><a href="https://www.emacswiki.org/emacs/NelsonFerreira" class="local">NelsonFerreira</a> &#x2013; Nelson Ferreira</li><li><a href="https://www.emacswiki.org/emacs/ViniciusJoseLatorre" class="local">ViniciusJoseLatorre</a> &#x2013; Vinicius José Latorre</li><li><a class="local" href="https://www.emacswiki.org/emacs/FelipeLalli">FelipeLalli</a> &#x2013; Felipe Micaroni Lalli</li><li><a href="https://www.emacswiki.org/emacs/GlauberPrado" class="local">GlauberPrado</a> &#x2013; Glauber Alex Dias Prado (greboide).</li><li><a href="https://www.emacswiki.org/emacs/TiagoChartersAzevedo" class="local">TiagoChartersAzevedo</a> &#x2013; Tiago Charters de Azevedo (tca)</li><li><a href="https://www.emacswiki.org/emacs/VilsonVieira" class="local">VilsonVieira</a> &#x2013; Vilson Vieira (automata)</li><li>fsmunoz &#x2013; Frederico Muñoz</li><li><a class="local" href="https://www.emacswiki.org/emacs/MarioGoulart">MarioGoulart</a> &#x2013; Mario Domenech Goulart</li></ul><div class="color one level0"><p> <b>Dúvida:</b> Usa-se <i>ecrã</i> ou <i>monitor</i>, <i>ficheiro</i> ou <i>arquivo</i>, <i>teu</i> ou <i>seu</i>, <i>controlo</i> ou <i>controle</i>?</p><p>Enfim, qual Português é o usado nessas páginas: do Brasil, Portugal, Moçambique, etc.?</p><p>Usaremos a nova ortografia unificada da língua Portuguesa que talvez saia no final desse ano (2007)?</p><p>&#x2013; <a class="local" href="https://www.emacswiki.org/emacs/ViniciusJoseLatorre">ViniciusJoseLatorre</a> </p><dl class="quote"><dl class="quote"><dt /><dd>Viva (passados dois anos&#x2026;) Pessoalmente usava uma abordagem semelhante á da Wikipédia: quem escreve primeiro escolhe a norma. Não vale a pena tentar artificialmente mudar as palavras, em especial quando, mesmo não sendo usuais, são perfeitamente compreensíveis.</dd><dt /><dd>Respondendo mais concretamente, eu prefiro &#x201c;monitor&#x201d; a &#x201c;ecrã&#x201d; (usado cá), porque mesmo não sendo exactamente o mesmo sempre se evita um galicismo. Ficheiro ou arquivo é relativamente indiferente em Portugal, pelo que tanto me faz (adopta-se pois a regra de quem escreve primeiro). Controlo/controle é igualmente indiferente, até porque já vi ambas a serem usadas indiscriminadamente.</dd><dt /><dd>O Português a ser usado (e sejamos realistas, falamos essencialmente de duas normas, uma Brasileira e outra Portuguesa, que se aplica também a África mas onde a situação é bastante diferente) deverá ser o Português de quem escreve, quando muito evitando expressões que á partida se saibam ser excessivamente divergentes (o que é raro acontecer quando se adopta um registo escrito normal, não excessivamente coloquial).</dd><dt /><dd>Quanto á ortografia unificada, sim, acho que é boa ideia. Em abono da verdade não é algo que eu defenda de forma acérrima, mas ela existe e está aprovada. É difícil evitar consoantes mudas para quem está habituado, mas também não creio que seja por isso que o texto perca compreensão. Mais uma vez, creio que com bom senso se evita entrar em querelas desnecessárias sobre qual o Português a utilizar. &#x2013; fsmunoz </dd></dl></dl></div><hr /><p><a class="local" href="https://www.emacswiki.org/emacs/CategoryEmacsWikiSite">CategoryEmacsWikiSite</a></p></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="translation bar"><br /> <a href="http://www.emacswiki.org/emacs-zh/網站地圖" class="translation zh">zh</a> <a href="http://www.emacswiki.org/emacs-es/MapaDelSitio" class="translation es">es</a> <a class="translation fr" href="http://www.emacswiki.org/emacs-fr/PlanDuSite">fr</a> <a href="http://www.emacswiki.org/emacs-en/SiteMap" class="translation en">en</a> <a href="http://www.emacswiki.org/emacs-ko/대문" class="translation ko">ko</a> <a href="http://www.emacswiki.org/emacs-ja/サイトマップ" class="translation ja">ja</a> <a href="http://www.emacswiki.org/emacs-se/InnehållsFörteckning" class="translation se">se</a> <a href="http://www.emacswiki.org/emacs-ru/КартаСайта" class="translation ru">ru</a> <a href="https://www.emacswiki.org/emacs?action=translate;id=MapaDoSite;missing=de_it_pt_uk" rel="nofollow" class="translation new">Add Translation</a></span><div class="edit bar"><a accesskey="c" class="comment local edit" href="https://www.emacswiki.org/emacs/Comments_on_MapaDoSite">Discussão</a> <a rel="nofollow" class="edit" accesskey="e" title="Clique para editar esta página" href="https://www.emacswiki.org/emacs?action=edit;id=MapaDoSite">Edite esta página</a> <a href="https://www.emacswiki.org/emacs?action=history;id=MapaDoSite" class="history" rel="nofollow">Ver outras revisões</a> <a class="admin" rel="nofollow" href="https://www.emacswiki.org/emacs?action=admin;id=MapaDoSite">Administração</a></div><div class="time">Última edição 2012-03-22 18:28 UTC de <a title="inet-hqmc07-o.oracle.com" href="https://www.emacswiki.org/emacs/DrewAdams" class="author">DrewAdams</a> <a href="https://www.emacswiki.org/emacs?action=browse;diff=2;id=MapaDoSite" class="diff" rel="nofollow">(diff)</a></div><div style="float:right; margin-left:1ex;">
+<!-- Creative Commons License -->
+<a class="licence" href="https://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="https://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="https://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="https://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="https://www.gnu.org/">GNU</a>
+<a href="/FDL">Free Documentation License</a>, the
+<a href="https://creativecommons.org/">CreativeCommons</a>
+<a href="https://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="/OLD">similar licenses</a>.
+</p>
+<p class="legal" style="padding-top: 0.5em">Please note our <a href="Privacy">Privacy Statement</a>.</p>
+</div>
+</body>
+</html>
