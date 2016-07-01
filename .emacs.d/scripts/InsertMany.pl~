@@ -1,0 +1,14 @@
+use strict;
+use warnings;
+use feature qw(say);
+my $file = 'values.csv';
+open my $info, $file or die "Could not open $file: $!";
+
+my $file2 = 'out.sql';
+open(my $fileout, '>', $file2) or die "Could not open file '$file2' $!";
+while( my $line = <$info>)  { 
+    chomp $line;
+    print $fileout  "INSERT INTO UserAccountPermissions VALUES (" . $line . ")\n";  
+}
+close $info;
+close $fileout;

@@ -1,19 +1,19 @@
-(add-to-list 'load-path "~/.emacs.d/custom_elisp/")
+(add-to-list 'load-path ".emacs.d/custom_elisp/")
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;;add scripts directory to load path, so that .el files are automatically evaluated
-(add-to-list 'load-path "~/scripts")
+(add-to-list 'load-path ".emacs.d/scripts")
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 ;;set up neotree
-(add-to-list 'load-path "/Users/DewReese/.emacs.d/elpa/neotree")
+(add-to-list 'load-path ".emacs.d/elpa/neotree")
 (require 'neotree)
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
 ;;set up company mode
-(load-file "/Users/DewReese/.emacs.d/elpa/company-mode/company.el")
+(add-to-list 'load-path ".emacs.d/elpa/company-mode")
 (require 'company)
 (company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -24,7 +24,7 @@
   '(add-to-list 'company-backends 'company-omnisharp))
 
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
-(setf omnisharp-server-executable-path "/Users/DewReese/Projects/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+(setf omnisharp-server-executable-path ".emacs.d/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
 ;; to use omnisharp type `M-x omnisharp-start-omnisharp-server` and then specify the path to a .sln file (for example unity creates .sln files when it creates projects) this will give auto-complete functionality for c# like visualStudios
 
 ;;
@@ -64,7 +64,7 @@
 
 
 ;;slime, for lisp programming
-(add-to-list 'load-path "/Users/DewReese/quicklisp/dists/quicklisp/software/slime-v2.17")
+(add-to-list 'load-path ".emacs.d/quicklisp/dists/quicklisp/software/slime-v2.17")
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 (require 'slime)

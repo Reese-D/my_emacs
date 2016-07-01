@@ -1,0 +1,27 @@
+use strict;
+use warnings;
+use feature qw(say);
+my $file = 'warrickDepartments.txt';
+open my $warrickDepartments, $file or die "Could not open $file: $!";
+
+my $file2 = 'out.csv';
+open(my $fileout, '>', $file2) or die "Could not open file '$file2' $!";
+
+my $file3 = 'values.csv';
+open my $values, $file3 or die "Could not open $file3: $!";
+
+
+while( my $line = <$warrickDepartments>)  {
+
+    my $total = (split /,/, $line);
+    my $first = $total[0]
+    my $second = $total[1];
+
+    while(my $line2 = <$values>){
+	my $string =~ s/$first/$second/
+    }
+    
+    print $fileout  "INSERT INTO UserAccountPermissions VALUES (" . $line . ")\n";  
+}
+close $info;
+close $fileout;

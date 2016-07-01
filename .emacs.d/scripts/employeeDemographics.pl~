@@ -1,0 +1,24 @@
+use strict;
+use warnings;
+use feature qw(say);
+
+my $filename = "EmployeeUploadProcessingService.cs";
+
+
+
+
+open my $warrickDepartments, '<', $filename or die;
+
+
+while( my $line = <$warrickDepartments>)  {
+
+    if(my $line2 = $line =~ /GetColumnValue\(EmployeeDemographicsColumns\./i){
+	my @total = (split / /, $line);
+	my $second = $total[1];
+	say "LogValue(\"" . $second . "\", " . $second .");"; 
+    }
+}
+
+close $warrickDepartments;
+
+

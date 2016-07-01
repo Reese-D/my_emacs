@@ -1,0 +1,74 @@
+Can't open perl script "~/scripts/printCPreDeclaratCould not open file '~/oldVersion.c' No such file or directory at /Users/DewReese/scripts/printCPreDeclarations.pl line 19.
+shit hit the fan
+static void sigHandler(int signal, siginfo_t *info, void *context);
+chromosomeList createChromosomeList(int chromoLength, int totalOrganisms);
+static void findChromoOffsets(int index, indexOffset *returnVal);
+unsigned long getBits(int index, chromosome *c, int numBits);
+void mutate(chromosome *c, int numChromos, indexOffset inOff);
+static void flipBit(chromosome *c, int index);
+void test_flipBit(chromosomeList *c);
+void test_findChromoOffsets(chromosomeList *c);
+void test_getBits(chromosomeList *c);
+void test_mutate(chromosomeList *c);
+int main(int argc, char *argv[]);
+Can't open perl script "~/scripts/printCPreDeclarations.pl/": No such file or directory
+Can't open perl script "Users/DewReese/scripts/printCPreDeclarations.pl/": No such file or directory
+
+static void sigHandler(int signal, siginfo_t *info, void *context);
+chromosomeList createChromosomeList(int chromoLength, int totalOrganisms);
+static void findChromoOffsets(int index, indexOffset *returnVal);
+unsigned long getBits(int index, chromosome *c, int numBits);
+void mutate(chromosome *c, int numChromos, indexOffset inOff);
+static void flipBit(chromosome *c, int index);
+void test_flipBit(chromosomeList *c);
+void test_findChromoOffsets(chromosomeList *c);
+void test_getBits(chromosomeList *c);
+void test_mutate(chromosomeList *c);
+int main(int argc, char *argv[]);
+Could not open file '~/oldVersion.c' No such file or directory at /Users/DewReese/scripts/printCPreDeclarations.pl line 19.
+shit hit the fan
+static void sigHandler(int signal, siginfo_t *info, void *context);
+chromosomeList createChromosomeList(int chromoLength, int totalOrganisms);
+static void findChromoOffsets(int index, indexOffset *returnVal);
+unsigned long getBits(int index, chromosome *c, int numBits);
+void mutate(chromosome *c, int numChromos, indexOffset inOff);
+static void flipBit(chromosome *c, int index);
+void test_flipBit(chromosomeList *c);
+void test_findChromoOffsets(chromosomeList *c);
+void test_getBits(chromosomeList *c);
+void test_mutate(chromosomeList *c);
+int main(int argc, char *argv[]);
+
+Process predeclare finished
+
+
+
+
+static void sigHandler(int signal, siginfo_t *info, void *context);
+chromosomeList createChromosomeList(int chromoLength, int totalOrganisms);
+static void findChromoOffsets(int index, indexOffset *returnVal);
+unsigned long getBits(int index, chromosome *c, int numBits);
+void mutate(chromosome *c, int numChromos, indexOffset inOff);
+static void flipBit(chromosome *c, int index);
+void test_flipBit(chromosomeList *c);
+void test_findChromoOffsets(chromosomeList *c);
+void test_getBits(chromosomeList *c);
+void test_mutate(chromosomeList *c);
+int main(int argc, char *argv[]);
+
+Process predeclare finished
+
+static void sigHandler(int signal, siginfo_t *info, void *context);
+chromosomeList createChromosomeList(int chromoLength, int totalOrganisms);
+static void findChromoOffsets(int index, indexOffset *returnVal);
+unsigned long getBits(int index, chromosome *c, int numBits);
+void mutate(chromosome *c, int numChromos, indexOffset inOff);
+static void flipBit(chromosome *c, int index);
+void test_flipBit(chromosomeList *c);
+void test_findChromoOffsets(chromosomeList *c);
+void test_getBits(chromosomeList *c);
+void test_mutate(chromosomeList *c);
+int main(int argc, char *argv[]);
+Could not open file '/Users/DewReese/scripts/new.txt' No such file or directory at /Users/DewReese/scripts/printCPreDeclaraCould not open file '/Users/DewReese/scripts/new.txt' No such file or directory at /Users/DewReese/scripts/printCPreDeclarations.pl
+Could not open file '/Users/DewReese/scripts/new.txt' No such file or directory at /Users/DewReese/scripts/printCPreDeclarations.pl line 19.
+shit hit the fan
