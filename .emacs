@@ -1,19 +1,21 @@
-(add-to-list 'load-path ".emacs.d/custom_elisp/")
+(defvar path "~/" "home path")
+(add-to-list 'load-path (concat path ".emacs.d/custom_elisp/"))
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;;add scripts directory to load path, so that .el files are automatically evaluated
-(add-to-list 'load-path ".emacs.d/scripts")
+(add-to-list 'load-path (concat path ".emacs.d/scripts"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+
 ;;set up neotree
-(add-to-list 'load-path ".emacs.d/elpa/neotree")
+(add-to-list 'load-path (concat path ".emacs.d/elpa/neotree"))
 (require 'neotree)
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
 ;;set up company mode
-(add-to-list 'load-path ".emacs.d/elpa/company-mode")
+(add-to-list 'load-path (concat path ".emacs.d/elpa/company-mode"))
 (require 'company)
 (company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -30,7 +32,7 @@
 ;;
 ;; ace jump mode major function
 ;; 
-;(add-to-list 'load-path "/full/path/where/ace-jump-mode.el/in/")
+					;(add-to-list 'load-path "/full/path/where/ace-jump-mode.el/in/")
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -64,7 +66,7 @@
 
 
 ;;slime, for lisp programming
-(add-to-list 'load-path ".emacs.d/quicklisp/dists/quicklisp/software/slime-v2.17")
+(add-to-list 'load-path (concat path ".emacs.d/quicklisp/dists/quicklisp/software/slime-v2.17"))
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 (require 'slime)
@@ -82,7 +84,7 @@
   (interactive "sInsert File Name: ")
   ;;(call-process "perl" nil t t "/Users/DewReese/scripts/printCPreDeclarations.pl" (format "%s" x))
   (call-process-shell-command (format "perl ~/scripts/printCPreDeclarations.pl %s" x) nil t) ;;this can use ~ other can't
-)
+  )
 
 
 
@@ -96,16 +98,16 @@
 
   "Creates a default skeleton structure for a brand new c file"
   "default string?"
-"/*******************************************************************************\n"
-"* Author(s): Reese De Wind\n"
-"* Version: 0.0\n"
-"* Created: " (current-time-string) "\n"
-"*******************************************************************************/\n"
-"\n\n"
-"int main(int argc, char **argv){\n"
-"  return 0;\n"
-"}\n"
-)
+  "/*******************************************************************************\n"
+  "* Author(s): Reese De Wind\n"
+  "* Version: 0.0\n"
+  "* Created: " (current-time-string) "\n"
+  "*******************************************************************************/\n"
+  "\n\n"
+  "int main(int argc, char **argv){\n"
+  "  return 0;\n"
+  "}\n"
+  )
 
 (define-auto-insert "\\.\\([Cc]\\|cc\\|cpp\\)\\'" 'c-skeleton)
 
@@ -148,10 +150,10 @@
 
 ;;copies the buffers current file path
 (defun filename ()
-    "Copy the full path of the current buffer."
+  "Copy the full path of the current buffer."
 
-    (interactive)
-    (kill-new (buffer-file-name (window-buffer (minibuffer-selected-window)))))
+  (interactive)
+  (kill-new (buffer-file-name (window-buffer (minibuffer-selected-window)))))
 
 (global-set-key (kbd "C-c v") 'filename)
 ;;works with predeclare, to use the current filename as the file to get predeclarations from
@@ -177,17 +179,21 @@
 
 ;;lets call some functions so we don't have to call them everytime we start emacs
 
-;(delete-other-windows)
-;(split-window-right nil)
-;(other-window 1)
-;(other-window 1)
-;(delete-window)
+					;(delete-other-windows)
+					;(split-window-right nil)
+					;(other-window 1)
+					;(other-window 1)
+					;(delete-window)
 (toggle-fullscreen)
 (setq inhibit-startup-message t)
-;(ansi-term "bash")
-;(other-window 1)
+					;(ansi-term "bash")
+					;(other-window 1)
 (put 'upcase-region 'disabled nil)
 
 
 ;;when using git with emacs, the command    find . ! -name "*.cs~" | xargs git add
-;could be very useful, checkout specific directories you don't want, and then add everything except the temporary files ending in ~
+					;could be very useful, checkout specific directories you don't want, and then add everything except the temporary files ending in ~
+
+
+
+
