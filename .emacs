@@ -1,4 +1,4 @@
-(defvar path "~/" "home path")
+(defvar path "~/my_emacs" "home path")
 (add-to-list 'load-path (concat path ".emacs.d/custom_elisp/"))
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
