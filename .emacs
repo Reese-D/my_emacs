@@ -1,4 +1,4 @@
-(defvar path "~/my_emacs" "home path")
+(defvar path "~/my_emacs/" "home path")
 (add-to-list 'load-path (concat path ".emacs.d/custom_elisp/"))
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -66,7 +66,7 @@
 
 
 ;;slime, for lisp programming
-(add-to-list 'load-path (concat path ".emacs.d/quicklisp/dists/quicklisp/software/slime-v2.17"))
+(add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 (require 'slime)
@@ -114,6 +114,7 @@
 ;;enables auto insert mode so it doesn't have to be done manually
 (auto-insert-mode)
 
+(add-to-list 'load-path (concat path ".emacs.d/elpa/zen-and-art-theme-20120622.737"))
 (require 'zenburn-theme)
 (global-linum-mode t)
 
@@ -121,7 +122,7 @@
   (interactive)
   (set-frame-parameter nil 'fullscreen 'fullboth) ;this makes the frame go fullscreen
   (tool-bar-mode -1) ;these 3 lines turn off GUI junk
-  (scroll-bar-mode -1)
+  ;(scroll-bar-mode -1)
   (menu-bar-mode -1))
 
 (defun my-non-fullscreen ()
@@ -160,6 +161,7 @@
 (global-set-key (kbd "C-c C-x c") (kbd "C-c v C-c x C-y"))
 
 ;;multiple cursor stuff, neat.
+(add-to-list 'load-path (concat path ".emacs.d/elpa/multiple-cursors-20160304.659"))
 (require 'multiple-cursors)
 (global-set-key (kbd "C-c s") 'mc/edit-lines)
 (global-set-key (kbd "C-c n") 'mc/mark-next-like-this)
@@ -193,6 +195,12 @@
 
 ;;when using git with emacs, the command    find . ! -name "*.cs~" | xargs git add
 					;could be very useful, checkout specific directories you don't want, and then add everything except the temporary files ending in ~
+
+
+
+
+
+
 
 
 
