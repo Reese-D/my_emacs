@@ -14,6 +14,10 @@
 (require 'neotree)
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
+;;set up web-mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/web-mode"))
+(require 'web-mode)
+
 ;;set up company mode
 (add-to-list 'load-path (concat path ".emacs.d/elpa/company-mode"))
 (require 'company)
