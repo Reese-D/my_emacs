@@ -32,7 +32,7 @@
 ;;
 ;; ace jump mode major function
 ;; 
-					;(add-to-list 'load-path "/full/path/where/ace-jump-mode.el/in/")
+(add-to-list 'load-path (concat path ".emacs.d/elpa/ace-jump-mode-20140616.115"))
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -54,8 +54,8 @@
    (quote
     ("afbb40954f67924d3153f27b6d3399df221b2050f2a72eb2cfa8d29ca783c5a8" "e696d2fe3f4756b23eec2eb6612f0b7c8c030e83890df7cf17962fe65f9a0bab" "109aac1dc8c781bfb31dc83da4f6f5540b9e1b32091456587c3f593ffdfad798" "36f0869b32ef5772302957ce4b72eab9502c16a424c0d821ed7f7d895263065f" "868f73b5cf78e72ca2402e1d48675e49cc9a9619c5544af7bf216515d22b58e7" "e871b9a4e0aa6d8ab6e6f819e29950009e3a793104d75bf4506acee03ccfbf1e" "dff47c08aef5d9367cc26f18ccb30694420ee18f184b475c45e230574d49f07e" default)))
  '(ediff-diff-program "/usr/bin/diff")
- '(ns-function-modifier (quote super))
- '(ns-right-command-modifier (quote meta))
+;; '(ns-function-modifier (quote super))
+;; '(ns-right-command-modifier (quote meta))
  '(package-selected-packages (quote (slime multiple-cursors evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -89,7 +89,7 @@
 
 
 
-(setq ns-command-modifier 'meta)
+(setq mac-option-modifier 'meta)
 
 
 
@@ -114,7 +114,7 @@
 ;;enables auto insert mode so it doesn't have to be done manually
 (auto-insert-mode)
 
-(add-to-list 'load-path (concat path ".emacs.d/elpa/zen-and-art-theme-20120622.737"))
+(add-to-list 'load-path (concat path ".emacs.d/elpa/zenburn-theme-2.4"))
 (require 'zenburn-theme)
 (global-linum-mode t)
 
