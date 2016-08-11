@@ -1,0 +1,11 @@
+git remote add (remote_name : pick whatever) (url: url of repository)
+git subtree add -P path/to/new/subproject (remote_name) master
+git commit -am "Added subproject"
+
+
+//if you want to pull subproject changes
+git subtree pull -P path/to/supbroject (remote_name) master
+
+
+//or if you want to push to a subtree, if you're allowed to push to it of course
+git subtree push -P path/to/subproject (remote_name) new_branch_name
