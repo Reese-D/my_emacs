@@ -15,8 +15,19 @@
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
 ;;set up web-mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/web-mode"))
-(require 'web-mode)
+;(add-to-list 'load-path (concat path ".emacs.d/elpa/web-mode"))
+;(require 'web-mode)
+
+(add-to-list 'load-path (concat path ".emacs.d/elpa/eruby-mode"))
+(require 'eruby-mode)
+
+
+(add-to-list 'load-path (concat path ".emacs.d/elpa/jump"))
+(require 'jump)
+p
+;set up rinari
+(add-to-list 'load-path (concat path ".emacs.d/elpa/rinari"))
+(require 'rinari)
 
 ;;set up company mode
 (add-to-list 'load-path (concat path ".emacs.d/elpa/company-mode"))
