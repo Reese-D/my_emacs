@@ -25,6 +25,10 @@
 (add-to-list 'load-path (concat path ".emacs.d/elpa/jump"))
 (require 'jump)
 
+;add in inf-ruby so that jump can work
+(add-to-list 'load-path (concat path ".emacs.d/elpa/inf-ruby"))
+(require 'inf-ruby)
+
 ;set up rinari
 (add-to-list 'load-path (concat path ".emacs.d/elpa/rinari"))
 (require 'rinari)
