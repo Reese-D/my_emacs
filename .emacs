@@ -18,13 +18,13 @@
 ;(add-to-list 'load-path (concat path ".emacs.d/elpa/web-mode"))
 ;(require 'web-mode)
 
-(add-to-list 'load-path (concat path ".emacs.d/elpa/eruby-mode"))
-(require 'eruby-mode)
+;(add-to-list 'load-path (concat path ".emacs.d/elpa/eruby-mode"))
+;(require 'eruby-mode)
 
 
 (add-to-list 'load-path (concat path ".emacs.d/elpa/jump"))
 (require 'jump)
-p
+
 ;set up rinari
 (add-to-list 'load-path (concat path ".emacs.d/elpa/rinari"))
 (require 'rinari)
