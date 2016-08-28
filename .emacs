@@ -21,6 +21,9 @@
 ;(add-to-list 'load-path (concat path ".emacs.d/elpa/eruby-mode"))
 ;(require 'eruby-mode)
 
+;rails minor mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/emacs-rails-reloaded"))
+(require 'rails-autoload)
 
 (add-to-list 'load-path (concat path ".emacs.d/elpa/jump"))
 (require 'jump)
