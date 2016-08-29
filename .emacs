@@ -14,7 +14,7 @@
 (require 'neotree)
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
-;;set up web-mode
+;;set up web-mode C-c C-f to fold code, C-c C-n to jump to open/closing tags if at front
 (add-to-list 'load-path (concat path ".emacs.d/elpa/web-mode"))
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
