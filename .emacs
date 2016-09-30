@@ -16,6 +16,8 @@
 ;;git submodule update --init --recursive
 ;;xbuild
 ;;omnisharp.exe -s path/to/sln
+
+
 ;;setup popup for omnisharp
 (add-to-list 'load-path (concat path ".emacs.d/elpa/popup"))
 (require 'popup)
@@ -23,6 +25,11 @@
 ;;setup dash for omnisharp
 (add-to-list 'load-path (concat path ".emacs.d/elpa/dash"))
 (require 'dash)
+
+;;setup flycheck for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/flycheck"))
+(require 'flycheck)
+
 
 ;;setup omnisharp
 (add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
