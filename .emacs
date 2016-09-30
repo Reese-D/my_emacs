@@ -12,6 +12,8 @@
 ;;set up projectile
 (add-to-list 'load-path (concat path ".emacs.d/elpa/projectile"))
 (require 'projectile)
+(projectile-global-mode)
+
 
 ;;set up flymake
 (add-to-list 'load-path (concat path ".emacs.d/elpa/flymake"))
