@@ -17,10 +17,14 @@
 ;;xbuild
 ;;omnisharp.exe -s path/to/sln
 
+;;setup dash for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/dash"))
+(require 'dash)
+
 ;;setup omnisharp
-(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp-20151210.1114"))
-(require 'omnisharp)
-(add-hook 'csharp-mode-hook 'omnisharp-mode)
+;(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
+;(require 'omnisharp)
+;(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 ;;set up yasnippet
 (add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
