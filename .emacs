@@ -15,6 +15,10 @@
 ;;git submodule update --init --recursive
 ;;xbuild
 
+;;setup omnisharp
+;;(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
+;;(require 'omnisharp)
+
 ;;set up yasnippet
 (add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
 (require 'yasnippet)
