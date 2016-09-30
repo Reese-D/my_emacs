@@ -17,6 +17,9 @@
 ;;xbuild
 ;;omnisharp.exe -s path/to/sln
 
+;;setup s for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/s"))
+(require 's)
 
 ;;setup popup for omnisharp
 (add-to-list 'load-path (concat path ".emacs.d/elpa/popup"))
