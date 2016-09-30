@@ -8,6 +8,10 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+;;set up yasnippet
+(add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;;set up projectile
 (add-to-list 'load-path (concat path ".emacs.d/elpa/projectile"))
