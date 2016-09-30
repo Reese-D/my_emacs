@@ -16,15 +16,18 @@
 ;;git submodule update --init --recursive
 ;;xbuild
 ;;omnisharp.exe -s path/to/sln
+;;setup popup for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/popup"))
+(require 'popup)
 
 ;;setup dash for omnisharp
 (add-to-list 'load-path (concat path ".emacs.d/elpa/dash"))
 (require 'dash)
 
 ;;setup omnisharp
-;(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
-;(require 'omnisharp)
-;(add-hook 'csharp-mode-hook 'omnisharp-mode)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
+(require 'omnisharp)
+(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 ;;set up yasnippet
 (add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
