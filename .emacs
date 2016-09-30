@@ -9,6 +9,29 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 
+;;set up projectile
+(add-to-list 'load-path (concat path ".emacs.d/elpa/projectile"))
+(require 'projectile)
+
+;;set up flymake
+(add-to-list 'load-path (concat path ".emacs.d/elpa/flymake"))
+(require 'flymake)
+;; Let's run 8 checks at once instead.
+(setq flymake-max-parallel-syntax-checks 8)
+;; I want to see at most the first 4 errors for a line.
+(setq flymake-number-of-errors-to-display 4)
+
+
+;;set up cSharpMode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/cSharpMode"))
+(require 'csharp-mode)
+(defun my-csharp-mode-hook ()
+  ;; enable the stuff you want for C# here
+  (electric-pair-mode 1)       ;; Emacs 24
+  (electric-pair-local-mode 1) ;; Emacs 25
+  )
+(add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
+
 ;;set up neotree
 (add-to-list 'load-path (concat path ".emacs.d/elpa/neotree"))
 (require 'neotree)
