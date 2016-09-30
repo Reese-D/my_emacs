@@ -11,13 +11,16 @@
 ;;set up omnisharp server 
 ;;requires mono, must be compiled 
 ;;compile with following 
+;;git clone (add-hook 'csharp-mode-hook 'omnisharp-mode) 
 ;;cd omnisharp-server
 ;;git submodule update --init --recursive
 ;;xbuild
+;;omnisharp.exe -s path/to/sln
 
 ;;setup omnisharp
-;;(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
-;;(require 'omnisharp)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp-20151210.1114"))
+(require 'omnisharp)
+(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 ;;set up yasnippet
 (add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
