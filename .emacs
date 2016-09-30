@@ -23,7 +23,7 @@
 
 
 ;;set up cSharpMode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/cSharpMode"))
+(add-to-list 'load-path (concat path ".emacs.d/elpa/csharp-mode"))
 (require 'csharp-mode)
 (defun my-csharp-mode-hook ()
   ;; enable the stuff you want for C# here
