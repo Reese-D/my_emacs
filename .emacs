@@ -8,6 +8,13 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+;;set up omnisharp server 
+;;requires mono, must be compiled 
+;;compile with following 
+;;cd omnisharp-server
+;;git submodule update --init --recursive
+;;xbuild
+
 ;;set up yasnippet
 (add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
 (require 'yasnippet)
