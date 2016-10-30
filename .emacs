@@ -8,8 +8,12 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+;;set up sbt-mode (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/sbt-mode"))
+(require 'sbt-mode)
 
-;;set up scala-mode (for scala mode ensime)
+
+;;set up popup (for scala mode ensime)
 (add-to-list 'load-path (concat path ".emacs.d/elpa/popup-20160409.2133"))
 (require 'popup)
 
