@@ -8,6 +8,15 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+
+;;set up scala-mode (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/popup-20160409.2133"))
+(require 'popup)
+
+;;set up scala-mode (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/scala-mode-ensime"))
+(require 'scala-mode)
+
 ;;set up dash (for scala mode ensime)
 (add-to-list 'load-path (concat path ".emacs.d/elpa/dash-20160306.1222"))
 (require 'dash)
