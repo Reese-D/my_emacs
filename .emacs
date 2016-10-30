@@ -112,7 +112,7 @@
   (setq last-prefix-arg '(4))
   (interactive "sInsert File Name: ")
   ;;(call-process "perl" nil t t "/Users/DewReese/scripts/printCPreDeclarations.pl" (format "%s" x))
-  (call-process-shell-command (format "perl ~/scripts/printCPreDeclarations.pl %s" x) nil t) ;;this can use ~ other can't
+  (call-process-shell-command (format "perl ~/my_emacs/.emacs.d/scripts/printCPreDeclarations.pl %s" x) nil t) ;;this can use ~ other can't
   )
 
 
