@@ -8,6 +8,14 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+;;set up dash (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/dash-20160306.1222"))
+(require 'dash)
+
+;;set up s (for scala)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/s-20160429.727"))
+(require 's)
+
 ;;set up yasnippet
 (add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
 (require 'yasnippet)
@@ -129,6 +137,10 @@
 (setq slime-contribs '(slime-fancy))
 (require 'slime)
 
+
+;;set up ensime scala mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/scala_mode"))
+(require 'ensime)
 
 ;;evil mode, if ever uncommented
 ;; (require 'evil)
