@@ -8,6 +8,9 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+;;this wiill indent switch statements in c
+(c-set-offset 'case-label '+)
+
 ;;set up sbt-mode (for scala mode ensime)
 (add-to-list 'load-path (concat path ".emacs.d/elpa/sbt-mode"))
 (require 'sbt-mode)
