@@ -15,6 +15,13 @@
 (add-to-list 'load-path (concat path ".emacs.d/elpa/sbt-mode"))
 (require 'sbt-mode)
 
+;;glsl-mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/glsl-mode"))
+(require 'glsl-mode)
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
 
 ;;set up popup (for scala mode ensime)
 (add-to-list 'load-path (concat path ".emacs.d/elpa/popup-20160409.2133"))
@@ -200,10 +207,12 @@
 ;;enables auto insert mode so it doesn't have to be done manually
 (auto-insert-mode)
 
-(add-to-list 'load-path (concat path ".emacs.d/elpa/zenburn-theme-2.4"))
-(require 'zenburn-theme)
-(global-linum-mode t)
+;; (add-to-list 'load-path (concat path ".emacs.d/elpa/zenburn-theme-2.4"))
+;; (require 'zenburn-theme)
+;; (global-linum-mode t)
 
+;;add wombat theme instead of zenburn
+(load-theme 'wombat)
 (defun my-fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen 'fullboth) ;this makes the frame go fullscreen
