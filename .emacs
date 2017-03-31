@@ -1,3 +1,7 @@
+;;useful tips
+;;C-h k --type this then any other command, and it will tell you the name of the command assigned to that hotkey as well as a description
+;;C-h w --reverse of C-h k, type in the name of any command and it will tell you the keybinding for it
+
 (defvar path "~/my_emacs/" "home path")
 (add-to-list 'load-path (concat path ".emacs.d/custom_elisp/"))
 (require 'package)
@@ -149,6 +153,13 @@
 ;;requires 'f, 's, 'etags, 'dash, 'popup
 (add-to-list 'load-path (concat path ".emacs.d/elpa/dumb_jump"))
 (require 'dumb-jump)
+(global-set-key (kbd "M-i") nil);; Remove the old keybinding tab-to-tab-stop
+(global-set-key (kbd "M-i i") 'dumb-jump-go)
+(global-set-key (kbd "M-i b") 'dumb-jump-back)
+(global-set-key (kbd "M-i q") 'dumb-jump-quick-look)
+(global-set-key (kbd "M-i o") 'dumb-jump-go-other-window)
+(global-set-key (kbd "M-i e") 'dumb-jump-go-prefer-external)
+(global-set-key (kbd "M-i w") 'dumb-jump-go-prefer-external-other-window)
 
 ;;set up omnisharp
 (eval-after-load 'company
