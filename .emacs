@@ -141,6 +141,14 @@
 (company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;;f, required for dumb-jump
+(add-to-list 'load-path (concat path ".emacs.d/elpa/f"))
+(require 'f)
+
+;;dumb-jump
+;;requires 'f, 's, 'etags, 'dash, 'popup
+(add-to-list 'load-path (concat path ".emacs.d/elpa/dumb_jump"))
+(require 'dumb-jump)
 
 ;;set up omnisharp
 (eval-after-load 'company
