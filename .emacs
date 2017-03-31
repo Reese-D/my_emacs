@@ -8,6 +8,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+
 ;;set up omnisharp server 
 ;;requires mono, must be compiled 
 ;;compile with following 
@@ -38,6 +39,37 @@
 (add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
 (require 'omnisharp)
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
+
+;;this wiill indent switch statements in c
+(c-set-offset 'case-label '+)
+
+;;set up sbt-mode (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/sbt-mode"))
+(require 'sbt-mode)
+
+;;glsl-mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/glsl-mode"))
+(require 'glsl-mode)
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
+
+;;set up popup (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/popup-20160409.2133"))
+(require 'popup)
+
+;;set up scala-mode (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/scala-mode-ensime"))
+(require 'scala-mode)
+
+;;set up dash (for scala mode ensime)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/dash-20160306.1222"))
+(require 'dash)
+
+;;set up s (for scala)
+(add-to-list 'load-path (concat path ".emacs.d/elpa/s-20160429.727"))
+(require 's)
 
 ;;set up yasnippet
 (add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
@@ -161,6 +193,10 @@
 (require 'slime)
 
 
+;;set up ensime scala mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/scala_mode"))
+(require 'ensime)
+
 ;;evil mode, if ever uncommented
 ;; (require 'evil)
 ;;(evil-mode t)
@@ -172,7 +208,7 @@
   (setq last-prefix-arg '(4))
   (interactive "sInsert File Name: ")
   ;;(call-process "perl" nil t t "/Users/DewReese/scripts/printCPreDeclarations.pl" (format "%s" x))
-  (call-process-shell-command (format "perl ~/scripts/printCPreDeclarations.pl %s" x) nil t) ;;this can use ~ other can't
+  (call-process-shell-command (format "perl ~/my_emacs/.emacs.d/scripts/printCPreDeclarations.pl %s" x) nil t) ;;this can use ~ other can't
   )
 
 
@@ -203,10 +239,12 @@
 ;;enables auto insert mode so it doesn't have to be done manually
 (auto-insert-mode)
 
-(add-to-list 'load-path (concat path ".emacs.d/elpa/zenburn-theme-2.4"))
-(require 'zenburn-theme)
-(global-linum-mode t)
+;; (add-to-list 'load-path (concat path ".emacs.d/elpa/zenburn-theme-2.4"))
+;; (require 'zenburn-theme)
+;; (global-linum-mode t)
 
+;;add wombat theme instead of zenburn
+(load-theme 'wombat)
 (defun my-fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen 'fullboth) ;this makes the frame go fullscreen
