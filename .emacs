@@ -18,6 +18,9 @@
 (add-to-list 'load-path (concat path ".emacs.d/elpa/sbt-mode"))
 (require 'sbt-mode)
 
+;;haskell_mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/haskell_mode"))
+(require 'haskell-mode)
 
 ;;transpose-frame
 (add-to-list 'load-path (concat path ".emacs.d/elpa/transpose-frame"))
