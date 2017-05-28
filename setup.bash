@@ -1,3 +1,4 @@
+#/bin/bash!
 if [[ -z $(cat ~/.emacs | grep -i "(load-file \"~/my_emacs/.emacs\")") ]]; then
    cat setup_file >> ~/.emacs
 else

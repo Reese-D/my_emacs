@@ -1,3 +1,7 @@
+;;useful tips
+;;C-h k --type this then any other command, and it will tell you the name of the command assigned to that hotkey as well as a description
+;;C-h w --reverse of C-h k, type in the name of any command and it will tell you the keybinding for it
+
 (defvar path "~/my_emacs/" "home path")
 (add-to-list 'load-path (concat path ".emacs.d/custom_elisp/"))
 (require 'package)
@@ -8,8 +12,41 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+
 ;;make c indent 4 by default instead of 2
 (setq-default c-basic-offset 4)
+
+;;set up omnisharp server 
+;;requires mono, must be compiled 
+;;compile with following 
+;;git clone (add-hook 'csharp-mode-hook 'omnisharp-mode) 
+;;cd omnisharp-server
+;;git submodule update --init --recursive
+;;xbuild
+;;omnisharp.exe -s path/to/sln
+
+;;setup s for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/s"))
+(require 's)
+
+;;setup popup for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/popup"))
+(require 'popup)
+
+;;setup dash for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/dash"))
+(require 'dash)
+
+;;setup flycheck for omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/flycheck"))
+(require 'flycheck)
+
+
+;;setup omnisharp
+(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
+(require 'omnisharp)
+(add-hook 'csharp-mode-hook 'omnisharp-mode)
+
 
 ;;this wiill indent switch statements in c
 (c-set-offset 'case-label '+)
@@ -120,6 +157,21 @@
 (company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;;f, required for dumb-jump
+(add-to-list 'load-path (concat path ".emacs.d/elpa/f"))
+(require 'f)
+
+;;dumb-jump
+;;requires 'f, 's, 'etags, 'dash, 'popup
+(add-to-list 'load-path (concat path ".emacs.d/elpa/dumb_jump"))
+(require 'dumb-jump)
+(global-set-key (kbd "M-i") nil);; Remove the old keybinding tab-to-tab-stop
+(global-set-key (kbd "M-i i") 'dumb-jump-go)
+(global-set-key (kbd "M-i b") 'dumb-jump-back)
+(global-set-key (kbd "M-i q") 'dumb-jump-quick-look)
+(global-set-key (kbd "M-i o") 'dumb-jump-go-other-window)
+(global-set-key (kbd "M-i e") 'dumb-jump-go-prefer-external)
+(global-set-key (kbd "M-i w") 'dumb-jump-go-prefer-external-other-window)
 
 ;;set up omnisharp
 (eval-after-load 'company
