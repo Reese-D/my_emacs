@@ -8,12 +8,20 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
+;;make c indent 4 by default instead of 2
+(setq-default c-basic-offset 4)
+
 ;;this wiill indent switch statements in c
 (c-set-offset 'case-label '+)
 
 ;;set up sbt-mode (for scala mode ensime)
 (add-to-list 'load-path (concat path ".emacs.d/elpa/sbt-mode"))
 (require 'sbt-mode)
+
+
+;;transpose-frame
+(add-to-list 'load-path (concat path ".emacs.d/elpa/transpose-frame"))
+(require 'transpose-frame)
 
 ;;glsl-mode
 (add-to-list 'load-path (concat path ".emacs.d/elpa/glsl-mode"))
@@ -156,7 +164,7 @@
 
 ;;slime, for lisp programming
 (add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 (require 'slime)
 
