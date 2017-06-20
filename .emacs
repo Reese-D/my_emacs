@@ -25,11 +25,18 @@
 ;;xbuild
 ;;omnisharp.exe -s path/to/sln
 
+;;required by pkg-info
+(add-to-list 'load-path (concat path ".emacs.d/elpa/epl"))
+(require 'epl)
+
+;;required by elixir major mode
+(add-to-list 'load-path (concat path ".emacs.d/elpa/pkg-info"))
+(require 'pkg-info)
 
 ;;elixir major mode
-(unless (package-installed-p 'elixir-mode)
-  (package-install 'elixir-mode))
-
+(add-to-list 'load-path (concat path ".emacs.d/elpa/elixir-major-mode"))
+(require 'elixir-mode)
+	 
 ;;setup s for omnisharp
 (add-to-list 'load-path (concat path ".emacs.d/elpa/s"))
 (require 's)
