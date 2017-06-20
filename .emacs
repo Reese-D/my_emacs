@@ -25,6 +25,11 @@
 ;;xbuild
 ;;omnisharp.exe -s path/to/sln
 
+
+;;elixir major mode
+(unless (package-installed-p 'elixir-mode)
+  (package-install 'elixir-mode))
+
 ;;setup s for omnisharp
 (add-to-list 'load-path (concat path ".emacs.d/elpa/s"))
 (require 's)
@@ -57,8 +62,8 @@
 
 ;;haskell_mode
 (add-to-list 'load-path (concat path ".emacs.d/elpa/haskell_mode"))
-(require 'haskell-mode)
-
+(require 'haskell-mode-autoloads)
+(add-to-list 'Info-default-directory-list ".emacs.d/elpa/haskell_mode")
 ;;transpose-frame
 (add-to-list 'load-path (concat path ".emacs.d/elpa/transpose-frame"))
 (require 'transpose-frame)
