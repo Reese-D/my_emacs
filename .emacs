@@ -3,6 +3,7 @@
 ;;C-h w --reverse of C-h k, type in the name of any command and it will tell you the keybinding for it
 
 (defvar path "~/my_emacs/" "home path")
+(defvar elpa-path ".emacs.d/elpa")
 (add-to-list 'load-path (concat path ".emacs.d/custom_elisp/"))
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -16,112 +17,88 @@
 ;;make c indent 4 by default instead of 2
 (setq-default c-basic-offset 4)
 
-;;set up omnisharp server 
-;;requires mono, must be compiled 
-;;compile with following 
-;;git clone (add-hook 'csharp-mode-hook 'omnisharp-mode) 
-;;cd omnisharp-server
-;;git submodule update --init --recursive
-;;xbuild
-;;omnisharp.exe -s path/to/sln
 
-;;required by pkg-info
-(add-to-list 'load-path (concat path ".emacs.d/elpa/epl"))
-(require 'epl)
+;;macros to help with code reuse
+(defmacro add-to-include (str)
+  `(add-to-list 'load-path (concat path ,"/" elpa-path ,"/" ,str)))
 
-;;required by elixir major mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/pkg-info"))
-(require 'pkg-info)
+(defmacro add-and-require (path pkg-name)
+  `(progn
+     (add-to-include ,path)
+     (require ,pkg-name)))
 
-;;elixir major mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/elixir-major-mode"))
-(require 'elixir-mode)
-	 
-;;setup s for omnisharp
-(add-to-list 'load-path (concat path ".emacs.d/elpa/s"))
-(require 's)
+(defun add-and-require-multiple (&rest item)
+  (dotimes (i (/ (length item) 2))
+    (add-and-require (pop item) (pop item))))
 
-;;setup popup for omnisharp
-(add-to-list 'load-path (concat path ".emacs.d/elpa/popup"))
-(require 'popup)
+;;;no 'do' in elisp?
+;; (defun add-and-require-multiple  (&rest item)
+;;   (do ((current (pop item) (pop item)))
+;;       ((< (length item) 1) NIL)
+;;       (add-and-require current (pop item))))
 
-;;setup dash for omnisharp
-(add-to-list 'load-path (concat path ".emacs.d/elpa/dash"))
-(require 'dash)
+;;;no 'loop' either?? :(
+;; (defun add-and-require-multiple (&rest item)
+;;   (loop
+;;        (when (< (length item) 2)
+;; 	 (return))
+;;        (add-and-require current (pop item) )))
+     
+(add-and-require-multiple "epl" 'epl
+			  "pkg-info" 'pkg-info
+			  "elixir-major-mode" 'elixir-mode
+			  "s" 's
+			  "popup" 'popup
+			  "dash" 'dash
+			  "flycheck" 'flycheck
+			  "omnisharp" 'omnisharp
+			  "sbt-mode" 'sbt-mode
+			  "haskell_mode" 'haskell-mode-autoloads
+			  "transpose-frame" 'transpose-frame
+			  "glsl-mode" 'glsl-mode
+			  "popup-20160409.2133" 'popup
+			  "scala-mode-ensime" 'scala-mode
+			  "projectile" 'projectile
+			  "flymake" 'flymake
+			  "csharp-mode" 'csharp-mode
+			  "neotree" 'neotree
+			  "yasnippet" 'yasnippet
+			  "web-mode" 'web-mode
+			  "emacs-rails-reloaded" 'rails-autoload
+			  "jump" 'jump
+			  "inf-ruby" 'inf-ruby
+			  "rinari" 'rinari
+			  "company-mode" 'company
+			  "f" 'f
+			  "dumb_jump" 'dumb-jump
+			  "multiple-cursors-20160304.659" 'multiple-cursors)
+			  
+(add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
+(require 'slime)
 
-;;setup flycheck for omnisharp
-(add-to-list 'load-path (concat path ".emacs.d/elpa/flycheck"))
-(require 'flycheck)
-
-
-;;setup omnisharp
-(add-to-list 'load-path (concat path ".emacs.d/elpa/omnisharp"))
-(require 'omnisharp)
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 
-;;this wiill indent switch statements in c
+;;this will indent switch statements in c
 (c-set-offset 'case-label '+)
 
-;;set up sbt-mode (for scala mode ensime)
-(add-to-list 'load-path (concat path ".emacs.d/elpa/sbt-mode"))
-(require 'sbt-mode)
-
-;;haskell_mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/haskell_mode"))
-(require 'haskell-mode-autoloads)
-(add-to-list 'Info-default-directory-list ".emacs.d/elpa/haskell_mode")
-;;transpose-frame
-(add-to-list 'load-path (concat path ".emacs.d/elpa/transpose-frame"))
-(require 'transpose-frame)
-
-;;glsl-mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/glsl-mode"))
-(require 'glsl-mode)
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
 
-;;set up popup (for scala mode ensime)
-(add-to-list 'load-path (concat path ".emacs.d/elpa/popup-20160409.2133"))
-(require 'popup)
 
-;;set up scala-mode (for scala mode ensime)
-(add-to-list 'load-path (concat path ".emacs.d/elpa/scala-mode-ensime"))
-(require 'scala-mode)
 
-;;set up dash (for scala mode ensime)
-(add-to-list 'load-path (concat path ".emacs.d/elpa/dash-20160306.1222"))
-(require 'dash)
-
-;;set up s (for scala)
-(add-to-list 'load-path (concat path ".emacs.d/elpa/s-20160429.727"))
-(require 's)
-
-;;set up yasnippet
-(add-to-list 'load-path (concat path ".emacs.d/elpa/yasnippet"))
-(require 'yasnippet)
 (yas-global-mode 1)
-
-;;set up projectile
-(add-to-list 'load-path (concat path ".emacs.d/elpa/projectile"))
-(require 'projectile)
 (projectile-global-mode)
 
 
-;;set up flymake
-(add-to-list 'load-path (concat path ".emacs.d/elpa/flymake"))
-(require 'flymake)
 ;; Let's run 8 checks at once instead.
 (setq flymake-max-parallel-syntax-checks 8)
 ;; I want to see at most the first 4 errors for a line.
 (setq flymake-number-of-errors-to-display 4)
 
 
-;;set up cSharpMode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/csharp-mode"))
-(require 'csharp-mode)
 (defun my-csharp-mode-hook ()
   ;; enable the stuff you want for C# here
   (electric-pair-mode 1)       ;; Emacs 24
@@ -129,14 +106,9 @@
   )
 (add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
 
-;;set up neotree
-(add-to-list 'load-path (concat path ".emacs.d/elpa/neotree"))
-(require 'neotree)
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
 ;;set up web-mode C-c C-f to fold code, C-c C-n to jump to open/closing tags if at front
-(add-to-list 'load-path (concat path ".emacs.d/elpa/web-mode"))
-(require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -145,38 +117,9 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
-;(add-to-list 'load-path (concat path ".emacs.d/elpa/eruby-mode"))
-;(require 'eruby-mode)
-
-;rails minor mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/emacs-rails-reloaded"))
-(require 'rails-autoload)
-
-(add-to-list 'load-path (concat path ".emacs.d/elpa/jump"))
-(require 'jump)
-
-;add in inf-ruby so that jump can work
-(add-to-list 'load-path (concat path ".emacs.d/elpa/inf-ruby"))
-(require 'inf-ruby)
-
-;set up rinari
-(add-to-list 'load-path (concat path ".emacs.d/elpa/rinari"))
-(require 'rinari)
-
-;;set up company mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/company-mode"))
-(require 'company)
 (company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
-;;f, required for dumb-jump
-(add-to-list 'load-path (concat path ".emacs.d/elpa/f"))
-(require 'f)
-
-;;dumb-jump
-;;requires 'f, 's, 'etags, 'dash, 'popup
-(add-to-list 'load-path (concat path ".emacs.d/elpa/dumb_jump"))
-(require 'dumb-jump)
 (global-set-key (kbd "M-i") nil);; Remove the old keybinding tab-to-tab-stop
 (global-set-key (kbd "M-i i") 'dumb-jump-go)
 (global-set-key (kbd "M-i b") 'dumb-jump-back)
@@ -230,20 +173,8 @@
 
 
 ;;slime, for lisp programming
-(add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
-(require 'slime)
-
-
-;;set up ensime scala mode
-(add-to-list 'load-path (concat path ".emacs.d/elpa/scala_mode"))
-(require 'ensime)
-
-;;evil mode, if ever uncommented
-;; (require 'evil)
-;;(evil-mode t)
-
 
 
 ;;Predeclare c stuff macro, loads a perl script that finds all functions and creates predeclarations for them
@@ -254,12 +185,7 @@
   (call-process-shell-command (format "perl ~/my_emacs/.emacs.d/scripts/printCPreDeclarations.pl %s" x) nil t) ;;this can use ~ other can't
   )
 
-
-
-
 (setq mac-option-modifier 'meta)
-
-
 
 ;;defines a c skeleton structure
 (define-skeleton c-skeleton
@@ -330,9 +256,6 @@
 ;;works with predeclare, to use the current filename as the file to get predeclarations from
 (global-set-key (kbd "C-c C-x c") (kbd "C-c v C-c x C-y"))
 
-;;multiple cursor stuff, neat.
-(add-to-list 'load-path (concat path ".emacs.d/elpa/multiple-cursors-20160304.659"))
-(require 'multiple-cursors)
 (global-set-key (kbd "C-c s") 'mc/edit-lines)
 (global-set-key (kbd "C-c n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-c p") 'mc/mark-previous-like-this)
