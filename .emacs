@@ -71,7 +71,10 @@
 			  "company-mode" 'company
 			  "f" 'f
 			  "dumb_jump" 'dumb-jump
-			  "multiple-cursors-20160304.659" 'multiple-cursors)
+			  "multiple-cursors-20160304.659" 'multiple-cursors
+			  "with-editor" 'with-editor
+			  "magit-popup" 'magit-popup
+			  "magit" 'magit)
 			  
 (add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
 (require 'slime)
