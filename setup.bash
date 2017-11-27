@@ -4,4 +4,7 @@ if [[ -z $(cat ~/.emacs | grep -i "(load-file \"~/my_emacs/.emacs\")") ]]; then
 else
      cat ~/.emacs | grep -i "(load-file \"~/my_emacs/.emacs\")"
 fi
-   
+cd .emacs.d/elpa/magit
+make
+mv lisp/*.elc .
+cd ../../..
