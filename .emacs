@@ -53,6 +53,7 @@
 			  "flycheck" 'flycheck
 			  "omnisharp" 'omnisharp
 			  "sbt-mode" 'sbt-mode
+			  "shakespeare-mode" 'shakespeare-mode
 			  "haskell_mode" 'haskell-mode-autoloads
 			  "transpose-frame" 'transpose-frame
 			  "glsl-mode" 'glsl-mode
