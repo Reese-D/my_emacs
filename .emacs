@@ -77,6 +77,7 @@
 			  "magit-popup" 'magit-popup
 			  "magit" 'magit
 			  "curl" 'curl
+			  "spinner" 'spinner
 			  "cider" 'cider
 			  "rainbow-delimiters" 'rainbow-delimiters)
 			  
