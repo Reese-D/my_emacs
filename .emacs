@@ -76,7 +76,9 @@
 			  "with-editor" 'with-editor
 			  "magit-popup" 'magit-popup
 			  "magit" 'magit
-			  "curl" 'curl)
+			  "curl" 'curl
+			  "cider" 'cider
+			  "rainbow-delimiters" 'rainbow-delimiters)
 			  
 (add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
 (require 'slime)
