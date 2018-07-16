@@ -39,7 +39,7 @@
 ;;make this into a macro that can check if any are missing, refresh if they are, and then run package-install on the missing items
 
 ; list the packages you want
-(setq package-list '(omnisharp projectile company csharp-mode ace-jump-mode neotree clojure-mode haskell-mode jump magit))
+(setq package-list '(omnisharp projectile company csharp-mode ace-jump-mode neotree clojure-mode haskell-mode jump magit queue))
 
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
