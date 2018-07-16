@@ -1,4 +1,4 @@
-2  ;;useful tips
+;;useful tips
 ;;C-h k --type this then any other command, and it will tell you the name of the command assigned to that hotkey as well as a description
 ;;C-h w --reverse of C-h k, type in the name of any command and it will tell you the keybinding for it
 
@@ -39,12 +39,12 @@
 ;;make this into a macro that can check if any are missing, refresh if they are, and then run package-install on the missing items
 
 ; list the packages you want
-(setq package-list '(omnisharp projectile company csharp-mode ace-jump-mode neotree clojure-mode))
+(setq package-list '(omnisharp projectile company csharp-mode ace-jump-mode neotree clojure-mode haskell-mode jump magit))
 
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
+;                         ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")
 ;			 ("melpa-stable" . "http://stable.melpa.org/packages/")
 ;			 ("melpa" . "http://melpa.org/packages/")
@@ -54,6 +54,9 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+;;must be called before package-installed-p
+(package-initialize)
+
 ; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -61,7 +64,7 @@
 
 (add-and-require-multiple "elixir-major-mode" 'elixir-mode
 			  "shakespeare-mode" 'shakespeare-mode
-			  "haskell_mode" 'haskell-mode-autoloads
+;			  "haskell_mode" 'haskell-mode-autoloads
 			  "transpose-frame" 'transpose-frame
 			  "glsl-mode" 'glsl-mode
 			  "scala-mode-ensime" 'scala-mode
@@ -74,7 +77,7 @@
 			  "multiple-cursors-20160304.659" 'multiple-cursors
 			  "with-editor" 'with-editor
 			  "magit-popup" 'magit-popup
-			  "magit" 'magit
+;			  "magit" 'magit
 			  "curl" 'curl
 			  "spinner" 'spinner
 			  "cider" 'cider
