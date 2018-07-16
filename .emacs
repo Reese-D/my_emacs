@@ -1,26 +1,18 @@
-;;useful tips
+2  ;;useful tips
 ;;C-h k --type this then any other command, and it will tell you the name of the command assigned to that hotkey as well as a description
 ;;C-h w --reverse of C-h k, type in the name of any command and it will tell you the keybinding for it
 
 (defvar path "~/my_emacs/" "home path")
-(defvar elpa-path ".emacs.d/elpa")
+(defvar crud-path ".emacs.d/crud")
 (add-to-list 'load-path (concat path ".emacs.d/custom_elisp/"))
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;;add scripts directory to load path, so that .el files are automatically evaluated
-(add-to-list 'load-path (concat path ".emacs.d/scripts"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
-
 
 ;;make c indent 4 by default instead of 2
 (setq-default c-basic-offset 4)
 
-
 ;;macros to help with code reuse
 (defmacro add-to-include (str)
-  `(add-to-list 'load-path (concat path ,"/" elpa-path ,"/" ,str)))
+  `(add-to-list 'load-path (concat path ,"/" crud-path ,"/" ,str)))
 
 (defmacro add-and-require (path pkg-name)
   `(progn
@@ -43,33 +35,40 @@
 ;;        (when (< (length item) 2)
 ;; 	 (return))
 ;;        (add-and-require current (pop item) )))
-     
-(add-and-require-multiple "epl" 'epl
-			  "pkg-info" 'pkg-info
-			  "elixir-major-mode" 'elixir-mode
-			  "s" 's
-			  "popup" 'popup
-			  "dash" 'dash
-			  "flycheck" 'flycheck
-			  "omnisharp" 'omnisharp
-			  "sbt-mode" 'sbt-mode
+
+;;make this into a macro that can check if any are missing, refresh if they are, and then run package-install on the missing items
+
+; list the packages you want
+(setq package-list '(omnisharp projectile company csharp-mode ace-jump-mode neotree clojure-mode))
+
+; list the repositories containing them
+(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/")
+;			 ("melpa-stable" . "http://stable.melpa.org/packages/")
+;			 ("melpa" . "http://melpa.org/packages/")
+			 ("org" . "http://orgmode.org/elpa/")))
+
+; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+(add-and-require-multiple "elixir-major-mode" 'elixir-mode
 			  "shakespeare-mode" 'shakespeare-mode
 			  "haskell_mode" 'haskell-mode-autoloads
 			  "transpose-frame" 'transpose-frame
 			  "glsl-mode" 'glsl-mode
-			  "popup-20160409.2133" 'popup
 			  "scala-mode-ensime" 'scala-mode
-			  "projectile" 'projectile
-			  "flymake" 'flymake
-			  "csharp-mode" 'csharp-mode
-			  "neotree" 'neotree
-			  "yasnippet" 'yasnippet
 			  "web-mode" 'web-mode
 			  "emacs-rails-reloaded" 'rails-autoload
-			  "jump" 'jump
 			  "inf-ruby" 'inf-ruby
 			  "rinari" 'rinari
-			  "company-mode" 'company
 			  "f" 'f
 			  "dumb_jump" 'dumb-jump
 			  "multiple-cursors-20160304.659" 'multiple-cursors
@@ -79,13 +78,14 @@
 			  "curl" 'curl
 			  "spinner" 'spinner
 			  "cider" 'cider
-			  "rainbow-delimiters" 'rainbow-delimiters)
-			  
+			  "rainbow-delimiters" 'rainbow-delimiters
+			  )
+
+
 (add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
 (require 'slime)
 
-(add-hook 'csharp-mode-hook 'omnisharp-mode)
-
+(defun c-inside-bracelist-p (containing-sexp paren-state &optional))
 
 ;;this will indent switch statements in c
 (c-set-offset 'case-label '+)
@@ -97,7 +97,7 @@
 
 
 
-(yas-global-mode 1)
+;(yas-global-mode 1)
 (projectile-global-mode)
 
 
@@ -106,13 +106,6 @@
 ;; I want to see at most the first 4 errors for a line.
 (setq flymake-number-of-errors-to-display 4)
 
-
-(defun my-csharp-mode-hook ()
-  ;; enable the stuff you want for C# here
-  (electric-pair-mode 1)       ;; Emacs 24
-  (electric-pair-local-mode 1) ;; Emacs 25
-  )
-(add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
 
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
@@ -125,8 +118,6 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
-(company-mode)
-(add-hook 'after-init-hook 'global-company-mode)
 
 (global-set-key (kbd "M-i") nil);; Remove the old keybinding tab-to-tab-stop
 (global-set-key (kbd "M-i i") 'dumb-jump-go)
@@ -136,30 +127,60 @@
 (global-set-key (kbd "M-i e") 'dumb-jump-go-prefer-external)
 (global-set-key (kbd "M-i w") 'dumb-jump-go-prefer-external-other-window)
 
-;;set up omnisharp
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-omnisharp))
+(add-hook 'after-init-hook 'global-company-mode)
 
-(add-hook 'csharp-mode-hook 'omnisharp-mode)
-(setf omnisharp-server-executable-path ".emacs.d/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+;; (eval-after-load
+;;     'company
+;;   '(add-to-list 'company-backends 'company-omnisharp))
+
+;; (add-hook 'csharp-mode-hook #'company-mode)
+
+;; (add-hook 'csharp-mode-hook #'flycheck-mode)
+
+;; (add-hook 'csharp-mode-hook #'omnisharp-mode)
+
+(eval-after-load
+  'company
+  '(add-to-list 'company-backends #'company-omnisharp))
+
+(defun my-csharp-mode-setup ()
+  (omnisharp-mode)
+  (company-mode)
+  (flycheck-mode)
+
+;; ;  (setq indent-tabs-mode nil)
+;; ;  (setq c-syntactic-indentation t)
+;;   (c-set-style "ellemtel")
+;;   (setq c-basic-offset 4)
+;; ;  (setq truncate-lines t)
+;;   (setq tab-width 4)
+  (turn-on-font-lock)
+  (turn-on-auto-revert-mode) ;; helpful when also using Visual Studio
+;  (setq indent-tabs-mode nil) ;; tabs are evil
+
+;  (electric-pair-local-mode 1) ;;emacs 25
+  (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+  (local-set-key (kbd "C-c C-c") 'recompile))
+
+(add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
+
+;(setf omnisharp-server-executable-path ".emacs.d/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
 ;; to use omnisharp type `M-x omnisharp-start-omnisharp-server` and then specify the path to a .sln file (for example unity creates .sln files when it creates projects) this will give auto-complete functionality for c# like visualStudios
 
 ;;
 ;; ace jump mode major function
 ;; 
-(add-to-list 'load-path (concat path ".emacs.d/elpa/ace-jump-mode-20140616.115"))
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
+;(add-to-list 'load-path (concat path ".emacs.d/crud/ace-jump-mode-20140616.115"))
+;; (autoload
+;;   'ace-jump-mode
+;;   "ace-jump-mode"
+;;   "Emacs quick move minor mode"
+;;   t)
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-(add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 (setq package-enable-at-startup nil)
-(package-initialize)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
