@@ -54,7 +54,7 @@
 			  "omnisharp" 'omnisharp
 			  "sbt-mode" 'sbt-mode
 			  "shakespeare-mode" 'shakespeare-mode
-			  "haskell_mode" 'haskell-mode-autoloads
+;			  "haskell_mode" 'haskell-mode-autoloads
 			  "transpose-frame" 'transpose-frame
 			  "glsl-mode" 'glsl-mode
 			  "popup-20160409.2133" 'popup
