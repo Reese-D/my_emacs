@@ -54,7 +54,6 @@
 			  "omnisharp" 'omnisharp
 			  "sbt-mode" 'sbt-mode
 			  "shakespeare-mode" 'shakespeare-mode
-;			  "haskell_mode" 'haskell-mode-autoloads
 			  "transpose-frame" 'transpose-frame
 			  "glsl-mode" 'glsl-mode
 			  "popup-20160409.2133" 'popup
@@ -76,7 +75,8 @@
 			  "with-editor" 'with-editor
 			  "magit-popup" 'magit-popup
 			  "magit" 'magit
-			  "curl" 'curl)
+			  "curl" 'curl
+			  )
 			  
 (add-to-list 'load-path (concat path "quicklisp/dists/quicklisp/software/slime-v2.17"))
 (require 'slime)
@@ -91,7 +91,6 @@
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
-
 
 
 (yas-global-mode 1)
@@ -112,6 +111,7 @@
 (add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
 
 (define-key global-map (kbd "C-c 8") 'neotree-toggle)
+
 
 ;;set up web-mode C-c C-f to fold code, C-c C-n to jump to open/closing tags if at front
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
