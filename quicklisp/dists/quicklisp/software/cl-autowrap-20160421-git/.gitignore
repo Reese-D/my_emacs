@@ -1,8 +1,0 @@
-\#*
-.\#*
-*~
-*.fasl
-*.lx??fsl
-*.so
-example/example.lisp
-example/macros.lisp

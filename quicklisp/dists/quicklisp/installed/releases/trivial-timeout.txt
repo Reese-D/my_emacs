@@ -1,1 +1,0 @@
-dists/quicklisp/software/trivial-timeout-20130813-darcs/

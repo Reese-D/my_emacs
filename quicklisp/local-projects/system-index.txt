@@ -1,5 +1,0 @@
-CLinch/clinch.asd
-CLinch/clinch-cairo.asd
-CLinch/clinch-pango.asd
-CLinch/clinch-classimp.asd
-CLinch/clinch-freeimage.asd
