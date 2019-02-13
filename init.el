@@ -45,6 +45,8 @@
 ;			  'curl
 			  'dumb-jump
 			  'ace-jump-mode
+			  'elixir-mode
+			  'alchemist
 			  'slime)
 
 
@@ -163,6 +165,3 @@
 (setq-default c-basic-offset 4)
 
 ;(setq mac-option-modifier 'meta)  ;enable this if using a mac
-
-
-
