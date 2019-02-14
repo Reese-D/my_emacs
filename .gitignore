@@ -4,3 +4,4 @@ snippets/*
 elpa/*
 *.eld
 *#
+custom.el

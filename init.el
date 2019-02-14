@@ -42,10 +42,8 @@
 			  'with-editor
 			  'magit-popup
 			  'magit
-;			  'curl
 			  'dumb-jump
 			  'ace-jump-mode
-			  'elixir-mode
 			  'alchemist
 			  'slime)
 
@@ -165,3 +163,6 @@
 (setq-default c-basic-offset 4)
 
 ;(setq mac-option-modifier 'meta)  ;enable this if using a mac
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
