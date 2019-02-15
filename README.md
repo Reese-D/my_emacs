@@ -1,6 +1,6 @@
 # my_emacs
 
-## Version 0.0.0
+## Version 0.0.1
 
 This is my first attempt at creating a minor versioning system for the changes, in case there's ever a need to revert to some previous working version. This version has been created in an attempt to clean some of the file clutter that has built up as well as organizational change and some refactoring to the .emacs file
 
