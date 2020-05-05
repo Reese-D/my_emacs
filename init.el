@@ -45,7 +45,8 @@
 			  'dumb-jump
 			  'ace-jump-mode
 			  'alchemist
-			  'slime)
+			  'slime
+			  'haskell-mode)
 
 
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
@@ -166,3 +167,5 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
+
