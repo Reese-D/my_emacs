@@ -165,7 +165,13 @@
 
 ;(setq mac-option-modifier 'meta)  ;enable this if using a mac
 
+;;enable our clipboard to copy/paste into emacs
+(setq select-enable-primary nil)
+(setq select-enable-clipboard t)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
+
 
 

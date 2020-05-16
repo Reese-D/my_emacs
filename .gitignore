@@ -5,3 +5,5 @@ elpa/*
 *.eld
 *#
 custom.el
+session.*
+transient/
