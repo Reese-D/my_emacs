@@ -1,0 +1,64 @@
+## Movement commands
+C-f		move one character forward
+C-b		move one character back
+C-p		move one line up
+C-n		move one line down
+C-e		move end of line
+C-a		move start of line
+M-Shift->	move to end of file
+M-Shift-<	move to start of file
+C-l		move screen center over cursor (center screen where the cursor is)
+M-b		move to start of word (or previous word if you're at the start of a word)
+M-f		move to end of word (^same as above)
+C-v		move forward by one screen
+M-v		move backwards by one screen
+
+# yank (copy/paste) commands and text removal
+C-k		cut entire line
+C-d		delete character under cursor
+C-w		delete area of text between mark and cursor
+M-w		copy-region-as-kill copy are between mark and cursor into kill buffer (so you can yank it)
+
+C-x h		highlight entire buffer
+
+C-y		Yank (paste)
+M-y		cycle paste options after pasting text
+
+C-SPC		set mark
+
+## search/replace
+M-Shift-5	query replace (whole file)
+
+C-s		search file (forward)
+c-r		search file (backward)
+regexp-replace	(use this using M-x as described below) find/replace using regex
+
+## Window modification/duplication
+C-x 0		deletes current buffer (buffer is like a new window/tab/whatever)
+C-x 2		split window horizontally
+C-x 3		split window vertically
+C-x 1		kill all windows EXCEPT current window
+C-x o		move to next window
+C-x b		display a different buffer on the screen (similar to C-x C-f)
+
+##save/quit/etc
+C-x C-f		open file into buffer
+C-x C-s		Save current buffer
+C-x C-c		quit emacs (use the above to save first, otherwise it will prompt you to save)
+
+C-g 		Keyboard quit if you make a mistake while typing a command and want to stop use this to exit
+
+##Meta commands
+C-u 		universal-argument if you want to do a command several times do this, then type a number of times to repeat, then type command
+M-x		execute-extended-command if you want to call a command you know the name of but don't remember the keystrokes for (or to use commands that don't have a hotkey set)
+C-c r s		start a keyboard macro
+C-c r e		end macro or call existing macro
+
+##help commands
+C-h k		tells you what a certain set of keystrokes does
+C-h ?		Help- for help (describes how to use help functions)
+
+##Extension commands
+C-c f		toggle fullscreen
+C-c SPC 	ace jump mode
+C-c 8		Neotree toggle
