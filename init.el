@@ -28,7 +28,9 @@
   (package-refresh-contents))
 
 (add-and-require-multiple 's
+			  'haskell-mode
 			  'dash
+			  'rainbow-delimiters
 			  'transpose-frame
 			  'glsl-mode
 			  'projectile
@@ -47,6 +49,8 @@
 			  'alchemist
 			  'slime)
 
+
+(setq inferior-lisp-program "/usr/bin/sbcl")
 
 (add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
@@ -70,6 +74,25 @@
   "ace-jump-mode"
   "Emacs quick move minor mode"
   t)
+
+;;Rainbow delimiters mode
+(defface my-outermost-paren-face
+  '((t (:weight bold)))
+  "Face used for outermost parens.")
+
+(require 'cl-lib)
+(require 'color)
+(cl-loop
+ for index from 1 to rainbow-delimiters-max-face-count
+ do
+ (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+      (cl-callf color-saturate-name (face-foreground face) 30)))
+
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;;show parens when hovering
+(show-paren-mode)
 
 ;;slime, for lisp programming
 (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -163,6 +186,5 @@
 (setq-default c-basic-offset 4)
 
 ;(setq mac-option-modifier 'meta)  ;enable this if using a mac
-
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; (setq custom-file "~/.emacs.d/custom.el")
+;; (load custom-file)
