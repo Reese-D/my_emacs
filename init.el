@@ -28,8 +28,10 @@
   (package-refresh-contents))
 
 (add-and-require-multiple 's
+			  'use-package
+			  'undo-tree
 			  'haskell-mode
-			  'dash
+			  ;'dash
 			  'rainbow-delimiters
 			  'transpose-frame
 			  'glsl-mode
@@ -49,6 +51,12 @@
 			  'alchemist
 			  'slime)
 
+(use-package undo-tree
+	     :diminish undo-tree-mode
+	     :config
+	       (global-undo-tree-mode)
+	       (setq undo-tree-visualizer-timestamps t)
+	       (setq undo-tree-visualizer-diff t))
 
 (setq inferior-lisp-program "/usr/bin/sbcl")
 
