@@ -1,5 +1,7 @@
 # my_emacs
 
+This is now outdated as of 6/29/2020, I've created a new repository called .emacs.d so that the file doesn't have to be renamed each time it's pulled, please use that instead
+
 ### Initialization
 
 Simply clone this, move to your home directory, and rename this file .emacs.d
