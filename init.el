@@ -27,29 +27,81 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(add-and-require-multiple 's
-			  'use-package
-			  'undo-tree
+(add-and-require-multiple 'use-package ;;used below
 			  'haskell-mode
-			  ;'dash
-			  'rainbow-delimiters
 			  'transpose-frame
-			  'glsl-mode
-			  'projectile
-			  'neotree
-			  'yasnippet
-		  	  'yasnippet-snippets
-			  'web-mode
-			  'jump
-			  'inf-ruby
-			  'company
-			  'with-editor
+			  'inf-ruby ;;run ruby in emacs with M-x inf-ruby
+			  ;'with-editor
 			  'magit-popup
-			  'magit
-			  'dumb-jump
-			  'ace-jump-mode
-			  'alchemist
-			  'slime)
+			  'magit ;;for git merges
+			  'alchemist ;;elixir (lang) stuff
+			  'delight ;;delight and diminish help de-clutter the "mode lines"
+			  'diminish)
+
+
+(use-package dumb-jump
+  :bind
+  ("M-i" . nil);; Remove the old keybinding tab-to-tab-stop
+  ("M-i i" . dumb-jump-go)
+  ("M-i b" . dumb-jump-back)
+  ("M-i q" . dumb-jump-quick-look)
+  ("M-i o" . dumb-jump-go-other-window)
+  ("M-i e" . dumb-jump-go-prefer-external)
+  ("M-i w" . dumbp-jump-g-prefer-external-other-window))
+
+(use-package yasnippet
+  :config
+  (progn
+    (yas-global-mode 1)
+    (use-package yasnippet-snippets)))
+
+(use-package projectile
+  :config
+  (projectile-global-mode 1))
+
+(use-package slime
+  :config
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (setq slime-contribs '(slime-fancy)))
+
+
+(use-package ace-jump
+  :diminish ace-jump-mode
+  :bind ("C-c SPC" . ace-jump-mode))
+
+(use-package rainbow-delimiters
+  :config
+  (progn
+    (defface my-outermost-paren-face
+      '((t (:weight bold)))
+      "Face used for outermost parens.")
+    (use-package cl-lib)
+    (use-package color)
+    (show-paren-mode)
+    (cl-loop
+     for index from 1 to rainbow-delimiters-max-face-count
+     do
+     (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+       (cl-callf color-saturate-name (face-foreground face) 30))))
+  :hook (prog-mode . rainbow-delimiters-mode))
+    
+(use-package web-mode
+  :init
+  (use-package glsl-mode)
+  (use-package web-mode)
+  :config
+  (let ((glsl-stuff (mapcar (lambda (x) (cons x 'glsl-mode)) '("\\.glsl\\'" "\\.vert\\'" "\\.frag\\'" "\\.geom\\'")))
+	(web-stuff (mapcar (lambda (x) (cons x 'web-mode)) '("\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'" "\\.erb\\'" "\\.mustache\\'"))))
+    (mapc (lambda (x) (add-to-list 'auto-mode-alist x)) glsl-stuff)))
+  
+
+(use-package company
+  :diminish company-mode
+  :hook (after-init . global-company-mode))
+
+(use-package neotree
+  :bind ("C-c 8" . neotree-toggle))
+
 
 (use-package undo-tree
 	     :diminish undo-tree-mode
@@ -57,54 +109,6 @@
 	       (global-undo-tree-mode)
 	       (setq undo-tree-visualizer-timestamps t)
 	       (setq undo-tree-visualizer-diff t))
-
-(setq inferior-lisp-program "/usr/bin/sbcl")
-
-(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
-
-;;set up web-mode C-c C-f to fold code, C-c C-n to jump to open/closing tags if at front
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
-;;
-;; ace jump mode major function
-;; 
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
-
-;;Rainbow delimiters mode
-(defface my-outermost-paren-face
-  '((t (:weight bold)))
-  "Face used for outermost parens.")
-
-(require 'cl-lib)
-(require 'color)
-(cl-loop
- for index from 1 to rainbow-delimiters-max-face-count
- do
- (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-      (cl-callf color-saturate-name (face-foreground face) 30)))
-
-
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-;;show parens when hovering
-(show-paren-mode)
-
-;;slime, for lisp programming
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
 
 ;;; Define a default fullscreen and non full-screen mode, then add a function to toggle between the two
 (defun my-fullscreen ()
@@ -150,20 +154,8 @@
 (global-set-key (kbd "C-c r s") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-c r e") 'kmacro-end-or-call-macro)
 
-;; Dumb Jump
-(global-set-key (kbd "M-i") nil);; Remove the old keybinding tab-to-tab-stop
-(global-set-key (kbd "M-i i") 'dumb-jump-go)
-(global-set-key (kbd "M-i b") 'dumb-jump-back)
-(global-set-key (kbd "M-i q") 'dumb-jump-quick-look)
-(global-set-key (kbd "M-i o") 'dumb-jump-go-other-window)
-(global-set-key (kbd "M-i e") 'dumb-jump-go-prefer-external)
-(global-set-key (kbd "M-i w") 'dumb-jump-go-prefer-external-other-window)
 
-;; Ace Jump Mode 
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-;; Neotree
-(define-key global-map (kbd "C-c 8") 'neotree-toggle)
 
 ;;---------------------------------Initialization---------------------------------
 
@@ -176,19 +168,6 @@
 
 ;;this will indent switch statements in c
 (c-set-offset 'case-label '+)
-
-(yas-global-mode 1)
-(projectile-global-mode)
-
-
-;; Let's run 8 checks at once instead.
-(setq flymake-max-parallel-syntax-checks 8)
-
-;; I want to see at most the first 4 errors for a line.
-(setq flymake-number-of-errors-to-display 4)
-
-(company-mode)
-(add-hook 'after-init-hook 'global-company-mode)
 
 ;;make c indent 4 by default instead of 2
 (setq-default c-basic-offset 4)
