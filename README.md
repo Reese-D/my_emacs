@@ -12,4 +12,8 @@ You can create a directory called scripts in this folder, and any files should b
 
 Most keybindings are listed in the init.el file, look for the "use-package" calls, most of these will have a :bind section that will display any modified keybindings. There are a couple further down in the file that aren't related to any specific package
 
+### Versioning
+
+Current active version branch is 0.0.3
+
 
