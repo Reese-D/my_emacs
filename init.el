@@ -20,24 +20,46 @@
 	(package-install required))
       (and required
 	   (require required)))))
-   
 
 (package-initialize)
 
 (unless package-archive-contents
   (package-refresh-contents))
 
-(add-and-require-multiple 'use-package ;;used below
+(add-and-require-multiple 'use-package	;;used below
 			  'haskell-mode
 			  'transpose-frame
-			  'inf-ruby ;;run ruby in emacs with M-x inf-ruby
-			  ;'with-editor
+			  'inf-ruby	;;run ruby in emacs with M-x inf-ruby
+			  'multiple-cursors
 			  'magit-popup
-			  'magit ;;for git merges
-			  'alchemist ;;elixir (lang) stuff
-			  'delight ;;delight and diminish help de-clutter the "mode lines"
-			  'diminish)
+			  'magit	;;for git merges
+			  'alchemist	;;elixir (lang) stuff
+			  'delight	;;delight and diminish help de-clutter the "mode lines"
+			  'diminish
 
+			  ;;use package packages
+			  'multiple-cursors
+			  'dumb-jump
+			  'yasnippet
+			  'yasnippet-snippets
+			  'projectile
+			  'slime
+			  'ace-jump-mode
+			  'rainbow-delimiters
+			  'web-mode
+			  'glsl-mode
+			  'undo-tree)
+
+
+
+;;---------------------------------use package------------------------------------
+
+(use-package multiple-cursors
+  :bind
+  ("C-c s" . mc/edit-lines)
+  ("C-c n" . mc/mark-next-like-this)
+  ("C-c p" . mc/mark-previous.like-this)
+  ("C-c a" . mc/mark-more-like-this-extended))
 
 (use-package dumb-jump
   :bind
@@ -65,50 +87,49 @@
   (setq slime-contribs '(slime-fancy)))
 
 
-(use-package ace-jump
+(use-package ace-jump-mode
   :diminish ace-jump-mode
   :bind ("C-c SPC" . ace-jump-mode))
 
 (use-package rainbow-delimiters
-  :config
-  (progn
-    (defface my-outermost-paren-face
-      '((t (:weight bold)))
-      "Face used for outermost parens.")
-    (use-package cl-lib)
-    (use-package color)
-    (show-paren-mode)
-    (cl-loop
-     for index from 1 to rainbow-delimiters-max-face-count
-     do
-     (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-       (cl-callf color-saturate-name (face-foreground face) 30))))
+  :config (progn
+	    (defface my-outermost-paren-face
+	      '((t (:weight bold)))
+	      "Face used for outermost parens.")
+	    (use-package cl-lib)
+	    (use-package color)
+	    (show-paren-mode)
+	    (cl-loop
+	     for index from 1 to rainbow-delimiters-max-face-count
+	     do
+	     (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+	       (cl-callf color-saturate-name (face-foreground face) 30))))
   :hook (prog-mode . rainbow-delimiters-mode))
     
 (use-package web-mode
   :init
   (use-package glsl-mode)
   (use-package web-mode)
-  :config
-  (let ((glsl-stuff (mapcar (lambda (x) (cons x 'glsl-mode)) '("\\.glsl\\'" "\\.vert\\'" "\\.frag\\'" "\\.geom\\'")))
-	(web-stuff (mapcar (lambda (x) (cons x 'web-mode)) '("\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'" "\\.erb\\'" "\\.mustache\\'"))))
-    (mapc (lambda (x) (add-to-list 'auto-mode-alist x)) glsl-stuff)))
+  :config (let ((glsl-stuff (mapcar (lambda (x) (cons x 'glsl-mode)) '("\\.glsl\\'" "\\.vert\\'" "\\.frag\\'" "\\.geom\\'")))
+		(web-stuff (mapcar (lambda (x) (cons x 'web-mode)) '("\\.phtml\\'" "\\.tpl\\.php\\'" "\\.[agj]sp\\'" "\\.as[cp]x\\'" "\\.erb\\'" "\\.mustache\\'"))))
+	    (mapc (lambda (x) (add-to-list 'auto-mode-alist x)) glsl-stuff)))
   
 
-(use-package company
+(use-package company-mode
   :diminish company-mode
   :hook (after-init . global-company-mode))
 
 (use-package neotree
   :bind ("C-c 8" . neotree-toggle))
 
-
 (use-package undo-tree
 	     :diminish undo-tree-mode
 	     :config
-	       (global-undo-tree-mode)
-	       (setq undo-tree-visualizer-timestamps t)
-	       (setq undo-tree-visualizer-diff t))
+	     (global-undo-tree-mode)
+	     (setq undo-tree-visualizer-timestamps t)
+	     (setq undo-tree-visualizer-diff t))
+
+;;-------------------------------custom functions---------------------------------
 
 ;;; Define a default fullscreen and non full-screen mode, then add a function to toggle between the two
 (defun my-fullscreen ()
@@ -143,12 +164,6 @@
 (global-set-key (kbd "C-c f") 'toggle-fullscreen)
 (global-set-key (kbd "<C-tab>") 'dabbrev-expand)
 (global-set-key (kbd "C-c v") 'filename)
-
-;; Keybinds for the Multiple-Cursors package
-(global-set-key (kbd "C-c s") 'mc/edit-lines)
-(global-set-key (kbd "C-c n") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c p") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c a") 'mc/mark-more-like-this-extended)
 
 ;; Different keybinds for macros
 (global-set-key (kbd "C-c r s") 'kmacro-start-macro-or-insert-counter)
